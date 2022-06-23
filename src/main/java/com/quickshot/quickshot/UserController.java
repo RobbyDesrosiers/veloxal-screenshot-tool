@@ -70,6 +70,7 @@ public class UserController {
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
 
+        // handles all the viewfinder scaling if an anchor is selected
         if (viewfinder.getAnchors().isSelected()) {
             ViewfinderAnchorPosition selectedAnchorPosition = viewfinder.getAnchors().getSelectedAnchorPosition();
             switch (selectedAnchorPosition) {
@@ -82,6 +83,7 @@ public class UserController {
                 case BOTTOM_MIDDLE -> viewfinder.getBoundingBox().moveDown(mouseEvent);
                 case BOTTOM_RIGHT -> viewfinder.getBoundingBox().moveDownRight(mouseEvent);
             }
+        // handles the panning/moving of the viewfinder if viewfinder is selected
         } else if (viewfinder.isSelected(mouseEvent)) {
             viewfinder.move(mouseEvent);
         }
@@ -99,7 +101,6 @@ public class UserController {
     private void removeViewfinder() {
         if (this.viewfinder != null) {
             // loops through entire viewfinder elements and removes from screen overlay
-            // used to refresh the view by deleting all before .update runs to .add each element back
             for (DisplayElement viewFinderElement : viewfinder.getDisplayElements()) {
                 screenOverlay.removeFromScreen((Node) viewFinderElement);
             }
@@ -107,12 +108,14 @@ public class UserController {
     }
 
     public void updateViewfinder() {
-        // adds all displayElements to viewfinder.. probably should offload this somewhere else
+        // adds all displayElements to viewfinder if not already added
         for (DisplayElement viewFinderElement : viewfinder.getDisplayElements()) {
             if (!screenOverlay.getChildren().contains((Node) viewFinderElement)) {
                 screenOverlay.addToScreen((Node) viewFinderElement);
             }
         }
+
+        // where the visual updates happen
         viewfinder.checkViewfinderInversion();
         viewfinder.update();
     }
