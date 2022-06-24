@@ -19,7 +19,7 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
         setHeight(HEIGHT);
         setStroke(Color.BLACK);
         setFill(Color.WHITE);
-        toFront();
+        setViewOrder(-1);
         setAnchorTraits(i);
         initHoverProperties();
     }
