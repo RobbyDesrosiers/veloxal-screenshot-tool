@@ -24,10 +24,10 @@ public abstract class Widget extends Button {
         icon.setFitWidth(iconSize);
         icon.setFitHeight(iconSize);
         setGraphic(icon);
-        initMouseEvents();
+        defaultMouseEvents();
     }
 
-    public void initMouseEvents() {
+    public void defaultMouseEvents() {
         setOnMouseClicked(e -> {
             setSelected(!isSelected());
         });

@@ -53,8 +53,10 @@ public class UserController {
     }
 
     private void handleMousePressed(MouseEvent mouseEvent) {
-        if (viewfinder == null)
+        if (viewfinder == null) {
             viewfinder = new Viewfinder(mouseEvent);
+            viewfinder.getWidgetBar().setVisible(false);
+        }
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
         if (!viewfinder.isSelected(mouseEvent) && !viewfinder.getAnchors().isSelected()) {
             removeViewfinder();
@@ -76,6 +78,7 @@ public class UserController {
             widget.draw(mouseEvent);
         // handles all the viewfinder scaling if an anchor is selected
         } else if (viewfinder.getAnchors().isSelected()) {
+            viewfinder.getWidgetBar().setVisible(false);
             ViewfinderAnchorPosition selectedAnchorPosition = viewfinder.getAnchors().getSelectedAnchorPosition();
             switch (selectedAnchorPosition) {
                 case TOP_LEFT -> viewfinder.getBoundingBox().moveUpLeft(mouseEvent);
@@ -89,6 +92,7 @@ public class UserController {
             }
         // handles the panning/moving of the viewfinder if viewfinder is selected
         } else if (viewfinder.isSelected(mouseEvent)) {
+            viewfinder.getWidgetBar().setVisible(false);
             viewfinder.move(mouseEvent);
         }
         updateViewfinder();
@@ -98,6 +102,11 @@ public class UserController {
         // fixes on creation drag bug which caused bottom-right anchor to be selected all the time
         // this is due to bottom-right being auto selected (true) on creation for dragging capabilities
         viewfinder.getAnchors().deselectAllAnchors();
+
+        viewfinder.getWidgetBar().setVisible(true);
+        if (viewfinder.getWidgetBar().isWidgetSelected()) {
+            viewfinder.getWidgetBar().getDrawData().setNewLine(true);
+        }
 
         updateViewfinder();
     }
@@ -120,6 +129,7 @@ public class UserController {
         }
 
         // adds drawdata
+        // TODO optimize this
         for (Node node : viewfinder.getWidgetBar().getDrawData()) {
             if (!screenOverlay.getChildren().contains(node)) {
                 screenOverlay.addToScreen(node);

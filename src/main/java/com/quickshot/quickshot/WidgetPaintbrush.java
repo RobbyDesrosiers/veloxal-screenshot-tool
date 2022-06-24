@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class WidgetPaintbrush extends Widget {
     private int brushSize = 1;
     private Color paintBrushColor = Color.RED;
-    private LinkedList<Node> drawData;
+    private WidgetDrawData drawData;
 
     public WidgetPaintbrush(String fileName, WidgetDrawData drawData) {
         super(fileName);
@@ -19,8 +19,9 @@ public class WidgetPaintbrush extends Widget {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        if (drawData.size() == 0) {
+        if (drawData.size() == 0 || drawData.isNewLine()) {
             addCircle(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+            drawData.setNewLine(false);
         } else {
             addCircle(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             // grabs 2 top nodes
