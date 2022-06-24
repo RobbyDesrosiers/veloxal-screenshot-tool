@@ -11,6 +11,7 @@ public class Viewfinder implements DisplayElement {
     private ViewfinderAnchorList anchors;
     private ViewfinderDimensions dimensions;
     private ViewfinderNegativeSpaceList negativeSpace;
+
     private ViewfinderWidgetBar widgetBar;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
 
@@ -62,7 +63,7 @@ public class Viewfinder implements DisplayElement {
         getWidgetBar().update();
     }
 
-    private ViewfinderWidgetBar getWidgetBar() {
+    public ViewfinderWidgetBar getWidgetBar() {
         return widgetBar;
     }
 

@@ -15,6 +15,9 @@ public class ScreenOverlay extends Pane {
 
     public ScreenOverlay() {
         scene = new Scene(this);
+
+        // fixes bug where on viewfinder creation toolbar-widget is auto-selected
+        requestFocus();
     }
 
     public void setTestEnvironment(Stage stage) {

@@ -70,8 +70,12 @@ public class UserController {
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
 
+        // handles all widget drawwing
+        if (viewfinder.getWidgetBar().isWidgetSelected()) {
+            Widget widget = viewfinder.getWidgetBar().getSelectedWidget();
+            widget.draw(mouseEvent);
         // handles all the viewfinder scaling if an anchor is selected
-        if (viewfinder.getAnchors().isSelected()) {
+        } else if (viewfinder.getAnchors().isSelected()) {
             ViewfinderAnchorPosition selectedAnchorPosition = viewfinder.getAnchors().getSelectedAnchorPosition();
             switch (selectedAnchorPosition) {
                 case TOP_LEFT -> viewfinder.getBoundingBox().moveUpLeft(mouseEvent);
@@ -115,9 +119,15 @@ public class UserController {
             }
         }
 
+        // adds drawdata
+        for (Node node : viewfinder.getWidgetBar().getDrawData()) {
+            if (!screenOverlay.getChildren().contains(node)) {
+                screenOverlay.addToScreen(node);
+            }
+        }
+
         // where the visual updates happen
         viewfinder.checkViewfinderInversion();
         viewfinder.update();
     }
-
 }
