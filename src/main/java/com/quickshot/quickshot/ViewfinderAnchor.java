@@ -1,5 +1,6 @@
 package com.quickshot.quickshot;
 
+import javafx.scene.CacheHint;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -20,6 +21,8 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
         setStroke(Color.BLACK);
         setFill(Color.WHITE);
         setViewOrder(-1);
+        setCache(true);
+        setCacheHint(CacheHint.SPEED);
         setAnchorTraits(i);
         initHoverProperties();
     }

@@ -1,5 +1,6 @@
 package com.quickshot.quickshot;
 
+import javafx.scene.CacheHint;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -24,6 +25,8 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
         setFill(Color.TRANSPARENT);
         getStrokeDashArray().addAll(2d);
         setStroke(Color.GRAY);
+        setCache(true);
+        setCacheHint(CacheHint.SPEED);
         initHoverProperties();
         update();
     }

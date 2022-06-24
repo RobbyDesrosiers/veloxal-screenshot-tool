@@ -1,6 +1,7 @@
 package com.quickshot.quickshot;
 
 import javafx.geometry.Insets;
+import javafx.scene.CacheHint;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,6 +15,8 @@ public class ViewfinderDimensions extends HBox implements DisplayElement {
         this.boundingBox = boundingBox;
         text.setFill(Color.WHITE);
         text.setStyle("-fx-font-weight: bold");
+        setCache(true);
+        setCacheHint(CacheHint.SPEED);
         getChildren().add(text);
         setStyle("-fx-background-color: black; -fx-border-radius: 3px;");
         setPadding(new Insets(1,3,3,3));

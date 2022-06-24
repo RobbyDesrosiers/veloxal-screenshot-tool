@@ -1,10 +1,11 @@
 package com.quickshot.quickshot;
 
 import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ToolBar;
 import javafx.scene.shape.Rectangle;
 
 
-public class ViewfinderWidgetBar extends Rectangle implements DisplayElement {
+public class ViewfinderWidgetBar extends ToolBar implements DisplayElement {
     private final ViewfinderBoundingBox boundingBox;
 
     public ViewfinderWidgetBar(ViewfinderBoundingBox boundingBox) {
@@ -18,7 +19,7 @@ public class ViewfinderWidgetBar extends Rectangle implements DisplayElement {
         setHeight(20);
         setTranslateX(boundingBox.getBottomRight().getX() - getWidth());
         setTranslateY(boundingBox.getBottomMiddle().getY() + Y_PADDING);
-        toFront();
+        setTranslateZ(-1);
     }
 
     @Override

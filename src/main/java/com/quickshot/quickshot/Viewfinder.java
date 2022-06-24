@@ -30,19 +30,6 @@ public class Viewfinder implements DisplayElement {
         widgetBar = new ViewfinderWidgetBar(boundingBox);
 
         //TODO check this on local windows machine
-//        boundingBox.setCache(true);
-//        boundingBox.setCacheHint(CacheHint.SPEED);
-//        for (ViewfinderAnchor anchor : anchors) {
-//            anchor.setCache(true);
-//            anchor.setCacheHint(CacheHint.SPEED);
-//        }
-//        dimensions.setCache(true);
-//        dimensions.setCacheHint(CacheHint.SPEED);
-//        negativeSpace.forEach(rect -> {
-//            rect.setCache(true);
-//            rect.setCacheHint(CacheHint.SPEED);
-//        });
-
         viewFinderElements.add(boundingBox);
         viewFinderElements.addAll(anchors);
         viewFinderElements.add(dimensions);

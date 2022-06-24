@@ -3,6 +3,8 @@ package com.quickshot.quickshot;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -23,6 +25,9 @@ public class ScreenOverlay extends Pane {
 
     public void setProductionEnvironment(Stage stage) {
         scene.setFill(new Color(0.0, 0.0, 0.0, 0.01));
+
+        // fixes the weird color glitch when spawning buttons/toolbars
+        setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, null, null)));
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setFullScreen(true);
