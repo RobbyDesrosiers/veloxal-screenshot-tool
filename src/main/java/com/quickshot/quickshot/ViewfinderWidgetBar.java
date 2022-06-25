@@ -5,17 +5,22 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.VBox;
 
 public class ViewfinderWidgetBar extends VBox implements DisplayElement {
-    private final ViewfinderBoundingBox boundingBox;
+    private ViewfinderBoundingBox boundingBox;
     private final ToolBar toolbar;
     private WidgetDrawData drawData;
 
-    public ViewfinderWidgetBar(ViewfinderBoundingBox boundingBox) {
-        this.boundingBox = boundingBox;
+    public ViewfinderWidgetBar() {
         toolbar = new ToolBar();
         drawData = new WidgetDrawData();
         addWidgetToToolbar(new WidgetPaintbrush("paint-brush.png", drawData));
-        setSpacing(15);
+        addWidgetToToolbar(new WidgetHighlighter("marker.png", drawData));
         getChildren().add(toolbar);
+        setViewOrder(-1);
+    }
+
+    public ViewfinderWidgetBar(ViewfinderBoundingBox boundingBox) {
+        this();
+        setBoundingBox(boundingBox);
     }
 
     private void addWidgetToToolbar(Widget widget) {
@@ -23,8 +28,19 @@ public class ViewfinderWidgetBar extends VBox implements DisplayElement {
     }
 
     private void calculateScreenPosition() {
-        double Y_PADDING = 5;
-        setTranslateX(boundingBox.getBottomRight().getX() - getWidth());
+        int OFFSET = 10;
+        double Y_PADDING;
+        double X_PADDING;
+
+        if (boundingBox.getBottomMiddle().getY() + getHeight() + OFFSET > Monitor.getMonitorHeight()) {
+            Y_PADDING = -getHeight() - 5;
+            X_PADDING = -5;
+        } else {
+            Y_PADDING = 5;
+            X_PADDING = 0;
+        }
+
+        setTranslateX(boundingBox.getBottomRight().getX() - getWidth() + X_PADDING);
         setTranslateY(boundingBox.getBottomMiddle().getY() + Y_PADDING);
         setTranslateZ(-1);
     }
@@ -62,5 +78,9 @@ public class ViewfinderWidgetBar extends VBox implements DisplayElement {
             }
         }
         return null;
+    }
+
+    public void setBoundingBox(ViewfinderBoundingBox boundingBox) {
+        this.boundingBox = boundingBox;
     }
 }

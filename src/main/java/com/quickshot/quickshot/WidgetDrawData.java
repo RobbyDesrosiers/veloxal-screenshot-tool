@@ -12,7 +12,6 @@ public class WidgetDrawData extends LinkedList<Node> {
     public void setNewLine(boolean b) {
         newLine = b;
     }
-
     public boolean isNewLine() {
         return newLine;
     }

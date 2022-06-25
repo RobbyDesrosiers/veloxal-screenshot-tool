@@ -6,11 +6,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
-    private Coordinate pointA = new Coordinate();
-    private Coordinate pointB = new Coordinate();
-    private Coordinate pointC = new Coordinate();
-    private Coordinate pointD = new Coordinate();
-    private Coordinate clickedStartingPoint = new Coordinate();
+    private final Coordinate pointA = new Coordinate();
+    private final Coordinate pointB = new Coordinate();
+    private final Coordinate pointC = new Coordinate();
+    private final Coordinate pointD = new Coordinate();
+    private final Coordinate clickedStartingPoint = new Coordinate();
     private boolean isMouseOver;
 
     // A ---------- B
@@ -18,17 +18,26 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
     // |            |
     // C ---------- D
 
-    public ViewfinderBoundingBox(MouseEvent mouseEvent) {
+    public ViewfinderBoundingBox() {
         super(0, 0);
-        setTranslateX(mouseEvent.getSceneX());
-        setTranslateY(mouseEvent.getSceneY());
         setFill(Color.TRANSPARENT);
         getStrokeDashArray().addAll(2d);
         setStroke(Color.GRAY);
         setCache(true);
+        setViewOrder(-1);
         setCacheHint(CacheHint.SPEED);
         initHoverProperties();
         update();
+    }
+
+    public ViewfinderBoundingBox(MouseEvent mouseEvent) {
+        this();
+        setTranslateCoordinates(mouseEvent);
+    }
+
+    public void setTranslateCoordinates(MouseEvent mouseEvent) {
+        setTranslateX(mouseEvent.getSceneX());
+        setTranslateY(mouseEvent.getSceneY());
     }
 
     public void initHoverProperties() {

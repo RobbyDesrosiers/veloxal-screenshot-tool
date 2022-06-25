@@ -6,16 +6,16 @@ import java.util.List;
 
 public class ViewfinderNegativeSpaceList extends ArrayList<ViewfinderNegativeSpace> implements DisplayElement {
     private ViewfinderBoundingBox boundingBox;
-    final GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-    final int monitorWidth = gd.getDisplayMode().getWidth();
-    final int monitorHeight = gd.getDisplayMode().getHeight();
-    private ViewfinderNegativeSpace rectLeft = new ViewfinderNegativeSpace();
-    private ViewfinderNegativeSpace rectTop = new ViewfinderNegativeSpace();
-    private ViewfinderNegativeSpace rectRight = new ViewfinderNegativeSpace();
-    private ViewfinderNegativeSpace rectBottom = new ViewfinderNegativeSpace();
+    private final ViewfinderNegativeSpace rectLeft;
+    private final ViewfinderNegativeSpace rectTop;
+    private final ViewfinderNegativeSpace rectRight;
+    private final ViewfinderNegativeSpace rectBottom;
 
-    public ViewfinderNegativeSpaceList(ViewfinderBoundingBox boundingBox) {
-        this.boundingBox = boundingBox;
+    public ViewfinderNegativeSpaceList() {
+        rectLeft = new ViewfinderNegativeSpace();
+        rectTop = new ViewfinderNegativeSpace();
+        rectRight = new ViewfinderNegativeSpace();
+        rectBottom = new ViewfinderNegativeSpace();
         this.addAll(List.of(
                 rectLeft,
                 rectTop,
@@ -24,30 +24,45 @@ public class ViewfinderNegativeSpaceList extends ArrayList<ViewfinderNegativeSpa
         ));
     }
 
+    public ViewfinderNegativeSpaceList(ViewfinderBoundingBox boundingBox) {
+        this();
+        setBoundingBox(boundingBox);
+    }
+
     private void calculateRectanglePositions() {
         rectLeft.setTranslateX(0);
         rectLeft.setTranslateY(0);
         rectLeft.setWidth(boundingBox.getMiddleLeft().getX());
-        rectLeft.setHeight(monitorHeight * 2);
+        rectLeft.setHeight(Monitor.getMonitorHeight() * 2);
 
         rectTop.setTranslateX(boundingBox.getTopLeft().getX());
         rectTop.setTranslateY(0);
-        rectTop.setWidth(monitorWidth * 2);
+        rectTop.setWidth(Monitor.getMonitorWidth() * 2);
         rectTop.setHeight(boundingBox.getTopMiddle().getY());
 
         rectRight.setTranslateX(boundingBox.getTopRight().getX());
         rectRight.setTranslateY(boundingBox.getTopRight().getY());
-        rectRight.setWidth(monitorWidth * 2);
+        rectRight.setWidth(Monitor.getMonitorWidth() * 2);
         rectRight.setHeight(boundingBox.getBottomMiddle().getY() - boundingBox.getTranslateY());
 
         rectBottom.setTranslateX(boundingBox.getBottomLeft().getX());
         rectBottom.setTranslateY(boundingBox.getBottomLeft().getY());
-        rectBottom.setWidth(monitorWidth * 2);
-        rectBottom.setHeight(monitorHeight * 2);
+        rectBottom.setWidth(Monitor.getMonitorWidth() * 2);
+        rectBottom.setHeight(Monitor.getMonitorHeight() * 2);
 
     }
     @Override
     public void update() {
         calculateRectanglePositions();
+    }
+
+    public void setVisible(boolean b) {
+        for (ViewfinderNegativeSpace rect : this) {
+            rect.setVisible(b);
+        }
+    }
+
+    public void setBoundingBox(ViewfinderBoundingBox boundingBox) {
+        this.boundingBox = boundingBox;
     }
 }

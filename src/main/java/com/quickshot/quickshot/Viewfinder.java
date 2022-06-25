@@ -6,16 +6,25 @@ import javafx.scene.CacheHint;
 import javafx.scene.input.MouseEvent;
 
 public class Viewfinder implements DisplayElement {
-    // Viewfinder components
-    private ViewfinderBoundingBox boundingBox;
-    private ViewfinderAnchorList anchors;
-    private ViewfinderDimensions dimensions;
-    private ViewfinderNegativeSpaceList negativeSpace;
-
-    private ViewfinderWidgetBar widgetBar;
+    private final ViewfinderBoundingBox boundingBox;
+    private final ViewfinderAnchorList anchors;
+    private final ViewfinderDimensions dimensions;
+    private final ViewfinderNegativeSpaceList negativeSpace;
+    private final ViewfinderWidgetBar widgetBar;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
 
     public Viewfinder() {
+        boundingBox = new ViewfinderBoundingBox();
+        anchors = new ViewfinderAnchorList();
+        dimensions = new ViewfinderDimensions();
+        negativeSpace = new ViewfinderNegativeSpaceList();
+        widgetBar = new ViewfinderWidgetBar();
+
+        viewFinderElements.add(boundingBox);
+        viewFinderElements.addAll(anchors);
+        viewFinderElements.add(dimensions);
+        viewFinderElements.addAll(negativeSpace);
+        viewFinderElements.add(widgetBar);
     }
 
     public Viewfinder(MouseEvent mouseEvent) {
@@ -24,18 +33,28 @@ public class Viewfinder implements DisplayElement {
     }
 
     public void createViewfinder(MouseEvent mouseEvent) {
-        boundingBox = new ViewfinderBoundingBox(mouseEvent);
-        anchors = new ViewfinderAnchorList(boundingBox);
-        dimensions = new ViewfinderDimensions(boundingBox);
-        negativeSpace = new ViewfinderNegativeSpaceList(boundingBox);
-        widgetBar = new ViewfinderWidgetBar(boundingBox);
+        boundingBox.setTranslateCoordinates(mouseEvent);
+        anchors.setBoundingBox(boundingBox);
+        dimensions.setBoundingBox(boundingBox);
+        negativeSpace.setBoundingBox(boundingBox);
+        widgetBar.setBoundingBox(boundingBox);
+    }
 
-        //TODO check this on local windows machine
-        viewFinderElements.add(boundingBox);
-        viewFinderElements.addAll(anchors);
-        viewFinderElements.add(dimensions);
-        viewFinderElements.addAll(negativeSpace);
-        viewFinderElements.add(widgetBar);
+    @Override
+    public void update() {
+        getBoundingBox().update();
+        getAnchors().update();
+        getDimensions().update();
+        getNegativeSpace().update();
+        getWidgetBar().update();
+    }
+
+    public void setVisible(boolean b) {
+        getBoundingBox().setVisible(b);
+        getAnchors().setVisible(b);
+        getDimensions().setVisible(b);
+        getNegativeSpace().setVisible(b);
+        getWidgetBar().setVisible(b);
     }
 
     public ViewfinderBoundingBox getBoundingBox() {
@@ -52,15 +71,6 @@ public class Viewfinder implements DisplayElement {
 
     public boolean isSelected(MouseEvent mouseEvent) {
         return getBoundingBox().isMouseOver();
-    }
-
-    @Override
-    public void update() {
-        getBoundingBox().update();
-        getAnchors().update();
-        getDimensions().update();
-        getNegativeSpace().update();
-        getWidgetBar().update();
     }
 
     public ViewfinderWidgetBar getWidgetBar() {

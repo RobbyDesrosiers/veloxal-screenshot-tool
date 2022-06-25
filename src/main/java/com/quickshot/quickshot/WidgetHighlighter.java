@@ -3,14 +3,15 @@ package com.quickshot.quickshot;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
-public class WidgetPaintbrush extends WidgetLineDrawer {
+
+public class WidgetHighlighter extends WidgetLineDrawer {
     private int brushSize = 1;
 
-    public WidgetPaintbrush(String fileName, WidgetDrawData drawData) {
+    public WidgetHighlighter(String fileName, WidgetDrawData drawData) {
         super(fileName, drawData);
-        setBrushColor(Color.RED);
+        setBrushColor(new Color(1,1,0,1));
     }
 
     @Override
@@ -31,8 +32,9 @@ public class WidgetPaintbrush extends WidgetLineDrawer {
 
     @Override
     public void addShape(double x, double y) {
-        Circle c = new Circle(getBrushSize());
-        c.setViewOrder(1);
+        int brushHeight = 10;
+        Rectangle c = new Rectangle(getBrushSize(), brushHeight);
+        c.toBack();
         c.setFill(getBrushColor());
         c.setTranslateX(x);
         c.setTranslateY(y);

@@ -8,11 +8,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class ViewfinderDimensions extends HBox implements DisplayElement {
-    private final ViewfinderBoundingBox boundingBox;
+    private ViewfinderBoundingBox boundingBox;
     private Text text = new Text();
 
-    public ViewfinderDimensions(ViewfinderBoundingBox boundingBox) {
-        this.boundingBox = boundingBox;
+    public ViewfinderDimensions() {
         text.setFill(Color.WHITE);
         text.setStyle("-fx-font-weight: bold");
         setCache(true);
@@ -20,6 +19,11 @@ public class ViewfinderDimensions extends HBox implements DisplayElement {
         getChildren().add(text);
         setStyle("-fx-background-color: black; -fx-border-radius: 3px;");
         setPadding(new Insets(1,3,3,3));
+    }
+
+    public ViewfinderDimensions(ViewfinderBoundingBox boundingBox) {
+        this();
+        setBoundingBox(boundingBox);
         updateDimensions();
     }
 
@@ -50,5 +54,9 @@ public class ViewfinderDimensions extends HBox implements DisplayElement {
     public void update() {
         updateLocation();
         updateDimensions();
+    }
+
+    public void setBoundingBox(ViewfinderBoundingBox boundingBox) {
+        this.boundingBox = boundingBox;
     }
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class ViewfinderAnchorList extends ArrayList<ViewfinderAnchor> implements DisplayElement {
     // uses boundingBox as a reference to place anchors properly
     private ViewfinderBoundingBox boundingBox;
+
     public ViewfinderAnchorList() {
         clear();
         for (int i = 0; i < 8; i++) {
@@ -114,6 +115,12 @@ public class ViewfinderAnchorList extends ArrayList<ViewfinderAnchor> implements
             if (anchor.getAnchorPosition() == anchorPosition) {
                 anchor.setSelected(true);
             }
+        }
+    }
+
+    public void setVisible(boolean b) {
+        for (ViewfinderAnchor anchor : this) {
+            anchor.setVisible(b);
         }
     }
 }
