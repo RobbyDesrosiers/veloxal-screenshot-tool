@@ -2,7 +2,6 @@ package com.quickshot.quickshot;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.CacheHint;
 import javafx.scene.input.MouseEvent;
 
 public class Viewfinder implements DisplayElement {
@@ -12,6 +11,7 @@ public class Viewfinder implements DisplayElement {
     private final ViewfinderNegativeSpaceList negativeSpace;
     private final ViewfinderWidgetBar widgetBar;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
+    private boolean isCreated;
 
     public Viewfinder() {
         boundingBox = new ViewfinderBoundingBox();
@@ -25,6 +25,7 @@ public class Viewfinder implements DisplayElement {
         viewFinderElements.add(dimensions);
         viewFinderElements.addAll(negativeSpace);
         viewFinderElements.add(widgetBar);
+        setCreated(false);
     }
 
     public Viewfinder(MouseEvent mouseEvent) {
@@ -33,11 +34,17 @@ public class Viewfinder implements DisplayElement {
     }
 
     public void createViewfinder(MouseEvent mouseEvent) {
-        boundingBox.setTranslateCoordinates(mouseEvent);
-        anchors.setBoundingBox(boundingBox);
-        dimensions.setBoundingBox(boundingBox);
-        negativeSpace.setBoundingBox(boundingBox);
-        widgetBar.setBoundingBox(boundingBox);
+        getBoundingBox().resetViewdinerBoundingBox(mouseEvent);
+        getAnchors().setBoundingBox(boundingBox);
+        getDimensions().setBoundingBox(boundingBox);
+        getNegativeSpace().setBoundingBox(boundingBox);
+        getWidgetBar().setBoundingBox(boundingBox);
+        setCreated(true);
+
+        // these two lines replicate the events of creating a new viewfinder so the mouse 'selects' the bottom right
+        // for dragging capabilities on creation
+        getAnchors().getAnchor(ViewfinderAnchorPosition.BOTTOM_RIGHT).setSelected(true);
+        getWidgetBar().setVisible(false);
     }
 
     @Override
@@ -73,11 +80,19 @@ public class Viewfinder implements DisplayElement {
         return getBoundingBox().isMouseOver();
     }
 
+    public boolean isCreated() {
+        return isCreated;
+    }
+
+    public void setCreated(boolean created) {
+        isCreated = created;
+    }
+
     public ViewfinderWidgetBar getWidgetBar() {
         return widgetBar;
     }
 
-    private ViewfinderNegativeSpaceList getNegativeSpace() {
+    public ViewfinderNegativeSpaceList getNegativeSpace() {
         return negativeSpace;
     }
 

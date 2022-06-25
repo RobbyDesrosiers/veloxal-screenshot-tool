@@ -32,12 +32,14 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
 
     public ViewfinderBoundingBox(MouseEvent mouseEvent) {
         this();
-        setTranslateCoordinates(mouseEvent);
+        resetViewdinerBoundingBox(mouseEvent);
     }
 
-    public void setTranslateCoordinates(MouseEvent mouseEvent) {
+    public void resetViewdinerBoundingBox(MouseEvent mouseEvent) {
         setTranslateX(mouseEvent.getSceneX());
         setTranslateY(mouseEvent.getSceneY());
+        setHeight(0);
+        setWidth(0);
     }
 
     public void initHoverProperties() {

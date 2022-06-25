@@ -16,6 +16,7 @@ public class ViewfinderWidgetBar extends VBox implements DisplayElement {
         addWidgetToToolbar(new WidgetHighlighter("marker.png", drawData));
         getChildren().add(toolbar);
         setViewOrder(-1);
+        setVisible(false);
     }
 
     public ViewfinderWidgetBar(ViewfinderBoundingBox boundingBox) {

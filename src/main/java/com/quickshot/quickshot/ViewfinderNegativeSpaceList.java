@@ -1,5 +1,8 @@
 package com.quickshot.quickshot;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,4 +68,23 @@ public class ViewfinderNegativeSpaceList extends ArrayList<ViewfinderNegativeSpa
     public void setBoundingBox(ViewfinderBoundingBox boundingBox) {
         this.boundingBox = boundingBox;
     }
+
+    public void setOnMouseDragged(EventHandler<? super MouseEvent> mouseHandler) {
+        for (ViewfinderNegativeSpace rect : this) {
+            rect.setOnMouseDragged(mouseHandler);
+        }
+    }
+
+    public void setOnMousePressed(EventHandler<? super MouseEvent> mouseHandler) {
+        for (ViewfinderNegativeSpace rect : this) {
+            rect.setOnMousePressed(mouseHandler);
+        }
+    }
+
+    public void setOnMouseReleased(EventHandler<? super MouseEvent> mouseHandler) {
+        for (ViewfinderNegativeSpace rect : this) {
+            rect.setOnMouseReleased(mouseHandler);
+        }
+    }
+
 }

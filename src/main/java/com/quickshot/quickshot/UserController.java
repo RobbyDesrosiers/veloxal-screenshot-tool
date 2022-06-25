@@ -15,6 +15,7 @@ public class UserController {
     public UserController(ScreenOverlay screenOverlay) {
         this.screenOverlay = screenOverlay;
         this.screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
+        viewfinder = new Viewfinder();
         initMouseEvents();
         initKeyboardEvents();
     }
@@ -24,6 +25,12 @@ public class UserController {
         screenOverlay.setOnMouseReleased(this::handleMouseReleased);
         screenOverlay.setOnMouseDragged(this::handleMouseDragged);
         screenOverlay.setOnMouseMoved(this::handleMouseMoved);
+
+        // mouse events below used for when viewfinder is created and user is forced to click/drag/release
+        // on the dimmed ViewfinderNegativeSpaceList objects instead of the ScreenOverlay obj
+        viewfinder.getNegativeSpace().setOnMouseDragged(this::handleMouseDragged);
+        viewfinder.getNegativeSpace().setOnMousePressed(this::handleMousePressed);
+        viewfinder.getNegativeSpace().setOnMouseReleased(this::handleMouseReleased);
     }
 
     private void initKeyboardEvents() {
@@ -49,18 +56,17 @@ public class UserController {
         } else {
             screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
         }
-
     }
 
     private void handleMousePressed(MouseEvent mouseEvent) {
-        if (viewfinder == null) {
-            viewfinder = new Viewfinder(mouseEvent);
+        if (!viewfinder.isCreated()) {
+            viewfinder.createViewfinder(mouseEvent);
             viewfinder.getWidgetBar().setVisible(false);
         }
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
         if (!viewfinder.isSelected(mouseEvent) && !viewfinder.getAnchors().isSelected()) {
             removeViewfinder();
-            viewfinder = new Viewfinder(mouseEvent);
+            viewfinder.createViewfinder(mouseEvent);
         } else {
             // if viewfinder is selected then mouse will drag
             // sets the offset of mouse within the box to accurately pan viewfinder
@@ -71,7 +77,6 @@ public class UserController {
     }
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
-
         // handles all widget drawwing
         if (viewfinder.getWidgetBar().isWidgetSelected()) {
             Widget widget = viewfinder.getWidgetBar().getSelectedWidget();
