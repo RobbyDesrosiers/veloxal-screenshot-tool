@@ -86,5 +86,4 @@ public class ViewfinderNegativeSpaceList extends ArrayList<ViewfinderNegativeSpa
             rect.setOnMouseReleased(mouseHandler);
         }
     }
-
 }

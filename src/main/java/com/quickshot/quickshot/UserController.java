@@ -1,10 +1,8 @@
 package com.quickshot.quickshot;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -21,16 +19,20 @@ public class UserController {
     }
 
     private void initMouseEvents() {
+        screenOverlay.getScene().addEventFilter(MouseEvent.MOUSE_MOVED, this::handleMouseMoved);
+
         screenOverlay.setOnMousePressed(this::handleMousePressed);
         screenOverlay.setOnMouseReleased(this::handleMouseReleased);
         screenOverlay.setOnMouseDragged(this::handleMouseDragged);
-        screenOverlay.setOnMouseMoved(this::handleMouseMoved);
 
         // mouse events below used for when viewfinder is created and user is forced to click/drag/release
         // on the dimmed ViewfinderNegativeSpaceList objects instead of the ScreenOverlay obj
         viewfinder.getNegativeSpace().setOnMouseDragged(this::handleMouseDragged);
         viewfinder.getNegativeSpace().setOnMousePressed(this::handleMousePressed);
         viewfinder.getNegativeSpace().setOnMouseReleased(this::handleMouseReleased);
+
+        // allows screen to be refreshed and drawing to be removed on undo
+        viewfinder.getWidgetBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
     }
 
     private void initKeyboardEvents() {
@@ -39,41 +41,53 @@ public class UserController {
 
     private void handleKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
-            case ESCAPE -> Platform.exit();
+            case ESCAPE -> {
+                if (keyEvent.isShiftDown()) {
+                    viewfinder.setVisible(false);
+                    viewfinder.getWidgetBar().getDrawData().setVisible(false);
+                } else {
+                    Platform.exit();
+                }
+            }
+            case F -> {
+                if (keyEvent.isShiftDown()) {
+                    viewfinder.enterFullScreen();
+                }
+            }
         }
+        refreshScreen();
     }
 
     private void handleMouseMoved(MouseEvent mouseEvent) {
-        if (viewfinder == null) {
-            return;
-        }
-
         // deals with all the on-hover mouse changes
+        if (viewfinder.getWidgetBar().isWidgetSelected()) {
+            // todo add cursor
+        }
         if (viewfinder.getAnchors().isMouseOver()) {
             screenOverlay.getScene().setCursor(viewfinder.getAnchors().getHoveredAnchorCursorType());
         } else if (viewfinder.getBoundingBox().isMouseOver()) {
             screenOverlay.getScene().setCursor(Cursor.MOVE);
+        } else if (viewfinder.getWidgetBar().isMouseOver()) {
+            screenOverlay.getScene().setCursor(Cursor.DEFAULT);
         } else {
             screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
         }
+        refreshScreen();
     }
 
     private void handleMousePressed(MouseEvent mouseEvent) {
         if (!viewfinder.isCreated()) {
             viewfinder.createViewfinder(mouseEvent);
-            viewfinder.getWidgetBar().setVisible(false);
         }
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
-        if (!viewfinder.isSelected(mouseEvent) && !viewfinder.getAnchors().isSelected()) {
-            removeViewfinder();
+        if (!viewfinder.isSelected() && !viewfinder.getAnchors().isSelected()) {
             viewfinder.createViewfinder(mouseEvent);
         } else {
             // if viewfinder is selected then mouse will drag
             // sets the offset of mouse within the box to accurately pan viewfinder
             viewfinder.setDragPoint(mouseEvent);
         }
-
-        updateViewfinder();
+        refreshScreen();
     }
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
@@ -83,7 +97,6 @@ public class UserController {
             widget.draw(mouseEvent);
         // handles all the viewfinder scaling if an anchor is selected
         } else if (viewfinder.getAnchors().isSelected()) {
-            viewfinder.getWidgetBar().setVisible(false);
             ViewfinderAnchorPosition selectedAnchorPosition = viewfinder.getAnchors().getSelectedAnchorPosition();
             switch (selectedAnchorPosition) {
                 case TOP_LEFT -> viewfinder.getBoundingBox().moveUpLeft(mouseEvent);
@@ -96,11 +109,10 @@ public class UserController {
                 case BOTTOM_RIGHT -> viewfinder.getBoundingBox().moveDownRight(mouseEvent);
             }
         // handles the panning/moving of the viewfinder if viewfinder is selected
-        } else if (viewfinder.isSelected(mouseEvent)) {
-            viewfinder.getWidgetBar().setVisible(false);
+        } else if (viewfinder.isSelected()) {
             viewfinder.move(mouseEvent);
         }
-        updateViewfinder();
+        refreshScreen();
     }
 
     private void handleMouseReleased(MouseEvent mouseEvent) {
@@ -108,24 +120,16 @@ public class UserController {
         // this is due to bottom-right being auto selected (true) on creation for dragging capabilities
         viewfinder.getAnchors().deselectAllAnchors();
 
-        viewfinder.getWidgetBar().setVisible(true);
         if (viewfinder.getWidgetBar().isWidgetSelected()) {
             viewfinder.getWidgetBar().getDrawData().setNewLine(true);
         }
-
-        updateViewfinder();
+        refreshScreen();
     }
 
-    private void removeViewfinder() {
-        if (this.viewfinder != null) {
-            // loops through entire viewfinder elements and removes from screen overlay
-            for (DisplayElement viewFinderElement : viewfinder.getDisplayElements()) {
-                screenOverlay.removeFromScreen((Node) viewFinderElement);
-            }
-        }
-    }
+    public void refreshScreen() {
+        if (!viewfinder.isCreated())
+            return;
 
-    public void updateViewfinder() {
         // adds all displayElements to viewfinder if not already added
         for (DisplayElement viewFinderElement : viewfinder.getDisplayElements()) {
             if (!screenOverlay.getChildren().contains((Node) viewFinderElement)) {
@@ -141,7 +145,6 @@ public class UserController {
             }
         }
 
-        // where the visual updates happen
         viewfinder.checkViewfinderInversion();
         viewfinder.update();
     }

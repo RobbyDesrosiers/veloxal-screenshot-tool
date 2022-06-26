@@ -19,6 +19,7 @@ public class ViewfinderDimensions extends HBox implements DisplayElement {
         getChildren().add(text);
         setStyle("-fx-background-color: black; -fx-border-radius: 3px;");
         setPadding(new Insets(1,3,3,3));
+        setViewOrder(-1);
     }
 
     public ViewfinderDimensions(ViewfinderBoundingBox boundingBox) {

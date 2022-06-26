@@ -9,10 +9,18 @@ public class WidgetDrawData extends LinkedList<Node> {
     public WidgetDrawData() {
         newLine = false;
     }
+
     public void setNewLine(boolean b) {
         newLine = b;
     }
+
     public boolean isNewLine() {
         return newLine;
+    }
+
+    public void setVisible(boolean b) {
+        for (Node node : this) {
+            node.setVisible(b);
+        }
     }
 }

@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 public class ViewfinderAnchor extends Rectangle implements DisplayElement {
     private ViewfinderAnchorPosition anchorPosition;
     private Cursor cursorType;
-    private int WIDTH = 8;
+    private int WIDTH = 7;
     private int HEIGHT = WIDTH;
 
     private boolean isMouseOver = false;
@@ -18,8 +18,8 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
     public ViewfinderAnchor(int i) {
         setWidth(WIDTH);
         setHeight(HEIGHT);
-        setStroke(Color.BLACK);
-        setFill(Color.WHITE);
+        setStroke(Color.WHITE);
+        setFill(Color.BLACK);
         setViewOrder(-1);
         setCache(true);
         setCacheHint(CacheHint.SPEED);
@@ -117,10 +117,5 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
 
     public void setSelected(boolean b) {
         isSelected = b;
-        if (b)
-            setFill(Color.BLUE);
-        else
-            setFill(Color.WHITE);
-
     }
 }

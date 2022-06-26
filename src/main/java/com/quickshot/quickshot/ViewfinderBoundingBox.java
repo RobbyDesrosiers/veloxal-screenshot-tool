@@ -12,6 +12,7 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
     private final Coordinate pointD = new Coordinate();
     private final Coordinate clickedStartingPoint = new Coordinate();
     private boolean isMouseOver;
+    private boolean isSelected;
 
     // A ---------- B
     // |            |
@@ -21,11 +22,12 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
     public ViewfinderBoundingBox() {
         super(0, 0);
         setFill(Color.TRANSPARENT);
-        getStrokeDashArray().addAll(2d);
-        setStroke(Color.GRAY);
+        getStrokeDashArray().addAll(4d);
+        setStroke(Color.WHITE);
         setCache(true);
         setViewOrder(-1);
         setCacheHint(CacheHint.SPEED);
+        initMouseEvents();
         initHoverProperties();
         update();
     }
@@ -45,6 +47,11 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
     public void initHoverProperties() {
         this.addEventFilter(MouseEvent.MOUSE_ENTERED, e -> isMouseOver = true);
         this.addEventFilter(MouseEvent.MOUSE_EXITED, e -> isMouseOver = false);
+    }
+
+    private void initMouseEvents() {
+        setOnMousePressed(e -> setSelected(true));
+        setOnMouseReleased(e -> setSelected(false));
     }
 
     public void setDragPoint(MouseEvent mouseEvent) {
@@ -148,6 +155,13 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
         pointD.setY(translateY + height);
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     @Override
     public void update() {

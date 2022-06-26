@@ -44,7 +44,7 @@ public class Viewfinder implements DisplayElement {
         // these two lines replicate the events of creating a new viewfinder so the mouse 'selects' the bottom right
         // for dragging capabilities on creation
         getAnchors().getAnchor(ViewfinderAnchorPosition.BOTTOM_RIGHT).setSelected(true);
-        getWidgetBar().setVisible(false);
+        setVisible(true);
     }
 
     @Override
@@ -76,8 +76,8 @@ public class Viewfinder implements DisplayElement {
         return anchors;
     }
 
-    public boolean isSelected(MouseEvent mouseEvent) {
-        return getBoundingBox().isMouseOver();
+    public boolean isSelected() {
+        return getBoundingBox().isSelected();
     }
 
     public boolean isCreated() {
@@ -162,5 +162,17 @@ public class Viewfinder implements DisplayElement {
             }
             getBoundingBox().setHeight(0);
         }
+    }
+
+    public void enterFullScreen() {
+        boundingBox.setWidth(Monitor.getMonitorWidth());
+        boundingBox.setHeight(Monitor.getMonitorHeight());
+        boundingBox.setTranslateX(0);
+        boundingBox.setTranslateY(0);
+    }
+
+    public boolean isFullScreen() {
+        return (boundingBox.getWidth() == Monitor.getMonitorWidth()
+                && boundingBox.getHeight() == Monitor.getMonitorHeight());
     }
 }

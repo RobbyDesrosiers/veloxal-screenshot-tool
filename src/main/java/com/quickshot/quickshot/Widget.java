@@ -1,5 +1,6 @@
 package com.quickshot.quickshot;
 
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -8,13 +9,11 @@ import javafx.scene.input.MouseEvent;
 import java.io.File;
 import java.nio.file.Path;
 
-// https://www.tutorialspoint.com/how-to-add-an-image-to-a-button-action-in-javafx
 public abstract class Widget extends Button {
-    private ImageView icon;
+    private final ImageView icon;
     private int iconSize = 15;
-    private boolean isSelected = false;
-
-    private boolean isMouseOver = false;
+    private boolean isSelected;
+    private boolean isMouseOver;
 
     public Widget(String fileName) {
         File f = new File("src/main/java/com/quickshot/quickshot/icons/" + fileName).getAbsoluteFile();
@@ -24,19 +23,15 @@ public abstract class Widget extends Button {
         icon.setFitWidth(iconSize);
         icon.setFitHeight(iconSize);
         setGraphic(icon);
+        setSelected(false);
+        setMouseOver(false);
         defaultMouseEvents();
     }
 
     public void defaultMouseEvents() {
-        setOnMouseClicked(e -> {
-            setSelected(!isSelected());
-        });
-        setOnMouseEntered(e -> {
-            setMouseOver(true);
-        });
-        setOnMouseExited(e -> {
-            setMouseOver(false);
-        });
+        // isSelected handled in ViewfinderWidgetBar
+        setOnMouseEntered(e -> setMouseOver(true));
+        setOnMouseExited(e -> setMouseOver(false));
     }
 
     public boolean isSelected() {
@@ -44,6 +39,7 @@ public abstract class Widget extends Button {
     }
 
     public void setSelected(boolean selected) {
+        setFocused(selected);
         isSelected = selected;
     }
 
@@ -53,6 +49,16 @@ public abstract class Widget extends Button {
 
     public void setMouseOver(boolean mouseOver) {
         isMouseOver = mouseOver;
+    }
+
+    public int getIconSize() {
+        return iconSize;
+    }
+
+    public void setIconSize(int iconSize) {
+        this.iconSize = iconSize;
+        icon.setFitWidth(iconSize);
+        icon.setFitHeight(iconSize);
     }
 
     public void draw(MouseEvent mouseEvent) {
