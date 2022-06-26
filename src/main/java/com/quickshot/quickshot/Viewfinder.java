@@ -34,7 +34,7 @@ public class Viewfinder implements DisplayElement {
     }
 
     public void createViewfinder(MouseEvent mouseEvent) {
-        getBoundingBox().resetViewdinerBoundingBox(mouseEvent);
+        getBoundingBox().resetViewfinderBoundingBox(mouseEvent);
         getAnchors().setBoundingBox(boundingBox);
         getDimensions().setBoundingBox(boundingBox);
         getNegativeSpace().setBoundingBox(boundingBox);
