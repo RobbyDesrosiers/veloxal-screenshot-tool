@@ -6,9 +6,9 @@ import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ViewfinderWidgetBar extends HBox implements DisplayElement {
     private ViewfinderBoundingBox boundingBox;
@@ -79,9 +79,16 @@ public class ViewfinderWidgetBar extends HBox implements DisplayElement {
 
     private void handleUndoButton() {
         Widget selectedWidget = getSelectedWidget();
-        undoButton.undo();
+
+        // moves the latest permanent drawn data into a deleted data list which will be removed from within
+        // UserController -> refreshScreen() function
+        if (getDrawData().size() > 0)
+            getDrawData().getDeletedData().push(new LinkedList<>(getDrawData().pop()));
+
         if (selectedWidget != null)
             selectedWidget.setSelected(true);
+
+        undoButton.handleButtonPress();
     }
 
     private void calculateScreenPosition() {
@@ -100,6 +107,21 @@ public class ViewfinderWidgetBar extends HBox implements DisplayElement {
         setTranslateX(boundingBox.getBottomRight().getX() - getWidth() + X_PADDING);
         setTranslateY(boundingBox.getBottomMiddle().getY() + Y_PADDING);
         setViewOrder(-1);
+    }
+
+    public void setWidgetDrawingStatus(boolean b) {
+        for (Widget widget : widgets) {
+            widget.setDrawing(b);
+        }
+    }
+
+    public boolean isWidgetDrawing() {
+        for (Widget widget : widgets) {
+            if (widget.isDrawing()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public WidgetDrawData getDrawData() {

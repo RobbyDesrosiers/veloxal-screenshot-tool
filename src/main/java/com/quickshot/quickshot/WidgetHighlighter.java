@@ -16,16 +16,16 @@ public class WidgetHighlighter extends WidgetLineDrawer {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        if (getDrawData().size() == 0 || getDrawData().isNewLine()) {
+        if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);
         } else {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             // grabs 2 top nodes
-            Node f = getDrawData().pop();
-            Node f2 = getDrawData().peek();
+            Node f = getDrawData().getTempData().pop();
+            Node f2 = getDrawData().getTempData().peek();
             // pushes popped node back onto stack
-            getDrawData().push(f);
+            getDrawData().getTempData().push(f);
             correctLines(f2.getTranslateX(), f2.getTranslateY(), f.getTranslateX(), f.getTranslateY());
         }
     }

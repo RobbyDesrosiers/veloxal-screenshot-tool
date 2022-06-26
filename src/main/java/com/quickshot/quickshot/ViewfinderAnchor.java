@@ -9,8 +9,8 @@ import javafx.scene.shape.Rectangle;
 public class ViewfinderAnchor extends Rectangle implements DisplayElement {
     private ViewfinderAnchorPosition anchorPosition;
     private Cursor cursorType;
-    private int WIDTH = 7;
-    private int HEIGHT = WIDTH;
+    private final int WIDTH = 5;
+    private final int HEIGHT = WIDTH;
 
     private boolean isMouseOver = false;
     private boolean isSelected = false;

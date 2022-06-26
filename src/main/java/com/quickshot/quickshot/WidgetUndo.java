@@ -13,9 +13,8 @@ public class WidgetUndo extends Widget {
 
     }
 
-    public void undo() {
+    public void handleButtonPress() {
         setFocused(false);
-        System.out.println("undop");
     }
 }
 

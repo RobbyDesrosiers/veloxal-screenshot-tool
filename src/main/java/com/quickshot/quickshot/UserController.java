@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.util.LinkedList;
+
 public class UserController {
     private final ScreenOverlay screenOverlay;
     private Viewfinder viewfinder;
@@ -59,6 +61,8 @@ public class UserController {
     }
 
     private void handleMouseMoved(MouseEvent mouseEvent) {
+        // sets all widgets 'isDrawing' field to false (used to determine undo button usage in refreshScreen())
+        viewfinder.getWidgetBar().setWidgetDrawingStatus(false);
         // deals with all the on-hover mouse changes
         if (viewfinder.getWidgetBar().isWidgetSelected()) {
             // todo add cursor
@@ -95,6 +99,7 @@ public class UserController {
         if (viewfinder.getWidgetBar().isWidgetSelected()) {
             Widget widget = viewfinder.getWidgetBar().getSelectedWidget();
             widget.draw(mouseEvent);
+            widget.setDrawing(true);
         // handles all the viewfinder scaling if an anchor is selected
         } else if (viewfinder.getAnchors().isSelected()) {
             ViewfinderAnchorPosition selectedAnchorPosition = viewfinder.getAnchors().getSelectedAnchorPosition();
@@ -130,6 +135,12 @@ public class UserController {
         if (!viewfinder.isCreated())
             return;
 
+        // when user is done drawing the temp data drawn to screen gets offloaded to a perm data source(the Draw Data Obj)
+        // this allows user to undo brush-strokes/full drawn objects
+        if (!viewfinder.getWidgetBar().isWidgetDrawing() && viewfinder.getWidgetBar().getDrawData().getTempData().size() > 0) {
+            viewfinder.getWidgetBar().getDrawData().saveTempDataToDrawData();
+        }
+
         // adds all displayElements to viewfinder if not already added
         for (DisplayElement viewFinderElement : viewfinder.getDisplayElements()) {
             if (!screenOverlay.getChildren().contains((Node) viewFinderElement)) {
@@ -137,12 +148,21 @@ public class UserController {
             }
         }
 
-        // adds drawdata
-        // TODO optimize this
-        for (Node node : viewfinder.getWidgetBar().getDrawData()) {
+        // adds temp data to screen
+        for (Node node : viewfinder.getWidgetBar().getDrawData().getTempData()) {
             if (!screenOverlay.getChildren().contains(node)) {
                 screenOverlay.addToScreen(node);
             }
+        }
+
+        // removes deleted data from screen
+        if (viewfinder.getWidgetBar().getDrawData().getDeletedData().size() > 0) {
+            for (LinkedList<Node> deletedData : viewfinder.getWidgetBar().getDrawData().getDeletedData()) {
+                for (Node node : deletedData) {
+                    screenOverlay.removeFromScreen(node);
+                }
+            }
+            viewfinder.getWidgetBar().getDrawData().getDeletedData().pop();
         }
 
         viewfinder.checkViewfinderInversion();

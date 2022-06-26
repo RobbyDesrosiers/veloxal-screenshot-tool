@@ -3,6 +3,8 @@ package com.quickshot.quickshot;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
+import java.util.LinkedList;
+
 public abstract class WidgetLineDrawer extends Widget {
     private Color brushColor;
     private WidgetDrawData drawData;
@@ -29,7 +31,7 @@ public abstract class WidgetLineDrawer extends Widget {
     }
 
     public void pushShape(Node node) {
-        getDrawData().push(node);
+        getDrawData().getTempData().push(node);
     }
 
     public void correctLines(double x0, double y0, double x1, double y1) {
