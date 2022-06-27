@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class UserController {
     private final ScreenOverlay screenOverlay;
-    private Viewfinder viewfinder;
+    private final Viewfinder viewfinder;
 
     public UserController(ScreenOverlay screenOverlay) {
         this.screenOverlay = screenOverlay;
@@ -34,7 +34,7 @@ public class UserController {
         viewfinder.getNegativeSpace().setOnMouseReleased(this::handleMouseReleased);
 
         // allows screen to be refreshed and drawing to be removed on undo
-        viewfinder.getWidgetBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
+        viewfinder.getControls().getDrawingToolBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
     }
 
     private void initKeyboardEvents() {
@@ -46,7 +46,7 @@ public class UserController {
             case ESCAPE -> {
                 if (keyEvent.isShiftDown()) {
                     viewfinder.setVisible(false);
-                    viewfinder.getWidgetBar().getDrawData().setVisible(false);
+                    viewfinder.getControls().getDrawData().setVisible(false);
                 } else {
                     Platform.exit();
                 }
@@ -62,15 +62,15 @@ public class UserController {
 
     private void handleMouseMoved(MouseEvent mouseEvent) {
         // sets all widgets 'isDrawing' field to false (used to determine undo button usage in refreshScreen())
-        viewfinder.getWidgetBar().setWidgetDrawingStatus(false);
+        viewfinder.getControls().getDrawingToolBar().setWidgetDrawingStatus(false);
         // deals with all the on-hover mouse changes
-        if (viewfinder.getWidgetBar().isWidgetSelected()) {
-            screenOverlay.getScene().setCursor(viewfinder.getWidgetBar().getSelectedWidget().getCursorType());
+        if (viewfinder.getControls().getDrawingToolBar().isWidgetSelected()) {
+            screenOverlay.getScene().setCursor(viewfinder.getControls().getDrawingToolBar().getSelectedWidget().getCursorType());
         } else if (viewfinder.getAnchors().isMouseOver()) {
             screenOverlay.getScene().setCursor(viewfinder.getAnchors().getHoveredAnchorCursorType());
         } else if (viewfinder.getBoundingBox().isMouseOver()) {
             screenOverlay.getScene().setCursor(Cursor.MOVE);
-        } else if (viewfinder.getWidgetBar().isMouseOver()) {
+        } else if (viewfinder.getControls().isMouseOver()) {
             screenOverlay.getScene().setCursor(Cursor.DEFAULT);
         } else {
             screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
@@ -95,8 +95,8 @@ public class UserController {
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
         // handles all widget drawwing
-        if (viewfinder.getWidgetBar().isWidgetSelected()) {
-            Widget widget = viewfinder.getWidgetBar().getSelectedWidget();
+        if (viewfinder.getControls().getDrawingToolBar().isWidgetSelected()) {
+            Widget widget = viewfinder.getControls().getDrawingToolBar().getSelectedWidget();
             widget.draw(mouseEvent);
             widget.setDrawing(true);
         // handles all the viewfinder scaling if an anchor is selected
@@ -124,8 +124,9 @@ public class UserController {
         // this is due to bottom-right being auto selected (true) on creation for dragging capabilities
         viewfinder.getAnchors().deselectAllAnchors();
 
-        if (viewfinder.getWidgetBar().isWidgetSelected()) {
-            viewfinder.getWidgetBar().getDrawData().setNewLine(true);
+        // lets drawing tools know to start a new line if mouse gets released
+        if (viewfinder.getControls().getDrawingToolBar().isWidgetSelected()) {
+            viewfinder.getControls().getDrawData().setNewLine(true);
         }
         refreshScreen();
     }
@@ -136,8 +137,8 @@ public class UserController {
 
         // when user is done drawing the temp data drawn to screen gets offloaded to a perm data source(the Draw Data Obj)
         // this allows user to undo brush-strokes/full drawn objects
-        if (!viewfinder.getWidgetBar().isWidgetDrawing() && viewfinder.getWidgetBar().getDrawData().getTempData().size() > 0) {
-            viewfinder.getWidgetBar().getDrawData().saveTempDataToDrawData();
+        if (!viewfinder.getControls().getDrawingToolBar().isWidgetDrawing() && viewfinder.getControls().getDrawData().getTempData().size() > 0) {
+            viewfinder.getControls().getDrawData().saveTempDataToDrawData();
         }
 
         // adds all displayElements to viewfinder if not already added
@@ -148,20 +149,20 @@ public class UserController {
         }
 
         // adds temp data to screen
-        for (Node node : viewfinder.getWidgetBar().getDrawData().getTempData()) {
+        for (Node node : viewfinder.getControls().getDrawData().getTempData()) {
             if (!screenOverlay.getChildren().contains(node)) {
                 screenOverlay.addToScreen(node);
             }
         }
 
         // removes deleted data from screen
-        if (viewfinder.getWidgetBar().getDrawData().getDeletedData().size() > 0) {
-            for (LinkedList<Node> deletedData : viewfinder.getWidgetBar().getDrawData().getDeletedData()) {
+        if (viewfinder.getControls().getDrawData().getDeletedData().size() > 0) {
+            for (LinkedList<Node> deletedData : viewfinder.getControls().getDrawData().getDeletedData()) {
                 for (Node node : deletedData) {
                     screenOverlay.removeFromScreen(node);
                 }
             }
-            viewfinder.getWidgetBar().getDrawData().getDeletedData().pop();
+            viewfinder.getControls().getDrawData().getDeletedData().pop();
         }
 
         viewfinder.checkViewfinderInversion();

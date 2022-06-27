@@ -9,7 +9,7 @@ public class Viewfinder implements DisplayElement {
     private final ViewfinderAnchorList anchors;
     private final ViewfinderDimensions dimensions;
     private final ViewfinderNegativeSpaceList negativeSpace;
-    private final ViewfinderWidgetBar widgetBar;
+    private final ViewfinderControls controls;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
     private boolean isCreated;
 
@@ -18,13 +18,13 @@ public class Viewfinder implements DisplayElement {
         anchors = new ViewfinderAnchorList();
         dimensions = new ViewfinderDimensions();
         negativeSpace = new ViewfinderNegativeSpaceList();
-        widgetBar = new ViewfinderWidgetBar();
+        controls = new ViewfinderControls(boundingBox);
 
         viewFinderElements.add(boundingBox);
         viewFinderElements.addAll(anchors);
         viewFinderElements.add(dimensions);
         viewFinderElements.addAll(negativeSpace);
-        viewFinderElements.add(widgetBar);
+        viewFinderElements.add(controls.getDrawingToolBar());
         setCreated(false);
     }
 
@@ -38,7 +38,7 @@ public class Viewfinder implements DisplayElement {
         getAnchors().setBoundingBox(boundingBox);
         getDimensions().setBoundingBox(boundingBox);
         getNegativeSpace().setBoundingBox(boundingBox);
-        getWidgetBar().setBoundingBox(boundingBox);
+
         setCreated(true);
 
         // these two lines replicate the events of creating a new viewfinder so the mouse 'selects' the bottom right
@@ -53,7 +53,7 @@ public class Viewfinder implements DisplayElement {
         getAnchors().update();
         getDimensions().update();
         getNegativeSpace().update();
-        getWidgetBar().update();
+        getControls().update();
     }
 
     public void setVisible(boolean b) {
@@ -61,7 +61,7 @@ public class Viewfinder implements DisplayElement {
         getAnchors().setVisible(b);
         getDimensions().setVisible(b);
         getNegativeSpace().setVisible(b);
-        getWidgetBar().setVisible(b);
+        getControls().getDrawingToolBar().setVisible(b);
     }
 
     public ViewfinderBoundingBox getBoundingBox() {
@@ -88,8 +88,8 @@ public class Viewfinder implements DisplayElement {
         isCreated = created;
     }
 
-    public ViewfinderWidgetBar getWidgetBar() {
-        return widgetBar;
+    public ViewfinderControls getControls() {
+        return controls;
     }
 
     public ViewfinderNegativeSpaceList getNegativeSpace() {
