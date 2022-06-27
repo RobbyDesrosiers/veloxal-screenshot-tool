@@ -20,7 +20,7 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
         setHeight(HEIGHT);
         setStroke(Color.WHITE);
         setFill(Color.BLACK);
-        setViewOrder(-1);
+        setViewOrder(ViewfinderViewOrder.ANCHORS);
         setCache(true);
         setCacheHint(CacheHint.SPEED);
         setAnchorTraits(i);

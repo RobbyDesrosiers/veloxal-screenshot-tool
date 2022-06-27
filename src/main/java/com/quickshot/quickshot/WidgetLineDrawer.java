@@ -1,6 +1,7 @@
 package com.quickshot.quickshot;
 
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
@@ -62,5 +63,4 @@ public abstract class WidgetLineDrawer extends Widget {
     public void addShape(double x, double y) {
 
     }
-
 }

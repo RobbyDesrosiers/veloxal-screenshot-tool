@@ -12,6 +12,7 @@ import java.nio.file.Path;
 public abstract class Widget extends Button {
     private final ImageView icon;
     private int iconSize = 15;
+    private Cursor cursorType;
     private boolean isDrawing;
     private boolean isSelected;
     private boolean isMouseOver;
@@ -23,9 +24,11 @@ public abstract class Widget extends Button {
         icon.setPreserveRatio(true);
         icon.setFitWidth(iconSize);
         icon.setFitHeight(iconSize);
+        getStyleClass().add("button");
         setGraphic(icon);
         setSelected(false);
         setMouseOver(false);
+        setCursorType(Cursor.DEFAULT);
         defaultMouseEvents();
     }
 
@@ -68,6 +71,14 @@ public abstract class Widget extends Button {
 
     public void setDrawing(boolean drawing) {
         isDrawing = drawing;
+    }
+
+    public Cursor getCursorType() {
+        return cursorType;
+    }
+
+    public void setCursorType(Cursor cursorType) {
+        this.cursorType = cursorType;
     }
 
     public void draw(MouseEvent mouseEvent) {

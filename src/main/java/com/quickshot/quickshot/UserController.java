@@ -65,9 +65,8 @@ public class UserController {
         viewfinder.getWidgetBar().setWidgetDrawingStatus(false);
         // deals with all the on-hover mouse changes
         if (viewfinder.getWidgetBar().isWidgetSelected()) {
-            // todo add cursor
-        }
-        if (viewfinder.getAnchors().isMouseOver()) {
+            screenOverlay.getScene().setCursor(viewfinder.getWidgetBar().getSelectedWidget().getCursorType());
+        } else if (viewfinder.getAnchors().isMouseOver()) {
             screenOverlay.getScene().setCursor(viewfinder.getAnchors().getHoveredAnchorCursorType());
         } else if (viewfinder.getBoundingBox().isMouseOver()) {
             screenOverlay.getScene().setCursor(Cursor.MOVE);

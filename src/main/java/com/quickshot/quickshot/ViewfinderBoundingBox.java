@@ -25,7 +25,7 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
         getStrokeDashArray().addAll(4d);
         setStroke(Color.WHITE);
         setCache(true);
-        setViewOrder(-1);
+        setViewOrder(ViewfinderViewOrder.BOUNDING_BOX);
         setCacheHint(CacheHint.SPEED);
         initMouseEvents();
         initHoverProperties();

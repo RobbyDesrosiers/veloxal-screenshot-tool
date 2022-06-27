@@ -5,17 +5,29 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.Objects;
+
 
 public class WidgetHighlighter extends WidgetLineDrawer {
     private int brushSize = 1;
+    private Double mouseTranslateY = null;
 
     public WidgetHighlighter(String fileName, WidgetDrawData drawData) {
         super(fileName, drawData);
-        setBrushColor(new Color(1,1,0,1));
+//        setBrushColor(new Color(1,1,0,0.4)); highlighter
+        setBrushColor(Color.BLACK);
     }
 
     @Override
     public void draw(MouseEvent mouseEvent) {
+
+        // used for horizontal shift functionality
+        if (!mouseEvent.isShiftDown() || getDrawData().isNewLine())
+            mouseTranslateY = null;
+        // used for horizontal shift functionality
+        if (mouseEvent.isShiftDown() && mouseTranslateY == null)
+            mouseTranslateY = mouseEvent.getSceneY();
+
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);
@@ -28,17 +40,25 @@ public class WidgetHighlighter extends WidgetLineDrawer {
             getDrawData().getTempData().push(f);
             correctLines(f2.getTranslateX(), f2.getTranslateY(), f.getTranslateX(), f.getTranslateY());
         }
+        removeOverlappingRectangles();
     }
 
     @Override
     public void addShape(double x, double y) {
-        int brushHeight = 10;
+        int brushHeight = 15;
         Rectangle c = new Rectangle(getBrushSize(), brushHeight);
         c.toBack();
         c.setFill(getBrushColor());
         c.setTranslateX(x);
-        c.setTranslateY(y);
+
+        // if null use Y, or else use mouseTranslateY
+        c.setTranslateY(Objects.requireNonNullElse(mouseTranslateY, y));
+
         pushShape(c);
+    }
+
+    private void removeOverlappingRectangles() {
+        //todo this
     }
 
     public int getBrushSize() {

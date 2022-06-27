@@ -24,6 +24,9 @@ public class ViewfinderWidgetBar extends HBox implements DisplayElement {
         drawData = new WidgetDrawData();
         widgets = new ArrayList<>();
 
+        toolbar.getStyleClass().add("widget-bar");
+        getStyleClass().add("widget-bar");
+
         // create widgets
         undoButton = new WidgetUndo("undo.png", drawData);
         closeButton = new WidgetClose("close.png");
@@ -31,12 +34,14 @@ public class ViewfinderWidgetBar extends HBox implements DisplayElement {
         addWidget(new WidgetPaintbrush("paint-brush.png", drawData));
         addWidget(new WidgetHighlighter("marker.png", drawData));
         addWidget(new WidgetRectangle("rectangle.png", drawData));
+        addWidget(new WidgetText("text.png", drawData));
         toolbar.getItems().add(undoButton);
         toolbar.getItems().add(closeButton);
         getChildren().add(toolbar);
 
         // settings
-        setViewOrder(-1);
+        setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
+        toolbar.setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
         setVisible(false);
         toolbar.setPadding(new Insets(3,3,3,3));
         initMouseEvents();
