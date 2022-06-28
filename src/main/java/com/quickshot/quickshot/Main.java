@@ -10,7 +10,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ScreenOverlay screenOverlay = new ScreenOverlay();
-        screenOverlay.setProductionEnvironment(stage);
+        screenOverlay.setTestEnvironment(stage);
         new UserController(screenOverlay);
     }
 }

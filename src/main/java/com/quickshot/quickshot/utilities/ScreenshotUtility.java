@@ -3,7 +3,7 @@ package com.quickshot.quickshot.utilities;
 import com.quickshot.quickshot.controllers.ViewfinderController;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,19 +12,25 @@ import java.io.IOException;
 
 public class ScreenshotUtility {
     private final ViewfinderController viewfinderController;
-    private String directory = "src/main/java/com/quickshot/quickshot"; // todo delete this before prod
-    private String fileName; // todo add file name support
+    private String directory;
+    private String filetype;
 
     public ScreenshotUtility(ViewfinderController viewfinderController) {
         this.viewfinderController = viewfinderController;
     }
 
     private void getDirectoryFromUser() {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory;
-        selectedDirectory = directoryChooser.showDialog(getViewfinder().getStage());
-        if (selectedDirectory != null) {
-            directory = selectedDirectory.getAbsolutePath();
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter bmpFile = new FileChooser.ExtensionFilter("bmp", "*.bmp");
+        FileChooser.ExtensionFilter pngFile = new FileChooser.ExtensionFilter("png", "*.png");
+        FileChooser.ExtensionFilter jpegFile = new FileChooser.ExtensionFilter("jpeg", "*.jpeg");
+        fileChooser.getExtensionFilters().addAll(bmpFile, pngFile, jpegFile);
+
+        File selectedFile;
+        selectedFile = fileChooser.showSaveDialog(getViewfinder().getStage());
+        if (selectedFile != null) {
+            directory = selectedFile.getAbsolutePath();
+            filetype = fileChooser.getSelectedExtensionFilter().getDescription();
         }
     }
 
@@ -59,9 +65,9 @@ public class ScreenshotUtility {
 
                     try {
                         BufferedImage screenCapture = new Robot().createScreenCapture(rectangle);
-                        File f = new File(directory + "/screenCap.bmp");
+                        File f = new File(directory);
                         try {
-                            ImageIO.write(screenCapture, "bmp", f);
+                            ImageIO.write(screenCapture, filetype, f);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
