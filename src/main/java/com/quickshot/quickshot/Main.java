@@ -1,5 +1,7 @@
 package com.quickshot.quickshot;
 
+import com.quickshot.quickshot.controllers.UserController;
+import com.quickshot.quickshot.ui.ScreenOverlay;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
