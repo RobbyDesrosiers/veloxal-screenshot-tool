@@ -34,7 +34,7 @@ public class UserController {
         viewfinder.getNegativeSpace().setOnMouseReleased(this::handleMouseReleased);
 
         // allows screen to be refreshed and drawing to be removed on undo
-        viewfinder.getControls().getDrawingToolBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
+        viewfinder.getWidgetController().getDrawingToolBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
     }
 
     private void initKeyboardEvents() {
@@ -46,7 +46,7 @@ public class UserController {
             case ESCAPE -> {
                 if (keyEvent.isShiftDown()) {
                     viewfinder.setVisible(false);
-                    viewfinder.getControls().getDrawData().setVisible(false);
+                    viewfinder.getWidgetController().getDrawData().setVisible(false);
                 } else {
                     Platform.exit();
                 }
@@ -62,15 +62,15 @@ public class UserController {
 
     private void handleMouseMoved(MouseEvent mouseEvent) {
         // sets all widgets 'isDrawing' field to false (used to determine undo button usage in refreshScreen())
-        viewfinder.getControls().getDrawingToolBar().setWidgetDrawingStatus(false);
+        viewfinder.getWidgetController().getDrawingToolBar().setWidgetDrawingStatus(false);
         // deals with all the on-hover mouse changes
-        if (viewfinder.getControls().getDrawingToolBar().isWidgetSelected()) {
-            screenOverlay.getScene().setCursor(viewfinder.getControls().getDrawingToolBar().getSelectedWidget().getCursorType());
+        if (viewfinder.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
+            screenOverlay.getScene().setCursor(viewfinder.getWidgetController().getDrawingToolBar().getSelectedWidget().getCursorType());
         } else if (viewfinder.getAnchors().isMouseOver()) {
             screenOverlay.getScene().setCursor(viewfinder.getAnchors().getHoveredAnchorCursorType());
         } else if (viewfinder.getBoundingBox().isMouseOver()) {
             screenOverlay.getScene().setCursor(Cursor.MOVE);
-        } else if (viewfinder.getControls().isMouseOver()) {
+        } else if (viewfinder.getWidgetController().isMouseOver()) {
             screenOverlay.getScene().setCursor(Cursor.DEFAULT);
         } else {
             screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
@@ -95,8 +95,8 @@ public class UserController {
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
         // handles all widget drawwing
-        if (viewfinder.getControls().getDrawingToolBar().isWidgetSelected()) {
-            Widget widget = viewfinder.getControls().getDrawingToolBar().getSelectedWidget();
+        if (viewfinder.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
+            Widget widget = viewfinder.getWidgetController().getDrawingToolBar().getSelectedWidget();
             widget.draw(mouseEvent);
             widget.setDrawing(true);
         // handles all the viewfinder scaling if an anchor is selected
@@ -125,8 +125,8 @@ public class UserController {
         viewfinder.getAnchors().deselectAllAnchors();
 
         // lets drawing tools know to start a new line if mouse gets released
-        if (viewfinder.getControls().getDrawingToolBar().isWidgetSelected()) {
-            viewfinder.getControls().getDrawData().setNewLine(true);
+        if (viewfinder.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
+            viewfinder.getWidgetController().getDrawData().setNewLine(true);
         }
         refreshScreen();
     }
@@ -137,8 +137,15 @@ public class UserController {
 
         // when user is done drawing the temp data drawn to screen gets offloaded to a perm data source(the Draw Data Obj)
         // this allows user to undo brush-strokes/full drawn objects
-        if (!viewfinder.getControls().getDrawingToolBar().isWidgetDrawing() && viewfinder.getControls().getDrawData().getTempData().size() > 0) {
-            viewfinder.getControls().getDrawData().saveTempDataToDrawData();
+        if (!viewfinder.getWidgetController().getDrawingToolBar().isWidgetDrawing() && viewfinder.getWidgetController().getDrawData().getTempData().size() > 0) {
+            viewfinder.getWidgetController().getDrawData().saveTempDataToDrawData();
+        }
+
+        // temp fix. when user clicks on a different control panel the drawing panel loses focus even if widget is still
+        // selected todo fix this
+        if (viewfinder.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
+            Widget w = viewfinder.getWidgetController().getDrawingToolBar().getSelectedWidget();
+            w.requestFocus();
         }
 
         // adds all displayElements to viewfinder if not already added
@@ -149,20 +156,20 @@ public class UserController {
         }
 
         // adds temp data to screen
-        for (Node node : viewfinder.getControls().getDrawData().getTempData()) {
+        for (Node node : viewfinder.getWidgetController().getDrawData().getTempData()) {
             if (!screenOverlay.getChildren().contains(node)) {
                 screenOverlay.addToScreen(node);
             }
         }
 
         // removes deleted data from screen
-        if (viewfinder.getControls().getDrawData().getDeletedData().size() > 0) {
-            for (LinkedList<Node> deletedData : viewfinder.getControls().getDrawData().getDeletedData()) {
+        if (viewfinder.getWidgetController().getDrawData().getDeletedData().size() > 0) {
+            for (LinkedList<Node> deletedData : viewfinder.getWidgetController().getDrawData().getDeletedData()) {
                 for (Node node : deletedData) {
                     screenOverlay.removeFromScreen(node);
                 }
             }
-            viewfinder.getControls().getDrawData().getDeletedData().pop();
+            viewfinder.getWidgetController().getDrawData().getDeletedData().pop();
         }
 
         viewfinder.checkViewfinderInversion();

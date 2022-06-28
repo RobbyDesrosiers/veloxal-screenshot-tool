@@ -36,10 +36,14 @@ public abstract class WidgetBar extends Pane {
         setOnMouseExited(e -> setMouseOver(false));
     }
 
-    public void addWidget(Widget w) {
+    public void addToggleWidget(Widget w) {
         getToolBar().getItems().add(w);
         getWidgets().add(w);
         w.setOnMouseClicked(this::handleWidgetClicked);
+    }
+
+    public void addWidget(Widget w) {
+        getToolBar().getItems().add(w);
     }
 
     private void handleWidgetClicked(MouseEvent mouseEvent) {

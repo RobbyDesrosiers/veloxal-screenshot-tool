@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.File;
 import java.nio.file.Path;
 
-public abstract class Widget extends Button {
+public class Widget extends Button {
     private final ImageView icon;
     private int iconSize = 15;
     private Cursor cursorType;
@@ -79,6 +79,12 @@ public abstract class Widget extends Button {
 
     public void setCursorType(Cursor cursorType) {
         this.cursorType = cursorType;
+    }
+
+    public void setClickableOnly() {
+        setOnMousePressed(e -> {
+            setFocused(false);
+        });
     }
 
     public void draw(MouseEvent mouseEvent) {

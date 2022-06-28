@@ -3,13 +3,14 @@ package com.quickshot.quickshot;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class Viewfinder implements DisplayElement {
+public class Viewfinder {
     private final ViewfinderBoundingBox boundingBox;
     private final ViewfinderAnchorList anchors;
     private final ViewfinderDimensions dimensions;
     private final ViewfinderNegativeSpaceList negativeSpace;
-    private final ViewfinderControls controls;
+    private final WidgetBarController widgetController;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
     private boolean isCreated;
 
@@ -18,19 +19,16 @@ public class Viewfinder implements DisplayElement {
         anchors = new ViewfinderAnchorList();
         dimensions = new ViewfinderDimensions();
         negativeSpace = new ViewfinderNegativeSpaceList();
-        controls = new ViewfinderControls(boundingBox);
+        widgetController = new WidgetBarController(this);
 
+        // adding items to viewFinderElements allows to render onto screen via UserControls -> screenRefresh
         viewFinderElements.add(boundingBox);
         viewFinderElements.addAll(anchors);
         viewFinderElements.add(dimensions);
         viewFinderElements.addAll(negativeSpace);
-        viewFinderElements.add(controls.getDrawingToolBar());
+        viewFinderElements.add(widgetController.getDrawingToolBar());
+        viewFinderElements.add(widgetController.getCommandToolBar());
         setCreated(false);
-    }
-
-    public Viewfinder(MouseEvent mouseEvent) {
-        this();
-        createViewfinder(mouseEvent);
     }
 
     public void createViewfinder(MouseEvent mouseEvent) {
@@ -38,7 +36,6 @@ public class Viewfinder implements DisplayElement {
         getAnchors().setBoundingBox(boundingBox);
         getDimensions().setBoundingBox(boundingBox);
         getNegativeSpace().setBoundingBox(boundingBox);
-
         setCreated(true);
 
         // these two lines replicate the events of creating a new viewfinder so the mouse 'selects' the bottom right
@@ -47,13 +44,12 @@ public class Viewfinder implements DisplayElement {
         setVisible(true);
     }
 
-    @Override
     public void update() {
         getBoundingBox().update();
         getAnchors().update();
         getDimensions().update();
         getNegativeSpace().update();
-        getControls().update();
+        getWidgetController().update();
     }
 
     public void setVisible(boolean b) {
@@ -61,7 +57,8 @@ public class Viewfinder implements DisplayElement {
         getAnchors().setVisible(b);
         getDimensions().setVisible(b);
         getNegativeSpace().setVisible(b);
-        getControls().getDrawingToolBar().setVisible(b);
+        getWidgetController().getDrawingToolBar().setVisible(b);
+        getWidgetController().getCommandToolBar().setVisible(b);
     }
 
     public ViewfinderBoundingBox getBoundingBox() {
@@ -88,8 +85,8 @@ public class Viewfinder implements DisplayElement {
         isCreated = created;
     }
 
-    public ViewfinderControls getControls() {
-        return controls;
+    public WidgetBarController getWidgetController() {
+        return widgetController;
     }
 
     public ViewfinderNegativeSpaceList getNegativeSpace() {
@@ -174,5 +171,9 @@ public class Viewfinder implements DisplayElement {
     public boolean isFullScreen() {
         return (boundingBox.getWidth() == Monitor.getMonitorWidth()
                 && boundingBox.getHeight() == Monitor.getMonitorHeight());
+    }
+
+    public Stage getStage() {
+        return (Stage) getBoundingBox().getScene().getWindow();
     }
 }

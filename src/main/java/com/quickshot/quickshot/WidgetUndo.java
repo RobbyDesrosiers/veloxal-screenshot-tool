@@ -12,9 +12,5 @@ public class WidgetUndo extends Widget {
     public void defaultMouseEvents() {
 
     }
-
-    public void handleButtonPress() {
-        setFocused(false);
-    }
 }
 
