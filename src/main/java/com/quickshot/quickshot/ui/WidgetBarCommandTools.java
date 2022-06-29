@@ -9,15 +9,23 @@ import javafx.geometry.Orientation;
 public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
     private final WidgetClose closeButton;
     private final Widget saveScreenshot;
+    private final Widget copyScreenshot;
+    private final Widget recordGif;
 
     public WidgetBarCommandTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
         setOrientation(Orientation.VERTICAL);
 
         // create widgets
+        recordGif = new Widget("record.png");
+        recordGif.setClickableOnly();
+        addWidget(recordGif);
         saveScreenshot = new Widget("save.png");
         saveScreenshot.setClickableOnly();
         addWidget(saveScreenshot);
+        copyScreenshot = new Widget("copy.png");
+        copyScreenshot.setClickableOnly();
+        addWidget(copyScreenshot);
         closeButton = new WidgetClose("close.png");
         addWidget(closeButton);
     }
@@ -50,12 +58,20 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         return closeButton;
     }
 
+    public Widget getSaveButton() {
+        return saveScreenshot;
+    }
+
+    public Widget getRecordGif() {
+        return recordGif;
+    }
+
+    public Widget getCopyScreenshot() {
+        return copyScreenshot;
+    }
+
     @Override
     public void update() {
         calculateScreenPosition();
-    }
-
-    public Widget getSaveButton() {
-        return saveScreenshot;
     }
 }

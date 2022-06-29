@@ -19,16 +19,18 @@ public class WidgetBarController {
     private final ScreenshotUtility screenshotUtility;
 
     public WidgetBarController(ViewfinderController viewfinderController) {
-        this.screenshotUtility = new ScreenshotUtility(viewfinderController);
         drawData = new WidgetDrawData();
         drawingToolBar = new WidgetBarDrawingTools(viewfinderController.getBoundingBox(), drawData);
         commandToolBar = new WidgetBarCommandTools(viewfinderController.getBoundingBox(), drawData);
+        screenshotUtility = new ScreenshotUtility(viewfinderController);
         initMouseEvents();
     }
 
     private void initMouseEvents() {
         getDrawingToolBar().getUndoButton().setOnMouseReleased(e -> handleUndoButton());
         getCommandToolBar().getSaveButton().setOnMouseClicked(e -> handleSaveButton());
+        getCommandToolBar().getCopyScreenshot().setOnMouseClicked(e -> handleCopyButton());
+        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
         getCommandToolBar().getCloseButton().setOnMouseClicked(e -> Platform.exit());
     }
 
@@ -44,10 +46,18 @@ public class WidgetBarController {
 
     private void handleSaveButton() {
         try {
-            screenshotUtility.saveToFile();
+            getScreenshotController().saveSingleScreenshotToFile();
         } catch (AWTException | IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    private void handleCopyButton() {
+        getScreenshotController().saveSingleScreenshotToClipboard();
+    }
+
+    private void handleGifRecordButton() {
+//        getScreenshotController().convertImagesToGif(30);
     }
 
     public void update() {
@@ -64,6 +74,10 @@ public class WidgetBarController {
 
     public WidgetBarCommandTools getCommandToolBar() {
         return commandToolBar;
+    }
+
+    public ScreenshotUtility getScreenshotController() {
+        return screenshotUtility;
     }
 
     public boolean isMouseOver() {

@@ -6,6 +6,7 @@ import com.quickshot.quickshot.utilities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class ViewfinderController {
@@ -64,6 +65,14 @@ public class ViewfinderController {
         getWidgetController().getCommandToolBar().setVisible(b);
     }
 
+    public void setVisibilityForScreenshot(boolean b) {
+        getAnchors().setVisible(b);
+        getBoundingBox().setVisible(b);
+        getDimensions().setVisible(b);
+        getWidgetController().getDrawingToolBar().setVisible(b);
+        getWidgetController().getCommandToolBar().setVisible(b);
+    }
+
     public ViewfinderBoundingBox getBoundingBox() {
         return boundingBox;
     }
@@ -99,6 +108,7 @@ public class ViewfinderController {
     private ViewfinderDimensions getDimensions() {
         return dimensions;
     }
+
 
     public void setDragPoint(MouseEvent mouseEvent) {
         getBoundingBox().setDragPoint(mouseEvent);

@@ -38,6 +38,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.squareup/gifencoder -->
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>gifencoder</artifactId>
+            <version>0.10.1</version>
+        </dependency>
     </dependencies>
 
     <build>
