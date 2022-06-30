@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -27,12 +28,12 @@ public class ScreenshotUtility implements ClipboardOwner {
     private String filetype;
     private final int FRAMES_TO_WAIT = 35;
     private final Map<String, String> imageFileTypes = new HashMap<>(Map.of(
-            "bmp (*.bmp)", "*.bmp",
-            "png (*.png)", "*.png",
-            "jpeg (*.jpeg)", "*.jpeg"
+        "bmp (*.bmp)", "*.bmp",
+        "png (*.png)", "*.png",
+        "jpeg (*.jpeg)", "*.jpeg"
     ));
     private final Map<String, String> gifFileTypes = new HashMap<>(Map.of(
-       "gif (*.gif)", "*.gif"
+        "gif (*.gif)", "*.gif"
     ));
 
     public ScreenshotUtility(ViewfinderController viewfinderController) {
@@ -81,30 +82,86 @@ public class ScreenshotUtility implements ClipboardOwner {
         return screenCapture;
     }
 
-    // found -> https://genuinecoder.com/how-to-create-gif-from-multiple-images-in-java/
-    public void convertImagesToGif(int fps) {
-        // still testing / working on
-        File image1 = new File("C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/src/main/java/com/quickshot/quickshot/testImages/image1.jpg");
-        File image2 = new File("C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/src/main/java/com/quickshot/quickshot/testImages/image2.jpg");
-        File image3 = new File("C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/src/main/java/com/quickshot/quickshot/testImages/image3.jpg");
-        File image4 = new File("C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/src/main/java/com/quickshot/quickshot/testImages/image4.jpg");
+    public void recordScreen(int fps) {
 
-        //The GIF image will be created with file name "my_animated_image.gif"
-        try (FileOutputStream outputStream = new FileOutputStream("my_animated_image.gif")) {
+        // disables movement because for some reason it lags the thread? //todo why
+        viewfinderController.allowMovement(false);
+        viewfinderController.setVisibilityForScreenshot(false);
+        getDirectoryFromUser(gifFileTypes);
+
+        if (directory == null) {
+            viewfinderController.allowMovement(true);
+            viewfinderController.setVisible(true);
+            return; //todo throw error screen
+        }
+
+        viewfinderController.allowMousePassthrough(true);
+        viewfinderController.setVisible(false);
+        Thread recordingThread = new Thread(() -> {
+            AnimationTimer waitForFrameRender = new AnimationTimer() {
+                final int recordingFPS = 1000 / fps;
+                final int maxRecordingLength = 5000; // todo change max value with future testing
+                final String fileExtension = "jpg";
+                int frameCount = 0;
+                int imgSavedCount;
+                BufferedImage frame;
+                File saveFile;
+
+                @Override
+                public void handle(long timestamp) {
+                    frameCount++;
+                    if (frameCount >= FRAMES_TO_WAIT) {
+                        if (frameCount % recordingFPS == fps) {
+                            frame = getScreenshotBufferedImage();
+                            saveFile = new File("src/main/java/com/quickshot/quickshot/testImages/frame_" + imgSavedCount + "." + fileExtension); // todo use temp
+                            try {
+                                ImageIO.write(frame, fileExtension, saveFile);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            imgSavedCount++;
+                        }
+
+                        // todo add keyboard stop here
+
+                        if (frameCount >= maxRecordingLength) {
+                            stop();
+                            try {
+                                convertImagesToGif(fps, imgSavedCount, "src/main/java/com/quickshot/quickshot/testImages/video.gif");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            viewfinderController.allowMovement(true);
+                            viewfinderController.setVisible(true);
+                            viewfinderController.allowMousePassthrough(false);
+
+                        }
+                    }
+                }
+            };
+            waitForFrameRender.start();
+        });
+        recordingThread.setDaemon(true);
+        recordingThread.start();
+    }
+
+    // found -> https://genuinecoder.com/how-to-create-gif-from-multiple-images-in-java/
+    public void convertImagesToGif(int fps, int frameCount, String directory) throws IOException {
+        try (FileOutputStream outputStream = new FileOutputStream("src/main/java/com/quickshot/quickshot/testImages/my_animated_image.gif")) {
+            GifEncoder gifEncoder = new GifEncoder(outputStream, (int) getViewfinder().getBoundingBox().getWidth(), (int) getViewfinder().getBoundingBox().getWidth(), 0);
             ImageOptions options = new ImageOptions();
 
             //Set 500ms between each frame
-            options.setDelay(500, TimeUnit.MILLISECONDS);
+            options.setDelay(50, TimeUnit.MILLISECONDS);
             //Use Floyd Steinberg dithering as it yields the best quality
             options.setDitherer(FloydSteinbergDitherer.INSTANCE);
 
             //Create GIF encoder with same dimension as of the source images
-            new GifEncoder(outputStream, (int) getViewfinder().getBoundingBox().getWidth(), (int) getViewfinder().getBoundingBox().getWidth(), 0)
-                    .addImage(convertImageToArray(image1), options)
-                    .addImage(convertImageToArray(image2), options)
-                    .addImage(convertImageToArray(image3), options)
-                    .addImage(convertImageToArray(image4), options)
-                    .finishEncoding(); //Start the encoding
+            for (int i = 0; i < frameCount; i++) {
+                // todo replace these variables with dynamic class vars
+                gifEncoder.addImage(convertImageToArray(new File("src/main/java/com/quickshot/quickshot/testImages/frame_" + i + ".jpg")), options);
+            }
+            gifEncoder.finishEncoding();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -112,7 +169,7 @@ public class ScreenshotUtility implements ClipboardOwner {
 
     public void saveSingleScreenshotToClipboard() {
         // to ensure none of the components end up in the screenshot
-        getViewfinder().setVisibilityForScreenshot(false);
+        getViewfinder().setVisible(false);
 
         AnimationTimer waitForFrameRender = new AnimationTimer() {
             private int frameCount = 0;

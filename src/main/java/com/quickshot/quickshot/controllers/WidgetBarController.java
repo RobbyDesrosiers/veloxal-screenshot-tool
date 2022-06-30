@@ -57,7 +57,7 @@ public class WidgetBarController {
     }
 
     private void handleGifRecordButton() {
-//        getScreenshotController().convertImagesToGif(30);
+        getScreenshotController().recordScreen(3);
     }
 
     public void update() {

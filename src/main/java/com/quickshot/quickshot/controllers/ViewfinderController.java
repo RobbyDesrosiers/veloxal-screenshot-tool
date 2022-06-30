@@ -6,7 +6,7 @@ import com.quickshot.quickshot.utilities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Screen;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ViewfinderController {
@@ -17,6 +17,8 @@ public class ViewfinderController {
     private final WidgetBarController widgetController;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
     private boolean isCreated;
+    private boolean isMovementAllowed;
+    private boolean isMousePassthroughOn;
 
     public ViewfinderController() {
         boundingBox = new ViewfinderBoundingBox();
@@ -33,6 +35,7 @@ public class ViewfinderController {
         viewFinderElements.add(widgetController.getDrawingToolBar());
         viewFinderElements.add(widgetController.getCommandToolBar());
         setCreated(false);
+        allowMovement(true);
     }
 
     public void createViewfinder(MouseEvent mouseEvent) {
@@ -188,5 +191,28 @@ public class ViewfinderController {
 
     public Stage getStage() {
         return (Stage) getBoundingBox().getScene().getWindow();
+    }
+
+    public void allowMovement(boolean b) {
+        isMovementAllowed = b;
+    }
+
+    public boolean getMovementAllowed() {
+        return isMovementAllowed;
+    }
+
+    public void allowMousePassthrough(boolean b) {
+        isMousePassthroughOn = b;
+
+        if (b) {
+            getStage().getScene().setFill(new Color(0.0, 0.0, 0.0, 0.00));
+        } else {
+            getStage().getScene().setFill(new Color(0.0, 0.0, 0.0, 0.01));
+            getStage().setAlwaysOnTop(true); // sets viewfinder to top
+        }
+    }
+
+    public boolean isMousePassthroughAllowed() {
+        return isMousePassthroughOn;
     }
 }

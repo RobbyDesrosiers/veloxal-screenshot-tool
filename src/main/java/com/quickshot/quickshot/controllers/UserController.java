@@ -24,8 +24,10 @@ public class UserController {
     }
 
     private void initMouseEvents() {
+        // used primarily for hover/cursor changes
         screenOverlay.getScene().addEventFilter(MouseEvent.MOUSE_MOVED, this::handleMouseMoved);
 
+        // regular mouse events, used usually on start up when viewfinder is not visible
         screenOverlay.setOnMousePressed(this::handleMousePressed);
         screenOverlay.setOnMouseReleased(this::handleMouseReleased);
         screenOverlay.setOnMouseDragged(this::handleMouseDragged);
@@ -82,13 +84,13 @@ public class UserController {
     }
 
     private void handleMousePressed(MouseEvent mouseEvent) {
-        if (!viewfinderController.isCreated()) {
+        if (!viewfinderController.isCreated() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
         }
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
-        if (!viewfinderController.isSelected() && !viewfinderController.getAnchors().isSelected()) {
+        if (!viewfinderController.isSelected() && !viewfinderController.getAnchors().isSelected() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
-        } else {
+        } else if (viewfinderController.getMovementAllowed()){
             // if viewfinder is selected then mouse will drag
             // sets the offset of mouse within the box to accurately pan viewfinder
             viewfinderController.setDragPoint(mouseEvent);
@@ -103,7 +105,7 @@ public class UserController {
             widget.draw(mouseEvent);
             widget.setDrawing(true);
         // handles all the viewfinder scaling if an anchor is selected
-        } else if (viewfinderController.getAnchors().isSelected()) {
+        } else if (viewfinderController.getAnchors().isSelected() && viewfinderController.getMovementAllowed()) {
             ViewfinderAnchorPosition selectedAnchorPosition = viewfinderController.getAnchors().getSelectedAnchorPosition();
             switch (selectedAnchorPosition) {
                 case TOP_LEFT -> viewfinderController.getBoundingBox().moveUpLeft(mouseEvent);
@@ -116,7 +118,7 @@ public class UserController {
                 case BOTTOM_RIGHT -> viewfinderController.getBoundingBox().moveDownRight(mouseEvent);
             }
         // handles the panning/moving of the viewfinder if viewfinder is selected
-        } else if (viewfinderController.isSelected()) {
+        } else if (viewfinderController.isSelected() && viewfinderController.getMovementAllowed()) {
             viewfinderController.move(mouseEvent);
         }
         refreshScreen();

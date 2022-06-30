@@ -18,7 +18,7 @@ public class Widget extends Button {
     private boolean isMouseOver;
 
     public Widget(String fileName) {
-        File f = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName).getAbsoluteFile();
+        File f = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName);
         Image img = new Image(f.getAbsolutePath());
         icon = new ImageView(img);
         icon.setPreserveRatio(true);
