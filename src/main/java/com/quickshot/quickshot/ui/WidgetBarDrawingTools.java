@@ -5,10 +5,11 @@ import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.utilities.Monitor;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.geometry.Orientation;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
     private final WidgetUndo undoButton;
-
     public WidgetBarDrawingTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
         setOrientation(Orientation.HORIZONTAL);

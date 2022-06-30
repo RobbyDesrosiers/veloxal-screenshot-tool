@@ -67,6 +67,16 @@ public class ScreenshotUtility implements ClipboardOwner {
         return rgbArray;
     }
 
+    private int[][] convertBufferedImageToArray(BufferedImage frame) throws IOException {
+        int[][] rgbArray = new int[frame.getHeight()][frame.getWidth()];
+        for (int i = 0; i < frame.getHeight(); i++) {
+            for (int j = 0; j < frame.getWidth(); j++) {
+                rgbArray[i][j] = frame.getRGB(j, i);
+            }
+        }
+        return rgbArray;
+    }
+
     private BufferedImage getScreenshotBufferedImage() {
         BufferedImage screenCapture;
         Rectangle rectangle = new Rectangle(
@@ -99,12 +109,13 @@ public class ScreenshotUtility implements ClipboardOwner {
         viewfinderController.setVisible(false);
         Thread recordingThread = new Thread(() -> {
             AnimationTimer waitForFrameRender = new AnimationTimer() {
+                final ArrayList<int[][]> capturedScreenArrays = new ArrayList<>();
                 final int recordingFPS = 1000 / fps;
                 final int maxRecordingLength = 5000; // todo change max value with future testing
                 final String fileExtension = "jpg";
                 int frameCount = 0;
                 int imgSavedCount;
-                BufferedImage frame;
+                int[][] frame;
                 File saveFile;
 
                 @Override
@@ -112,12 +123,11 @@ public class ScreenshotUtility implements ClipboardOwner {
                     frameCount++;
                     if (frameCount >= FRAMES_TO_WAIT) {
                         if (frameCount % recordingFPS == fps) {
-                            frame = getScreenshotBufferedImage();
-                            saveFile = new File("src/main/java/com/quickshot/quickshot/testImages/frame_" + imgSavedCount + "." + fileExtension); // todo use temp
                             try {
-                                ImageIO.write(frame, fileExtension, saveFile);
+                                frame = convertBufferedImageToArray(getScreenshotBufferedImage());
+                                capturedScreenArrays.add(frame);
                             } catch (IOException e) {
-                                e.printStackTrace();
+                                throw new RuntimeException(e);
                             }
                             imgSavedCount++;
                         }
@@ -127,7 +137,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                         if (frameCount >= maxRecordingLength) {
                             stop();
                             try {
-                                convertImagesToGif(fps, imgSavedCount, "src/main/java/com/quickshot/quickshot/testImages/video.gif");
+                                convertFrameArraysToGif(fps, capturedScreenArrays, "src/main/java/com/quickshot/quickshot/testImages/video.gif");
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -146,7 +156,7 @@ public class ScreenshotUtility implements ClipboardOwner {
     }
 
     // found -> https://genuinecoder.com/how-to-create-gif-from-multiple-images-in-java/
-    public void convertImagesToGif(int fps, int frameCount, String directory) throws IOException {
+    public void convertFrameArraysToGif(int fps, ArrayList<int[][]> arrayOfFrames, String directory) throws IOException {
         try (FileOutputStream outputStream = new FileOutputStream("src/main/java/com/quickshot/quickshot/testImages/my_animated_image.gif")) {
             GifEncoder gifEncoder = new GifEncoder(outputStream, (int) getViewfinder().getBoundingBox().getWidth(), (int) getViewfinder().getBoundingBox().getWidth(), 0);
             ImageOptions options = new ImageOptions();
@@ -157,9 +167,8 @@ public class ScreenshotUtility implements ClipboardOwner {
             options.setDitherer(FloydSteinbergDitherer.INSTANCE);
 
             //Create GIF encoder with same dimension as of the source images
-            for (int i = 0; i < frameCount; i++) {
-                // todo replace these variables with dynamic class vars
-                gifEncoder.addImage(convertImageToArray(new File("src/main/java/com/quickshot/quickshot/testImages/frame_" + i + ".jpg")), options);
+            for (int[][] frame : arrayOfFrames) {
+                gifEncoder.addImage(frame, options);
             }
             gifEncoder.finishEncoding();
         } catch (IOException e) {
