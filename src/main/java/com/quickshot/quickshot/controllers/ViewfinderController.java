@@ -16,16 +16,18 @@ public class ViewfinderController {
     private final ViewfinderNegativeSpaceList negativeSpace;
     private final WidgetBarController widgetController;
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
+    private final ProgramTray programTray;
     private boolean isCreated;
     private boolean isMovementAllowed;
     private boolean isMousePassthroughOn;
 
-    public ViewfinderController() {
+    public ViewfinderController(ProgramTray programTray) {
         boundingBox = new ViewfinderBoundingBox();
         anchors = new ViewfinderAnchorList();
         dimensions = new ViewfinderDimensions();
         negativeSpace = new ViewfinderNegativeSpaceList();
         widgetController = new WidgetBarController(this);
+        this.programTray = programTray;
 
         // adding items to viewFinderElements allows to render onto screen via UserControls -> screenRefresh
         viewFinderElements.add(boundingBox);
@@ -223,5 +225,9 @@ public class ViewfinderController {
 
     public boolean isMousePassthroughAllowed() {
         return isMousePassthroughOn;
+    }
+
+    public ProgramTray getProgramTray() {
+        return programTray;
     }
 }

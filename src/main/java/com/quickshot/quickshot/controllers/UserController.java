@@ -2,6 +2,7 @@ package com.quickshot.quickshot.controllers;
 
 import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.ui.ScreenOverlay;
+import com.quickshot.quickshot.utilities.ProgramTray;
 import com.quickshot.quickshot.utilities.ViewfinderAnchorPosition;
 import com.quickshot.quickshot.ui.Widget;
 import javafx.scene.Cursor;
@@ -15,13 +16,14 @@ import java.util.LinkedList;
 public class UserController {
     private final ScreenOverlay screenOverlay;
     private final ViewfinderController viewfinderController;
+    private final ProgramTray programTray;
 
 
-    public UserController(ScreenOverlay screenOverlay) throws AWTException {
+    public UserController(ScreenOverlay screenOverlay, ProgramTray programTray) throws AWTException {
         this.screenOverlay = screenOverlay;
         this.screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
-
-        viewfinderController = new ViewfinderController();
+        this.programTray = programTray;
+        viewfinderController = new ViewfinderController(programTray);
         initMouseEvents();
         initKeyboardEvents();
     }

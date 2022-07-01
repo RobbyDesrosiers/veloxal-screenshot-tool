@@ -191,6 +191,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                     Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
                     c.setContents(new TransferableImage(getScreenshotBufferedImage()), getScreenshotUtility());
                     viewfinderController.hideStage();
+                    viewfinderController.getProgramTray().displayMessage("Successfully copied screenshot to clipboard", TrayIcon.MessageType.INFO);
                 }
             }
         };
@@ -200,6 +201,7 @@ public class ScreenshotUtility implements ClipboardOwner {
     public void saveSingleScreenshotToFile() throws AWTException, IOException {
         // to ensure none of the components end up in the screenshot
         getViewfinder().setVisibilityForScreenshot(false);
+        getDirectoryFromUser(imageFileTypes);
 
         // JavaFX cannot remove the viewfinder quick enough before capturing image.
         // after 25 frames the capture will take place, allowing JavaFX enough time to remove the viewfinder from ScreenOverlay
@@ -212,9 +214,8 @@ public class ScreenshotUtility implements ClipboardOwner {
             @Override
             public void handle(long timestamp) {
                 frameCount++ ;
-                if (frameCount >= FRAMES_TO_WAIT + 50) { // +50 because save file window doesnt close quick enough
+                if (frameCount >= FRAMES_TO_WAIT + 100) { // +100 because save file window doesnt close quick enough
                     stop();
-                    getDirectoryFromUser(imageFileTypes);
 
                     // if no directory is chosen by user
                     if (directory == null) {
@@ -229,6 +230,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                         throw new RuntimeException(e);
                     }
                     viewfinderController.hideStage();
+                    viewfinderController.getProgramTray().displayMessage("Successfully saved screenshot to\n" + directory, TrayIcon.MessageType.INFO);
                 }
             }
         };

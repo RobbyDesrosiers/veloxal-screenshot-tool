@@ -18,6 +18,10 @@ public class ProgramTray {
         tray.add(trayIcon);
     }
 
+    public void displayMessage(String text, MessageType messageType) {
+        getTrayIcon().displayMessage(PROGRAM_TITLE, text, messageType);
+    }
+
     public TrayIcon getTrayIcon() {
         return trayIcon;
     }

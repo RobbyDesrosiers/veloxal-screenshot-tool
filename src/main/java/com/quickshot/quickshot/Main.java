@@ -14,16 +14,22 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         ProgramTray programTray = new ProgramTray();
         ScreenOverlay screenOverlay = new ScreenOverlay();
-        new UserController(screenOverlay);
+        new UserController(screenOverlay, programTray);
         screenOverlay.setProductionEnvironment(stage);
-        stage.show();
+//        stage.show();
 
-//        programTray.getTrayIcon().addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                super.mouseClicked(e);
-//                Platform.runLater(stage::show);
-//            }
-//        });
+        programTray.getTrayIcon().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        stage.show();
+                        stage.setAlwaysOnTop(true);
+                    }
+                });
+            }
+        });
     }
 }
