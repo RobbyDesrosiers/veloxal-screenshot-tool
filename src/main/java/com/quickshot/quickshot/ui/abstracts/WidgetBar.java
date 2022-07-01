@@ -9,12 +9,12 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 
-public abstract class WidgetBar extends Pane {
-    private final ToolBar toolBar;
+public abstract class WidgetBar extends TilePane {
     private final ArrayList<Widget> widgets;
     private final ViewfinderBoundingBox boundingBox;
     private final WidgetDrawData drawData;
@@ -22,16 +22,12 @@ public abstract class WidgetBar extends Pane {
 
     public WidgetBar(ViewfinderBoundingBox boundingBox,WidgetDrawData drawData) {
         widgets = new ArrayList<>();
-        toolBar = new ToolBar();
         this.boundingBox = boundingBox;
         this.drawData = drawData;
-        getChildren().add(getToolBar());
+//        setSpacing(2);
         setVisible(false);
+        setPadding(new Insets(1,1,1,1));
         getStyleClass().add("widget-bar");
-
-        getToolBar().setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
-        getToolBar().getStyleClass().add("widget-bar");
-        getToolBar().setPadding(new Insets(3,3,3,3));
         initMouseEvents();
     }
 
@@ -41,13 +37,13 @@ public abstract class WidgetBar extends Pane {
     }
 
     public void addToggleWidget(Widget w) {
-        getToolBar().getItems().add(w);
+        getChildren().add(w);
         getWidgets().add(w);
         w.setOnMouseClicked(this::handleWidgetClicked);
     }
 
     public void addWidget(Widget w) {
-        getToolBar().getItems().add(w);
+        getChildren().add(w);
     }
 
     private void handleWidgetClicked(MouseEvent mouseEvent) {
@@ -67,9 +63,7 @@ public abstract class WidgetBar extends Pane {
     }
 
     public boolean isWidgetSelected() {
-        Widget widget;
-        for (Node node : getToolBar().getItems()) {
-            widget = (Widget)node;
+        for (Widget widget : getWidgets()) {
             if (widget.isSelected()) {
                 return true;
             }
@@ -78,18 +72,12 @@ public abstract class WidgetBar extends Pane {
     }
 
     public Widget getSelectedWidget() {
-        Widget widget;
-        for (Node node : getToolBar().getItems()) {
-            widget = (Widget)node;
+        for (Widget widget : getWidgets()) {
             if (widget.isSelected()) {
                 return widget;
             }
         }
         return null;
-    }
-
-    public ToolBar getToolBar() {
-        return toolBar;
     }
 
     public ArrayList<Widget> getWidgets() {
@@ -98,10 +86,6 @@ public abstract class WidgetBar extends Pane {
 
     public WidgetDrawData getDrawData() {
         return drawData;
-    }
-
-    public void setOrientation(Orientation o) {
-        getToolBar().setOrientation(o);
     }
 
     public boolean isMouseOver() {

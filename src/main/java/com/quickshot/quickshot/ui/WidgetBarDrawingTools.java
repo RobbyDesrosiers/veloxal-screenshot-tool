@@ -5,21 +5,33 @@ import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.utilities.Monitor;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
     private final WidgetUndo undoButton;
+    private final ColorPicker colorPicker;
+
     public WidgetBarDrawingTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
-        setOrientation(Orientation.HORIZONTAL);
+        setHgap(2);
+        setPrefWidth(198);
+        setAlignment(Pos.CENTER_RIGHT);
 
         // create widgets
-        addToggleWidget(new WidgetPaintbrush("paint-brush.png", drawData));
-        addToggleWidget(new WidgetHighlighter("marker.png", drawData));
-        addToggleWidget(new WidgetRectangle("rectangle.png", drawData));
-        addToggleWidget(new WidgetText("text.png", drawData));
+        colorPicker = new ColorPicker(Color.RED);
+        colorPicker.setPrefWidth(30);
+        colorPicker.setPrefHeight(24);
+
+        addToggleWidget(new WidgetPaintbrush("paint-brush.png", drawData, colorPicker));
+        addToggleWidget(new WidgetHighlighter("marker.png", drawData, colorPicker));
+        addToggleWidget(new WidgetRectangle("rectangle.png", drawData, colorPicker));
+        addToggleWidget(new WidgetText("text.png", drawData, colorPicker));
         undoButton = new WidgetUndo("undo.png", drawData);
         undoButton.setClickableOnly();
-        getToolBar().getItems().add(undoButton);
+        addWidget(undoButton);
+        getChildren().add(colorPicker);
     }
 
     public void calculateScreenPosition() {

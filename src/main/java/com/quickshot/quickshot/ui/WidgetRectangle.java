@@ -3,6 +3,7 @@ package com.quickshot.quickshot.ui;
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
 import com.quickshot.quickshot.utilities.Coordinate;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -11,14 +12,14 @@ public class WidgetRectangle extends WidgetLineDrawer {
     private Rectangle rect;
     private final Coordinate topLeftAnchorRectPosition;
 
-    public WidgetRectangle(String fileName, WidgetDrawData drawData) {
-        super(fileName, drawData);
+    public WidgetRectangle(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
+        super(fileName, drawData, colorPicker);
         topLeftAnchorRectPosition = new Coordinate();
-        setBrushColor(Color.RED);
     }
 
     @Override
     public void draw(MouseEvent mouseEvent) {
+        setBrushColor(getColorPicker().getValue());
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);

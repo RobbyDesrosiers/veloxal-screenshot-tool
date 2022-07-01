@@ -3,6 +3,7 @@ package com.quickshot.quickshot.ui;
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -10,13 +11,13 @@ import javafx.scene.shape.Circle;
 public class WidgetPaintbrush extends WidgetLineDrawer {
     private int brushSize = 1;
 
-    public WidgetPaintbrush(String fileName, WidgetDrawData drawData) {
-        super(fileName, drawData);
-        setBrushColor(Color.RED);
+    public WidgetPaintbrush(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
+        super(fileName, drawData, colorPicker);
     }
 
     @Override
     public void draw(MouseEvent mouseEvent) {
+        setBrushColor(getColorPicker().getValue());
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);

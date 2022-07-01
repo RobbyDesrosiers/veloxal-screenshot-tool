@@ -29,7 +29,7 @@
 }
 
 .widget-bar {
-    /*-fx-background-color: rgb(12,12,12);*/
+    -fx-background-color: rgb(200,200,200);
 }
 
 .button {

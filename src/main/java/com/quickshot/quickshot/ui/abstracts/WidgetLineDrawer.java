@@ -3,15 +3,19 @@ package com.quickshot.quickshot.ui.abstracts;
 import com.quickshot.quickshot.ui.Widget;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 public abstract class WidgetLineDrawer extends Widget {
     private Color brushColor;
     private WidgetDrawData drawData;
+    private ColorPicker colorPicker;
 
-    public WidgetLineDrawer(String fileName, WidgetDrawData drawData) {
+    public WidgetLineDrawer(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
         super(fileName);
         this.drawData = drawData;
+        this.colorPicker = colorPicker;
+        setBrushColor(colorPicker.getValue());
     }
 
     public Color getBrushColor() {
@@ -28,6 +32,14 @@ public abstract class WidgetLineDrawer extends Widget {
 
     public void setDrawData(WidgetDrawData drawData) {
         this.drawData = drawData;
+    }
+
+    public ColorPicker getColorPicker() {
+        return colorPicker;
+    }
+
+    public void setColorPicker(ColorPicker colorPicker) {
+        this.colorPicker = colorPicker;
     }
 
     public void pushShape(Node node) {

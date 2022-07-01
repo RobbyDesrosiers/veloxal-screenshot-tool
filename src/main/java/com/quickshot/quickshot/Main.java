@@ -16,13 +16,14 @@ public class Main extends Application {
         ScreenOverlay screenOverlay = new ScreenOverlay();
         new UserController(screenOverlay);
         screenOverlay.setProductionEnvironment(stage);
+        stage.show();
 
-        programTray.getTrayIcon().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                Platform.runLater(stage::show);
-            }
-        });
+//        programTray.getTrayIcon().addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                super.mouseClicked(e);
+//                Platform.runLater(stage::show);
+//            }
+//        });
     }
 }

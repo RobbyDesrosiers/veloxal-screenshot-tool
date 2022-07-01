@@ -3,6 +3,7 @@ package com.quickshot.quickshot.ui;
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -14,15 +15,13 @@ public class WidgetHighlighter extends WidgetLineDrawer {
     private int brushSize = 1;
     private Double mouseTranslateY = null;
 
-    public WidgetHighlighter(String fileName, WidgetDrawData drawData) {
-        super(fileName, drawData);
-//        setBrushColor(new Color(1,1,0,0.4)); highlighter
-        setBrushColor(Color.BLACK);
+    public WidgetHighlighter(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
+        super(fileName, drawData, colorPicker);
     }
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-
+        setBrushColor(getColorPicker().getValue());
         // used for horizontal shift functionality
         if (!mouseEvent.isShiftDown() || getDrawData().isNewLine())
             mouseTranslateY = null;

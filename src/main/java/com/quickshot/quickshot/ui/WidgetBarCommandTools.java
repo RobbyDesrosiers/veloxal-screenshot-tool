@@ -7,14 +7,15 @@ import com.quickshot.quickshot.utilities.Monitor;
 import javafx.geometry.Orientation;
 
 public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
-    private final WidgetClose closeButton;
+    private final Widget closeButton;
     private final Widget saveScreenshot;
     private final Widget copyScreenshot;
 //    private final Widget recordGif;
 
     public WidgetBarCommandTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
-        setOrientation(Orientation.VERTICAL);
+        setPrefColumns(1);
+        setVgap(3);
 
         // create widgets
 //        recordGif = new Widget("record.png");
@@ -26,7 +27,7 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         copyScreenshot = new Widget("copy.png");
         copyScreenshot.setClickableOnly();
         addWidget(copyScreenshot);
-        closeButton = new WidgetClose("close.png");
+        closeButton = new Widget("close.png");
         addWidget(closeButton);
     }
 
@@ -54,7 +55,7 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         setViewOrder(-1); // todo fix this
     }
 
-    public WidgetClose getCloseButton() {
+    public Widget getCloseButton() {
         return closeButton;
     }
 

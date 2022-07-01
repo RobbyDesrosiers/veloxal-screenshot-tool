@@ -4,24 +4,28 @@ import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
 import com.quickshot.quickshot.utilities.Coordinate;
 import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
+import java.awt.*;
 
 public class WidgetText extends WidgetLineDrawer {
     TextArea text;
     private final Coordinate topLeftAnchorRectPosition;
     private double currentTextAreaHeight;
 
-    public WidgetText(String fileName, WidgetDrawData drawData) {
-        super(fileName, drawData);
+    public WidgetText(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
+        super(fileName, drawData, colorPicker);
         setIconSize(13);
         topLeftAnchorRectPosition = new Coordinate();
     }
 
     @Override
     public void draw(MouseEvent mouseEvent) {
+        setBrushColor(getColorPicker().getValue());
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);
