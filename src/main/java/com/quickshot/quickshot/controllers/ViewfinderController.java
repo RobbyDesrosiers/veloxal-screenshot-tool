@@ -49,6 +49,7 @@ public class ViewfinderController {
         // for dragging capabilities on creation
         getAnchors().getAnchor(ViewfinderAnchorPosition.BOTTOM_RIGHT).setSelected(true);
         setVisible(true);
+        getBoundingBox().requestFocus();
     }
 
     public void update() {
@@ -210,6 +211,14 @@ public class ViewfinderController {
             getStage().getScene().setFill(new Color(0.0, 0.0, 0.0, 0.01));
             getStage().setAlwaysOnTop(true); // sets viewfinder to top
         }
+    }
+
+    public void hideStage() {
+        getWidgetController().getDrawingToolBar().setWidgetsDrawingStatus(false);
+        getWidgetController().getDrawingToolBar().setWidgetsSelected(false);
+        getWidgetController().getDrawData().deleteAllData();
+        setVisible(false);
+        getStage().hide();
     }
 
     public boolean isMousePassthroughAllowed() {

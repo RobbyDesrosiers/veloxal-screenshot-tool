@@ -5,8 +5,6 @@ import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.utilities.Monitor;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.geometry.Orientation;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
     private final WidgetUndo undoButton;
@@ -42,9 +40,15 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         setViewOrder(-1); // todo fix this
     }
 
-    public void setWidgetDrawingStatus(boolean b) {
+    public void setWidgetsDrawingStatus(boolean b) {
         for (Widget widget : getWidgets()) {
             widget.setDrawing(b);
+        }
+    }
+
+    public void setWidgetsSelected(boolean b) {
+        for (Widget widget : getWidgets()) {
+            widget.setSelected(b);
         }
     }
 

@@ -40,6 +40,12 @@ public class WidgetDrawData extends LinkedList<LinkedList<Node>> {
         return deletedData;
     }
 
+    public void deleteAllData() {
+        for (LinkedList<Node> data : this) {
+            deletedData.push(data);
+        }
+    }
+
     public LinkedList<Node> getTempData() {
         return tempData;
     }

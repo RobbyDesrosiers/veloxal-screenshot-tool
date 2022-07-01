@@ -1,5 +1,6 @@
 package com.quickshot.quickshot.ui;
 
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
@@ -27,7 +28,7 @@ public class ScreenOverlay extends Pane {
     public void setTestEnvironment(Stage stage) {
         stage.setScene(scene);
         setPrefSize(800, 600);
-        stage.show();
+//        stage.show();
     }
 
     public void setProductionEnvironment(Stage stage) {
@@ -40,7 +41,8 @@ public class ScreenOverlay extends Pane {
         stage.setFullScreen(true);
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.show();
+        Platform.setImplicitExit(false);
+//        stage.show();
     }
 
     public void addToScreen(Node node) {

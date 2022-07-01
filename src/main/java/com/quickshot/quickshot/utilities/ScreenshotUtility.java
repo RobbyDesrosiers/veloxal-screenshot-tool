@@ -190,7 +190,7 @@ public class ScreenshotUtility implements ClipboardOwner {
 
                     Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
                     c.setContents(new TransferableImage(getScreenshotBufferedImage()), getScreenshotUtility());
-                    Platform.exit();
+                    viewfinderController.hideStage();
                 }
             }
         };
@@ -212,7 +212,7 @@ public class ScreenshotUtility implements ClipboardOwner {
             @Override
             public void handle(long timestamp) {
                 frameCount++ ;
-                if (frameCount >= FRAMES_TO_WAIT) {
+                if (frameCount >= FRAMES_TO_WAIT + 50) { // +50 because save file window doesnt close quick enough
                     stop();
                     getDirectoryFromUser(imageFileTypes);
 
@@ -228,7 +228,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    Platform.exit();
+                    viewfinderController.hideStage();
                 }
             }
         };

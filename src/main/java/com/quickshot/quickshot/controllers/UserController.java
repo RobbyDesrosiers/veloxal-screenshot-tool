@@ -4,20 +4,23 @@ import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.ui.ScreenOverlay;
 import com.quickshot.quickshot.utilities.ViewfinderAnchorPosition;
 import com.quickshot.quickshot.ui.Widget;
-import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
+import java.awt.*;
 import java.util.LinkedList;
 
 public class UserController {
     private final ScreenOverlay screenOverlay;
     private final ViewfinderController viewfinderController;
 
-    public UserController(ScreenOverlay screenOverlay) {
+
+    public UserController(ScreenOverlay screenOverlay) throws AWTException {
         this.screenOverlay = screenOverlay;
         this.screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
+
         viewfinderController = new ViewfinderController();
         initMouseEvents();
         initKeyboardEvents();
@@ -40,6 +43,13 @@ public class UserController {
 
         // allows screen to be refreshed and drawing to be removed on undo
         viewfinderController.getWidgetController().getDrawingToolBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
+
+        // close button
+        viewfinderController.getWidgetController().getCommandToolBar().getCloseButton()
+                .setOnMouseClicked(e -> {
+                    viewfinderController.hideStage();
+                    refreshScreen();
+                });
     }
 
     private void initKeyboardEvents() {
@@ -49,12 +59,8 @@ public class UserController {
     private void handleKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case ESCAPE -> {
-                if (keyEvent.isShiftDown()) {
-                    viewfinderController.setVisible(false);
-                    viewfinderController.getWidgetController().getDrawData().setVisible(false);
-                } else {
-                    Platform.exit();
-                }
+                viewfinderController.hideStage();
+                refreshScreen();
             }
             case F -> {
                 if (keyEvent.isShiftDown()) {
@@ -67,7 +73,7 @@ public class UserController {
 
     private void handleMouseMoved(MouseEvent mouseEvent) {
         // sets all widgets 'isDrawing' field to false (used to determine undo button usage in refreshScreen())
-        viewfinderController.getWidgetController().getDrawingToolBar().setWidgetDrawingStatus(false);
+        viewfinderController.getWidgetController().getDrawingToolBar().setWidgetsDrawingStatus(false);
         // deals with all the on-hover mouse changes
         if (viewfinderController.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
             screenOverlay.getScene().setCursor(viewfinderController.getWidgetController().getDrawingToolBar().getSelectedWidget().getCursorType());

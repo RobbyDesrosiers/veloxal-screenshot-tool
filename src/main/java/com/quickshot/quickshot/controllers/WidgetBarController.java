@@ -30,8 +30,7 @@ public class WidgetBarController {
         getDrawingToolBar().getUndoButton().setOnMouseReleased(e -> handleUndoButton());
         getCommandToolBar().getSaveButton().setOnMouseClicked(e -> handleSaveButton());
         getCommandToolBar().getCopyScreenshot().setOnMouseClicked(e -> handleCopyButton());
-        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
-        getCommandToolBar().getCloseButton().setOnMouseClicked(e -> Platform.exit());
+//        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
     }
 
     private void handleUndoButton() {
