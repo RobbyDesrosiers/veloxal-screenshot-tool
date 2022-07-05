@@ -7,15 +7,23 @@ import com.squareup.gifencoder.ImageOptions;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -173,6 +181,30 @@ public class ScreenshotUtility implements ClipboardOwner {
             gifEncoder.finishEncoding();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void uploadScreenshot() throws IOException {
+        HttpURLConnection connection = null;
+        ByteArrayOutputStream baos = null;
+        byte[] bytes = Files.readAllBytes(Paths.get("C:\\Users\\Administrator\\Desktop\\IntelliJProjects\\QuickShot\\src\\main\\java\\com\\quickshot\\quickshot\\testImages\\test.jpeg"));
+        try {
+            URL url = new URL("http://127.0.0.1:5000/api/v1/upload/");
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "image/jpeg");
+            connection.setRequestMethod("POST");
+
+            baos = new ByteArrayOutputStream();
+            baos.write(bytes); // your bytes here
+            baos.writeTo(connection.getOutputStream());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if(baos != null)
+                baos.close();
+            if(connection != null)
+                connection.disconnect();
         }
     }
 

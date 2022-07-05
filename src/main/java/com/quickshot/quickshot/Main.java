@@ -15,7 +15,7 @@ public class Main extends Application {
         ProgramTray programTray = new ProgramTray();
         ScreenOverlay screenOverlay = new ScreenOverlay();
         new UserController(screenOverlay, programTray);
-        screenOverlay.setProductionEnvironment(stage);
+        screenOverlay.setTestEnvironment(stage);
 //        stage.show();
 
         programTray.getTrayIcon().addMouseListener(new MouseAdapter() {

@@ -4,14 +4,12 @@ import com.quickshot.quickshot.ui.abstracts.WidgetBar;
 import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.utilities.Monitor;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
     private final WidgetUndo undoButton;
-    private final ColorPicker colorPicker;
 
     public WidgetBarDrawingTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
@@ -20,7 +18,7 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         setAlignment(Pos.CENTER_RIGHT);
 
         // create widgets
-        colorPicker = new ColorPicker(Color.RED);
+        ColorPicker colorPicker = new ColorPicker(Color.RED);
         colorPicker.setPrefWidth(30);
         colorPicker.setPrefHeight(24);
 

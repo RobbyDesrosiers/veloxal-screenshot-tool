@@ -6,7 +6,6 @@ import com.quickshot.quickshot.ui.WidgetBarCommandTools;
 import com.quickshot.quickshot.ui.WidgetBarDrawingTools;
 import com.quickshot.quickshot.utilities.ScreenshotUtility;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
-import javafx.application.Platform;
 
 import java.awt.*;
 import java.io.IOException;
@@ -30,7 +29,18 @@ public class WidgetBarController {
         getDrawingToolBar().getUndoButton().setOnMouseReleased(e -> handleUndoButton());
         getCommandToolBar().getSaveButton().setOnMouseClicked(e -> handleSaveButton());
         getCommandToolBar().getCopyScreenshot().setOnMouseClicked(e -> handleCopyButton());
+        getCommandToolBar().getUploadScreenshot().setOnMouseClicked(e -> {
+            try {
+                handleUploadButton();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 //        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
+    }
+
+    private void handleUploadButton() throws IOException {
+        getScreenshotUtility().uploadScreenshot();
     }
 
     private void handleUndoButton() {
@@ -45,18 +55,18 @@ public class WidgetBarController {
 
     private void handleSaveButton() {
         try {
-            getScreenshotController().saveSingleScreenshotToFile();
+            getScreenshotUtility().saveSingleScreenshotToFile();
         } catch (AWTException | IOException ex) {
             throw new RuntimeException(ex);
         }
     }
 
     private void handleCopyButton() {
-        getScreenshotController().saveSingleScreenshotToClipboard();
+        getScreenshotUtility().saveSingleScreenshotToClipboard();
     }
 
     private void handleGifRecordButton() {
-        getScreenshotController().recordScreen(3);
+        getScreenshotUtility().recordScreen(3);
     }
 
     public void update() {
@@ -75,7 +85,7 @@ public class WidgetBarController {
         return commandToolBar;
     }
 
-    public ScreenshotUtility getScreenshotController() {
+    public ScreenshotUtility getScreenshotUtility() {
         return screenshotUtility;
     }
 

@@ -10,7 +10,8 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
     private final Widget closeButton;
     private final Widget saveScreenshot;
     private final Widget copyScreenshot;
-//    private final Widget recordGif;
+    //    private final Widget recordGif;
+    private final Widget uploadScreenshot;
 
     public WidgetBarCommandTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
@@ -21,6 +22,9 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
 //        recordGif = new Widget("record.png");
 //        recordGif.setClickableOnly();
 //        addWidget(recordGif);
+        uploadScreenshot = new Widget("upload.png");
+        uploadScreenshot.setClickableOnly();
+        addWidget(uploadScreenshot);
         saveScreenshot = new Widget("save.png");
         saveScreenshot.setClickableOnly();
         addWidget(saveScreenshot);
@@ -69,6 +73,10 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
 
     public Widget getCopyScreenshot() {
         return copyScreenshot;
+    }
+
+    public Widget getUploadScreenshot() {
+        return uploadScreenshot;
     }
 
     @Override
