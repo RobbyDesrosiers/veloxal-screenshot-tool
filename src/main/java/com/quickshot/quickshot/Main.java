@@ -25,6 +25,7 @@ public class Main extends Application {
                     @Override
                     public void run() {
                         stage.show();
+                        screenOverlay.setDim();
                         stage.setAlwaysOnTop(true);
                     }
                 });

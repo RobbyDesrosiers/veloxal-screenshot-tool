@@ -93,11 +93,13 @@ public class UserController {
     private void handleMousePressed(MouseEvent mouseEvent) {
         if (!viewfinderController.isCreated() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
+            screenOverlay.setTransparent();
         }
 
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
         if (!viewfinderController.isSelected() && !viewfinderController.getAnchors().isSelected() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
+            screenOverlay.setTransparent();
         } else if (viewfinderController.getMovementAllowed()){
             // if viewfinder is selected then mouse will drag
             // sets the offset of mouse within the box to accurately pan viewfinder
