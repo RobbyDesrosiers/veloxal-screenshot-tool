@@ -10,12 +10,10 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,6 +27,8 @@ public class ScreenshotUtility implements ClipboardOwner {
     private String directory;
     private String filetype;
     private final int FRAMES_TO_WAIT = 35;
+
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     private final Map<String, String> imageFileTypes = new HashMap<>(Map.of(
         "bmp (*.bmp)", "*.bmp",
         "png (*.png)", "*.png",
@@ -40,6 +40,18 @@ public class ScreenshotUtility implements ClipboardOwner {
 
     public ScreenshotUtility(ViewfinderController viewfinderController) {
         this.viewfinderController = viewfinderController;
+    }
+
+    public String getResponseData(InputStream inputStream) throws IOException {
+        // https://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        br.close();
+        return sb.toString();
     }
 
     private String parseExtension(String filetype) {
@@ -203,7 +215,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                         // writing bytes to BAOS
                         baos = new ByteArrayOutputStream();
                         BufferedImage screenCapture = getScreenshotBufferedImage();
-                        ImageIO.write(screenCapture, "bmp", baos);
+                        ImageIO.write(screenCapture, "jpg", baos);
 
                         // sending bytes to connection
                         byte[] bytes = baos.toByteArray();
@@ -212,11 +224,15 @@ public class ScreenshotUtility implements ClipboardOwner {
 
                         // setting display messages for user
                         viewfinderController.hideStage();
-                        if (connection.getResponseCode() == 200)
-                            viewfinderController.getProgramTray().displayMessage("Upload was successful", TrayIcon.MessageType.INFO);
-                        else
-                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.INFO);
 
+                        String screenshotURL = getResponseData(connection.getInputStream());
+                        if (connection.getResponseCode() == 200) {
+                            clipboard.setContents(new StringSelection(screenshotURL), new StringSelection(screenshotURL));
+                            viewfinderController.getProgramTray().displayMessage("Screenshot URL Copied to Clipboard\n" +
+                                    screenshotURL, TrayIcon.MessageType.INFO);
+                        } else {
+                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.INFO);
+                        }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -244,8 +260,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                 if (frameCount >= FRAMES_TO_WAIT) {
                     stop();
 
-                    Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
-                    c.setContents(new TransferableImage(getScreenshotBufferedImage()), getScreenshotUtility());
+                    clipboard.setContents(new TransferableImage(getScreenshotBufferedImage()), getScreenshotUtility());
                     viewfinderController.hideStage();
                     viewfinderController.getProgramTray().displayMessage("Successfully copied screenshot to clipboard", TrayIcon.MessageType.INFO);
                 }

@@ -1,6 +1,7 @@
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
+import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
@@ -39,6 +40,7 @@ public class WidgetPaintbrush extends WidgetLineDrawer {
         c.setFill(getBrushColor());
         c.setTranslateX(x);
         c.setTranslateY(y);
+        c.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
         pushShape(c);
     }
 

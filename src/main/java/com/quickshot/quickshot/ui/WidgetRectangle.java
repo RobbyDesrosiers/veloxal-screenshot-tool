@@ -2,6 +2,7 @@ package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
 import com.quickshot.quickshot.utilities.Coordinate;
+import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
@@ -41,6 +42,7 @@ public class WidgetRectangle extends WidgetLineDrawer {
         topLeftAnchorRectPosition.setX(x);
         topLeftAnchorRectPosition.setY(y);
         rect.setTranslateY(y);
+        rect.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
         pushShape(rect);
     }
 

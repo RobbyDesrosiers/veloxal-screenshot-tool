@@ -9,7 +9,6 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -47,11 +46,12 @@ public class UserController {
         viewfinderController.getWidgetController().getDrawingToolBar().getUndoButton().setOnMouseClicked(e -> refreshScreen());
 
         // close button
-        viewfinderController.getWidgetController().getCommandToolBar().getCloseButton()
-                .setOnMouseClicked(e -> {
-                    viewfinderController.hideStage();
-                    refreshScreen();
-                });
+        viewfinderController.getWidgetController().getCommandToolBar().getCloseButton().setOnMouseClicked(e -> minimiseProgram());
+    }
+
+    private void minimiseProgram() {
+        viewfinderController.hideStage();
+        refreshScreen();
     }
 
     private void initKeyboardEvents() {
@@ -61,8 +61,7 @@ public class UserController {
     private void handleKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case ESCAPE -> {
-                viewfinderController.hideStage();
-                refreshScreen();
+                minimiseProgram();
             }
             case F -> {
                 if (keyEvent.isShiftDown()) {
@@ -95,6 +94,7 @@ public class UserController {
         if (!viewfinderController.isCreated() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
         }
+
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
         if (!viewfinderController.isSelected() && !viewfinderController.getAnchors().isSelected() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
@@ -107,7 +107,7 @@ public class UserController {
     }
 
     private void handleMouseDragged(MouseEvent mouseEvent) {
-        // handles all widget drawwing
+        // handles all widget drawing
         if (viewfinderController.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
             Widget widget = viewfinderController.getWidgetController().getDrawingToolBar().getSelectedWidget();
             widget.draw(mouseEvent);

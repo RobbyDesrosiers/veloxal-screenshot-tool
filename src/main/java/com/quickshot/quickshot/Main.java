@@ -14,9 +14,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         ProgramTray programTray = new ProgramTray();
         ScreenOverlay screenOverlay = new ScreenOverlay();
-        new UserController(screenOverlay, programTray);
         screenOverlay.setProductionEnvironment(stage);
-//        stage.show();
+        new UserController(screenOverlay, programTray);
 
         programTray.getTrayIcon().addMouseListener(new MouseAdapter() {
             @Override
