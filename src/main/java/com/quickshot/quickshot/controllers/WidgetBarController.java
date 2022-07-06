@@ -6,7 +6,6 @@ import com.quickshot.quickshot.ui.WidgetBarCommandTools;
 import com.quickshot.quickshot.ui.WidgetBarDrawingTools;
 import com.quickshot.quickshot.utilities.ScreenshotUtility;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedList;

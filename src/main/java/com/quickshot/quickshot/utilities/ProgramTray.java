@@ -9,12 +9,15 @@ public class ProgramTray {
     double VERSION = 0.2;
     Image trayImg = Toolkit.getDefaultToolkit().createImage("src/main/java/com/quickshot/quickshot/resources/logo.png");
     TrayIcon trayIcon = new TrayIcon(trayImg, PROGRAM_TITLE + " " + VERSION);
-    //        trayIcon.displayMessage("Hello, World", "notification demo", MessageType.INFO);
 
     public ProgramTray() throws AWTException {
         //Let the system resize the image if needed
         trayIcon.setImageAutoSize(true);
         trayIcon.setToolTip(PROGRAM_TITLE + " " + VERSION);
+
+        PopupMenu popupMenu = new PopupMenu();
+        popupMenu.add(new MenuItem("Exit"));
+        trayIcon.setPopupMenu(popupMenu);
         tray.add(trayIcon);
     }
 

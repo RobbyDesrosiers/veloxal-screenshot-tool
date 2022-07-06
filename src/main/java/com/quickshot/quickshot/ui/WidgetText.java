@@ -10,8 +10,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-import java.awt.*;
-
 public class WidgetText extends WidgetLineDrawer {
     TextArea text;
     private final Coordinate topLeftAnchorRectPosition;

@@ -1,6 +1,5 @@
 package com.quickshot.quickshot.ui;
 
-import com.quickshot.quickshot.ui.Widget;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 
 public class WidgetUndo extends Widget {

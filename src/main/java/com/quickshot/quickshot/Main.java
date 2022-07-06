@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Main extends Application {
+    private final int LEFT_CLICK = 1;
     @Override
     public void start(Stage stage) throws Exception {
         ProgramTray programTray = new ProgramTray();
@@ -21,14 +22,13 @@ public class Main extends Application {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
+                if (e.getButton() == LEFT_CLICK) {
+                    Platform.runLater(() -> {
                         stage.show();
                         screenOverlay.setDim();
                         stage.setAlwaysOnTop(true);
-                    }
-                });
+                    });
+                }
             }
         });
     }

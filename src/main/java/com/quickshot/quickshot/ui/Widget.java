@@ -5,9 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import java.io.File;
-import java.nio.file.Path;
+
 
 public class Widget extends Button {
     private final ImageView icon;

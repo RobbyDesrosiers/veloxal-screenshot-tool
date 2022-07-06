@@ -4,7 +4,6 @@ import com.quickshot.quickshot.utilities.WidgetDrawData;
 import com.quickshot.quickshot.ui.abstracts.WidgetBar;
 import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.utilities.Monitor;
-import javafx.geometry.Orientation;
 
 public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
     private final Widget closeButton;

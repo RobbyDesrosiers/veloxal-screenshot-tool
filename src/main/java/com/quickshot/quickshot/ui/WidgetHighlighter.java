@@ -6,7 +6,6 @@ import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Objects;
