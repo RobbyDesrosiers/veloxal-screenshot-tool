@@ -3,6 +3,7 @@ package com.quickshot.quickshot.ui;
 import com.quickshot.quickshot.ui.abstracts.WidgetBar;
 import com.quickshot.quickshot.utilities.DisplayElement;
 import com.quickshot.quickshot.utilities.Monitor;
+import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.geometry.Pos;
 import javafx.scene.control.ColorPicker;
@@ -49,7 +50,7 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
 
         setTranslateX(getBoundingBox().getBottomRight().getX() - getWidth() + X_PADDING);
         setTranslateY(getBoundingBox().getBottomMiddle().getY() + Y_PADDING);
-        setViewOrder(-1); // todo fix this
+        setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
     }
 
     public void setWidgetsDrawingStatus(boolean b) {

@@ -1,5 +1,6 @@
 package com.quickshot.quickshot.ui;
 
+import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import com.quickshot.quickshot.ui.abstracts.WidgetBar;
 import com.quickshot.quickshot.utilities.DisplayElement;
@@ -55,7 +56,7 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
 
         setTranslateX(getBoundingBox().getBottomRight().getX() + X_PADDING);
         setTranslateY(getBoundingBox().getBottomMiddle().getY() - getHeight() + Y_PADDING);
-        setViewOrder(-1); // todo fix this
+        setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
     }
 
     public Widget getCloseButton() {

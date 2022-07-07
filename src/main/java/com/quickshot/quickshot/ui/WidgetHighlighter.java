@@ -41,7 +41,6 @@ public class WidgetHighlighter extends WidgetLineDrawer {
             getDrawData().getTempData().push(f);
             correctLines(f2.getTranslateX(), f2.getTranslateY(), f.getTranslateX(), f.getTranslateY());
         }
-        removeOverlappingRectangles();
     }
 
     @Override
@@ -57,10 +56,6 @@ public class WidgetHighlighter extends WidgetLineDrawer {
         c.setTranslateY(Objects.requireNonNullElse(mouseTranslateY, y));
 
         pushShape(c);
-    }
-
-    private void removeOverlappingRectangles() {
-        //todo this
     }
 
     public int getBrushSize() {
