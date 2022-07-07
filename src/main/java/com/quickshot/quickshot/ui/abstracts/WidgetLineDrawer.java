@@ -7,7 +7,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 public abstract class WidgetLineDrawer extends Widget {
-    private Color brushColor;
+    private Color fillColor;
     private WidgetDrawData drawData;
     private ColorPicker colorPicker;
 
@@ -15,15 +15,15 @@ public abstract class WidgetLineDrawer extends Widget {
         super(fileName);
         this.drawData = drawData;
         this.colorPicker = colorPicker;
-        setBrushColor(colorPicker.getValue());
+        setFillColor(colorPicker.getValue());
     }
 
-    public Color getBrushColor() {
-        return brushColor;
+    public Color getFillColor() {
+        return fillColor;
     }
 
-    public void setBrushColor(Color brushColor) {
-        this.brushColor = brushColor;
+    public void setFillColor(Color fillColor) {
+        this.fillColor = fillColor;
     }
 
     public WidgetDrawData getDrawData() {

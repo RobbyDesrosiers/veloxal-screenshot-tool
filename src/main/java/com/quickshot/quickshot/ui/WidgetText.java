@@ -23,7 +23,7 @@ public class WidgetText extends WidgetLineDrawer {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        setBrushColor(getColorPicker().getValue());
+        setFillColor(getColorPicker().getValue());
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);

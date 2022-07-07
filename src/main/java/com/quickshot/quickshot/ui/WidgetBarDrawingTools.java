@@ -9,12 +9,12 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
-    private final WidgetUndo undoButton;
+    private final Widget undoButton;
 
     public WidgetBarDrawingTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
         setHgap(2);
-        setPrefWidth(198);
+        setPrefWidth(265);
         setAlignment(Pos.CENTER_RIGHT);
 
         // create widgets
@@ -25,8 +25,10 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         addToggleWidget(new WidgetPaintbrush("paint-brush.png", drawData, colorPicker));
         addToggleWidget(new WidgetHighlighter("marker.png", drawData, colorPicker));
         addToggleWidget(new WidgetRectangle("rectangle.png", drawData, colorPicker));
+        addToggleWidget(new WidgetArrow("arrow.png", drawData, colorPicker));
+        addToggleWidget(new WidgetLine("line.png", drawData, colorPicker));
         addToggleWidget(new WidgetText("text.png", drawData, colorPicker));
-        undoButton = new WidgetUndo("undo.png", drawData);
+        undoButton = new Widget("undo.png");
         undoButton.setClickableOnly();
         addWidget(undoButton);
         getChildren().add(colorPicker);
@@ -71,7 +73,7 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         return false;
     }
 
-    public WidgetUndo getUndoButton() {
+    public Widget getUndoButton() {
         return undoButton;
     }
 

@@ -21,7 +21,7 @@ public class WidgetHighlighter extends WidgetLineDrawer {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        setBrushColor(getColorPicker().getValue());
+        setFillColor(getColorPicker().getValue());
         // used for horizontal shift functionality
         if (!mouseEvent.isShiftDown() || getDrawData().isNewLine())
             mouseTranslateY = null;
@@ -49,7 +49,7 @@ public class WidgetHighlighter extends WidgetLineDrawer {
         int brushHeight = 15;
         Rectangle c = new Rectangle(getBrushSize(), brushHeight);
         c.toBack();
-        c.setFill(getBrushColor());
+        c.setFill(getFillColor());
         c.setTranslateX(x);
         c.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
 

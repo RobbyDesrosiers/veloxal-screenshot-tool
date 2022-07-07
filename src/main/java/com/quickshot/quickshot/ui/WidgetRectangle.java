@@ -20,7 +20,7 @@ public class WidgetRectangle extends WidgetLineDrawer {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        setBrushColor(getColorPicker().getValue());
+        setFillColor(getColorPicker().getValue());
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);
@@ -34,7 +34,7 @@ public class WidgetRectangle extends WidgetLineDrawer {
         rect = new Rectangle(x, y);
         rect.setViewOrder(1);
         rect.setFill(Color.TRANSPARENT);
-        rect.setStroke(getBrushColor());
+        rect.setStroke(getFillColor());
         rect.setStrokeWidth(2);
         rect.setTranslateX(x);
         rect.setWidth(0);

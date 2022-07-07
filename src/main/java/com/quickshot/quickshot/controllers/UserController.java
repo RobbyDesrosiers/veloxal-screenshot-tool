@@ -47,6 +47,9 @@ public class UserController {
 
         // close button
         viewfinderController.getWidgetController().getCommandToolBar().getCloseButton().setOnMouseClicked(e -> minimiseProgram());
+
+        // program exit
+        programTray.getExitMenuButton().addActionListener(e -> System.exit(0));
     }
 
     private void minimiseProgram() {

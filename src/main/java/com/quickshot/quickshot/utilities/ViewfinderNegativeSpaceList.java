@@ -2,8 +2,6 @@ package com.quickshot.quickshot.utilities;
 
 import com.quickshot.quickshot.ui.ViewfinderBoundingBox;
 import com.quickshot.quickshot.ui.ViewfinderNegativeSpace;
-import com.quickshot.quickshot.utilities.DisplayElement;
-import com.quickshot.quickshot.utilities.Monitor;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
