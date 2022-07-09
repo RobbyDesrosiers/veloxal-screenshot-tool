@@ -47,6 +47,9 @@ public class UserController {
 
         // close button
         viewfinderController.getWidgetController().getCommandToolBar().getCloseButton().setOnMouseClicked(e -> minimiseProgram());
+
+        // program exit
+        programTray.getExitMenuButton().addActionListener(e -> System.exit(0));
     }
 
     private void minimiseProgram() {
@@ -156,8 +159,7 @@ public class UserController {
             viewfinderController.getWidgetController().getDrawData().saveTempDataToDrawData();
         }
 
-        // temp fix. when user clicks on a different control panel the drawing panel loses focus even if widget is still
-        // selected todo fix this
+        // when user clicks on a different control panel the drawing panel loses focus even if widget is still selected
         if (viewfinderController.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
             Widget w = viewfinderController.getWidgetController().getDrawingToolBar().getSelectedWidget();
             w.requestFocus();

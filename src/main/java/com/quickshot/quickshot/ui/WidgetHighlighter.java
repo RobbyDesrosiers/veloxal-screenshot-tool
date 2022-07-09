@@ -21,7 +21,7 @@ public class WidgetHighlighter extends WidgetLineDrawer {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        setBrushColor(getColorPicker().getValue());
+        setFillColor(getColorPicker().getValue());
         // used for horizontal shift functionality
         if (!mouseEvent.isShiftDown() || getDrawData().isNewLine())
             mouseTranslateY = null;
@@ -41,7 +41,6 @@ public class WidgetHighlighter extends WidgetLineDrawer {
             getDrawData().getTempData().push(f);
             correctLines(f2.getTranslateX(), f2.getTranslateY(), f.getTranslateX(), f.getTranslateY());
         }
-        removeOverlappingRectangles();
     }
 
     @Override
@@ -49,7 +48,7 @@ public class WidgetHighlighter extends WidgetLineDrawer {
         int brushHeight = 15;
         Rectangle c = new Rectangle(getBrushSize(), brushHeight);
         c.toBack();
-        c.setFill(getBrushColor());
+        c.setFill(getFillColor());
         c.setTranslateX(x);
         c.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
 
@@ -57,10 +56,6 @@ public class WidgetHighlighter extends WidgetLineDrawer {
         c.setTranslateY(Objects.requireNonNullElse(mouseTranslateY, y));
 
         pushShape(c);
-    }
-
-    private void removeOverlappingRectangles() {
-        //todo this
     }
 
     public int getBrushSize() {

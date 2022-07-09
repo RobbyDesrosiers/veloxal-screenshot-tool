@@ -6,7 +6,6 @@ import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class WidgetPaintbrush extends WidgetLineDrawer {
@@ -18,7 +17,7 @@ public class WidgetPaintbrush extends WidgetLineDrawer {
 
     @Override
     public void draw(MouseEvent mouseEvent) {
-        setBrushColor(getColorPicker().getValue());
+        setFillColor(getColorPicker().getValue());
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);
@@ -37,7 +36,7 @@ public class WidgetPaintbrush extends WidgetLineDrawer {
     public void addShape(double x, double y) {
         Circle c = new Circle(getBrushSize());
         c.setViewOrder(1);
-        c.setFill(getBrushColor());
+        c.setFill(getFillColor());
         c.setTranslateX(x);
         c.setTranslateY(y);
         c.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
