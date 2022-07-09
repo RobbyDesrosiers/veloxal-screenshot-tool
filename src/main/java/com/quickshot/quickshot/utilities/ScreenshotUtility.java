@@ -215,7 +215,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                         // writing bytes to BAOS
                         baos = new ByteArrayOutputStream();
                         BufferedImage screenCapture = getScreenshotBufferedImage();
-                        ImageIO.write(screenCapture, "jpg", baos);
+                        ImageIO.write(screenCapture, "png", baos);
 
                         // sending bytes to connection
                         byte[] bytes = baos.toByteArray();
@@ -320,4 +320,61 @@ public class ScreenshotUtility implements ClipboardOwner {
     public void lostOwnership(Clipboard clipboard, Transferable contents) {
 
     }
+
+    public void readTextFromImage() {
+        getViewfinder().setVisible(false);
+
+        AnimationTimer waitForFrameRender = new AnimationTimer() {
+            private int frameCount = 0;
+            @Override
+            public void handle(long timestamp) {
+                frameCount++;
+                if (frameCount >= FRAMES_TO_WAIT) {
+                    stop();
+
+                    HttpURLConnection connection;
+                    ByteArrayOutputStream baos;
+                    try {
+                        // connection setup to flask server
+                        URL url = new URL("http://127.0.0.1:5000/api/v1/read/");
+                        connection = (HttpURLConnection) url.openConnection();
+                        connection.setDoOutput(true);
+                        connection.setRequestProperty("Content-Type", "image/jpeg");
+                        connection.setRequestMethod("POST");
+
+                        // writing bytes to BAOS
+                        baos = new ByteArrayOutputStream();
+                        BufferedImage screenCapture = getScreenshotBufferedImage();
+                        ImageIO.write(screenCapture, "png", baos);
+
+                        // sending bytes to connection
+                        byte[] bytes = baos.toByteArray();
+                        baos.write(bytes); // your bytes here
+                        baos.writeTo(connection.getOutputStream());
+
+                        // setting display messages for user
+                        viewfinderController.hideStage();
+
+                        String screenshotURL = getResponseData(connection.getInputStream());
+                        if (connection.getResponseCode() == 200) {
+                            clipboard.setContents(new StringSelection(screenshotURL), new StringSelection(screenshotURL));
+                            viewfinderController.getProgramTray().displayMessage("Text copied to clipboard", TrayIcon.MessageType.INFO);
+                        } else {
+                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.INFO);
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        baos.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    connection.disconnect();
+                }
+            }
+        };
+        waitForFrameRender.start();
+    }
+
 }

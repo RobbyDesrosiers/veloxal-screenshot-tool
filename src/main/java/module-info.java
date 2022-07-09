@@ -4,7 +4,6 @@ module com.quickshot.quickshot {
     requires java.desktop;
     requires com.squareup.gifencoder;
 
-
     opens com.quickshot.quickshot to javafx.fxml;
     exports com.quickshot.quickshot;
     exports com.quickshot.quickshot.controllers;

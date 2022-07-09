@@ -35,7 +35,12 @@ public class WidgetBarController {
                 throw new RuntimeException(ex);
             }
         });
+        getCommandToolBar().getReadText().setOnMouseClicked(e -> handleReadTextButton());
 //        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
+    }
+
+    private void handleReadTextButton() {
+        getScreenshotUtility().readTextFromImage();
     }
 
     private void handleUploadButton() throws IOException {
