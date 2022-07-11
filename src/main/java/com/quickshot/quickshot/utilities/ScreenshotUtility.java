@@ -1,9 +1,9 @@
 package com.quickshot.quickshot.utilities;
 
 import com.quickshot.quickshot.controllers.ViewfinderController;
-import com.squareup.gifencoder.FloydSteinbergDitherer;
-import com.squareup.gifencoder.GifEncoder;
-import com.squareup.gifencoder.ImageOptions;
+//import com.squareup.gifencoder.FloydSteinbergDitherer;
+//import com.squareup.gifencoder.GifEncoder;
+//import com.squareup.gifencoder.ImageOptions;
 import javafx.animation.AnimationTimer;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -172,23 +172,23 @@ public class ScreenshotUtility implements ClipboardOwner {
 
     // found -> https://genuinecoder.com/how-to-create-gif-from-multiple-images-in-java/
     public void convertFrameArraysToGif(int fps, ArrayList<int[][]> arrayOfFrames, String directory) throws IOException {
-        try (FileOutputStream outputStream = new FileOutputStream("src/main/java/com/quickshot/quickshot/testImages/my_animated_image.gif")) {
-            GifEncoder gifEncoder = new GifEncoder(outputStream, (int) getViewfinder().getBoundingBox().getWidth(), (int) getViewfinder().getBoundingBox().getWidth(), 0);
-            ImageOptions options = new ImageOptions();
-
-            //Set 500ms between each frame
-            options.setDelay(50, TimeUnit.MILLISECONDS);
-            //Use Floyd Steinberg dithering as it yields the best quality
-            options.setDitherer(FloydSteinbergDitherer.INSTANCE);
-
-            //Create GIF encoder with same dimension as of the source images
-            for (int[][] frame : arrayOfFrames) {
-                gifEncoder.addImage(frame, options);
-            }
-            gifEncoder.finishEncoding();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try (FileOutputStream outputStream = new FileOutputStream("src/main/java/com/quickshot/quickshot/testImages/my_animated_image.gif")) {
+//            GifEncoder gifEncoder = new GifEncoder(outputStream, (int) getViewfinder().getBoundingBox().getWidth(), (int) getViewfinder().getBoundingBox().getWidth(), 0);
+//            ImageOptions options = new ImageOptions();
+//
+//            //Set 500ms between each frame
+//            options.setDelay(50, TimeUnit.MILLISECONDS);
+//            //Use Floyd Steinberg dithering as it yields the best quality
+//            options.setDitherer(FloydSteinbergDitherer.INSTANCE);
+//
+//            //Create GIF encoder with same dimension as of the source images
+//            for (int[][] frame : arrayOfFrames) {
+//                gifEncoder.addImage(frame, options);
+//            }
+//            gifEncoder.finishEncoding();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void uploadScreenshot() throws IOException {
@@ -360,9 +360,10 @@ public class ScreenshotUtility implements ClipboardOwner {
                             clipboard.setContents(new StringSelection(screenshotURL), new StringSelection(screenshotURL));
                             viewfinderController.getProgramTray().displayMessage("Text copied to clipboard", TrayIcon.MessageType.INFO);
                         } else {
-                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.INFO);
+                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.WARNING);
                         }
                     } catch (IOException e) {
+                        viewfinderController.getProgramTray().displayMessage("Connection failed to server" + e.getMessage(), TrayIcon.MessageType.WARNING);
                         throw new RuntimeException(e);
                     }
                     try {

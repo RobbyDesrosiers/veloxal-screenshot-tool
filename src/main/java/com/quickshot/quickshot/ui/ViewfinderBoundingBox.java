@@ -1,5 +1,6 @@
 package com.quickshot.quickshot.ui;
 
+import com.quickshot.quickshot.utilities.BoundingBoxSnap;
 import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.Coordinate;
 import com.quickshot.quickshot.utilities.DisplayElement;
@@ -14,6 +15,7 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
     private final Coordinate pointC = new Coordinate();
     private final Coordinate pointD = new Coordinate();
     private final Coordinate clickedStartingPoint = new Coordinate();
+    private final BoundingBoxSnap boundingBoxSnap;
     private boolean isMouseOver;
     private boolean isSelected;
 
@@ -24,6 +26,8 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
 
     public ViewfinderBoundingBox() {
         super(0, 0);
+        boundingBoxSnap = new BoundingBoxSnap(true);
+
         setFill(Color.TRANSPARENT);
         getStrokeDashArray().addAll(4d);
         setStroke(Color.WHITE);
@@ -164,6 +168,10 @@ public class ViewfinderBoundingBox extends Rectangle implements DisplayElement {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public BoundingBoxSnap getBoundingBoxSnap() {
+        return boundingBoxSnap;
     }
 
     @Override

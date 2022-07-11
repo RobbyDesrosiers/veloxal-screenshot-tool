@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+// properly build
+//https://stackoverflow.com/questions/1082580/how-to-build-jars-from-intellij-properly
+
 public class Main extends Application {
     private final int LEFT_CLICK = 1;
     @Override
