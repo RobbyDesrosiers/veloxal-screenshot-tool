@@ -18,7 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
-
+notes.txt
 # generated image files #
 /src/main/java/com/quickshot/quickshot/testImages
 
