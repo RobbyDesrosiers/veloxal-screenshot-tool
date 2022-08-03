@@ -1,11 +1,11 @@
 import io
 import os
 import secrets
-
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from PIL import Image
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory, send_file, jsonify
 from werkzeug.utils import secure_filename
 
 import cv2
@@ -20,6 +20,7 @@ app.config['UPLOAD_FOLDER'] = 'static/screenshots'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 
 class Screenshot(db.Model):
@@ -33,8 +34,6 @@ class Screenshot(db.Model):
         return f'<Screenshot /{self.url}>'
 
 
-
-
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(basedir, 'static'), 'favicon.ico')
@@ -46,15 +45,16 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/<string:url>')
+@app.route('/v/<string:url>')
 def view_screenshot(url):
     screenshot = Screenshot.query.filter_by(url=url).first()
     if (screenshot != None):
         screenshot.views += 1
         db.session.commit()
-        return render_template('viewscreenshot.html', screenshot=screenshot, title="Screenshot Viewer")
+        print(screenshot.path)
+        return send_from_directory(app.config['UPLOAD_FOLDER'], f"{url}.png", as_attachment=True)
     else:
-        return render_template('404.html')
+        return '404 ERROR'
 
 
 @app.route('/api/v1/upload/', methods=['GET', 'POST'])
@@ -104,10 +104,15 @@ def read_text():
 
         read_image = cv2.imread(path)
         text = pytesseract.image_to_string(read_image)
-        print(text)
         return text
     else:
         return render_template('404.html')
+
+
+# sanity check route
+@app.route('/ping', methods=['GET'])
+def ping_pong():
+    return jsonify('pong!')
 
 
 def allowed_file(filename: str):

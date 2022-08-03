@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Download from '@/views/Download';
+import ViewScreenshot from '@/views/ViewScreenshot';
+import Ping from '@/views/ping';
 
 const routes = [
   {
@@ -9,9 +11,19 @@ const routes = [
     component: Home,
   },
   {
+    path: '/ping',
+    name: 'ping',
+    component: Ping,
+  },
+  {
     path: '/download',
     name: 'download',
     component: Download,
+  },
+  {
+    path: '/v/:id',
+    name: 'view',
+    component: ViewScreenshot,
   },
 ];
 

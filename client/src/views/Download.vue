@@ -1,5 +1,5 @@
 <template>
-  <Navbar page-opened="Download"/>
+<Navbar page-opened="Download"/>
 </template>
 
 <script>
