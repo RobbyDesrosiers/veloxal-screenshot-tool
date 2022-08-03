@@ -5,11 +5,11 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from PIL import Image
-from flask import Flask, request, render_template, send_from_directory, send_file, jsonify
+from flask import Flask, request, render_template, send_from_directory, jsonify
 from werkzeug.utils import secure_filename
-
 import cv2
 import pytesseract
+
 pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
 
 ALLOWED_EXTENSIONS = {'bmp', 'png', 'jpg', 'jpeg', 'gif'}
@@ -20,6 +20,7 @@ app.config['UPLOAD_FOLDER'] = 'static/screenshots'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 
@@ -46,15 +47,14 @@ def home():
 
 
 @app.route('/v/<string:url>')
-def view_screenshot(url):
+def get_screenshot_file(url):
     screenshot = Screenshot.query.filter_by(url=url).first()
     if (screenshot != None):
         screenshot.views += 1
         db.session.commit()
-        print(screenshot.path)
         return send_from_directory(app.config['UPLOAD_FOLDER'], f"{url}.png", as_attachment=True)
     else:
-        return '404 ERROR'
+        return jsonify('404')
 
 
 @app.route('/api/v1/upload/', methods=['GET', 'POST'])
@@ -64,11 +64,11 @@ def file_upload():
         image_format = image.format.lower()
 
         if not (allowed_file(image_format)):
-            return render_template('404.html')
+            return jsonify('404')
 
         random_url = secure_filename(secrets.token_urlsafe(8))
 
-        path = app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
+        path = 'flaskServer/' + app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
         image.save(path)
 
         new_screenshot = Screenshot(url=random_url,
@@ -77,9 +77,9 @@ def file_upload():
 
         db.session.add(new_screenshot)
         db.session.commit()
-        return f"http://127.0.0.1:5000/{random_url}"
+        return f"http://127.0.0.1:8080/v/{random_url}"
     else:
-        return render_template('404.html')
+        return jsonify('404')
 
 # https://towardsdatascience.com/read-text-from-image-with-one-line-of-python-code-c22ede074cac
 @app.route('/api/v1/read/', methods=['GET', 'POST'])
@@ -93,17 +93,14 @@ def read_text():
         if not (allowed_file(image_format)):
             return render_template('404.html')
 
-        path = app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
+        path = 'flaskServer/' + app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
         image.save(path)
-
-        # new_screenshot = Screenshot(url=random_url,
-        #                             path=path,
-        #                             views=0)
-        # db.session.add(new_screenshot)
-        # db.session.commit()
 
         read_image = cv2.imread(path)
         text = pytesseract.image_to_string(read_image)
+
+        os.remove(path)
+
         return text
     else:
         return render_template('404.html')
