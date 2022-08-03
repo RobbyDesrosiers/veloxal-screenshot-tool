@@ -1,3 +1,9 @@
+/**
+ * UserController.java
+ * @Description: The primary controller for the entire program. This file controls the main entity of this application
+ * which is the viewfinder via the ViewfinderController. It handles all upper level mouse movement, clicks, and presses
+ * and also refreshes the screen's geometry with each mouse action (move, click, press) via screenRefresh() method.
+ */
 package com.quickshot.quickshot.controllers;
 
 import com.quickshot.quickshot.utilities.DisplayElement;
@@ -17,8 +23,14 @@ public class UserController {
     private final ViewfinderController viewfinderController;
     private final ProgramTray programTray;
 
-
-    public UserController(ScreenOverlay screenOverlay, ProgramTray programTray) throws AWTException {
+    /**
+     *
+     * @param screenOverlay: Passed in from main.java, screenOverlay is the transparent window pane which elements
+     *                     are drawn on
+     * @param programTray: Passed in from main.java, programTray is the icon and functionality of the intractable
+     *                   system tray icon
+     */
+    public UserController(ScreenOverlay screenOverlay, ProgramTray programTray) {
         this.screenOverlay = screenOverlay;
         this.screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
         this.programTray = programTray;
@@ -27,6 +39,9 @@ public class UserController {
         initKeyboardEvents();
     }
 
+    /**
+     * Initializes all mouse event handlers
+     */
     private void initMouseEvents() {
         // used primarily for hover/cursor changes
         screenOverlay.getScene().addEventFilter(MouseEvent.MOUSE_MOVED, this::handleMouseMoved);
@@ -52,15 +67,25 @@ public class UserController {
         programTray.getExitMenuButton().addActionListener(e -> System.exit(0));
     }
 
+    /**
+     * Initializes all keyboard event handlers
+     */
+    private void initKeyboardEvents() {
+        screenOverlay.getScene().setOnKeyPressed(this::handleKeyPressed);
+    }
+
+    /**
+     * Minimise program by hiding the current stage so user no longer can interact or view elements on screen
+     */
     private void minimiseProgram() {
         viewfinderController.hideStage();
         refreshScreen();
     }
 
-    private void initKeyboardEvents() {
-        screenOverlay.getScene().setOnKeyPressed(this::handleKeyPressed);
-    }
-
+    /**
+     * Handles key pressed events for program shortcuts
+     * @param keyEvent
+     */
     private void handleKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case ESCAPE -> {
@@ -75,6 +100,10 @@ public class UserController {
         refreshScreen();
     }
 
+    /**
+     * Handles each iteration of the movement of the mouse in order to refresh the cursor icon
+     * @param mouseEvent
+     */
     private void handleMouseMoved(MouseEvent mouseEvent) {
         // sets all widgets 'isDrawing' field to false (used to determine undo button usage in refreshScreen())
         viewfinderController.getWidgetController().getDrawingToolBar().setWidgetsDrawingStatus(false);
@@ -93,6 +122,10 @@ public class UserController {
         refreshScreen();
     }
 
+    /**
+     * Handles any mouse press events that occur on window pane.
+     * @param mouseEvent
+     */
     private void handleMousePressed(MouseEvent mouseEvent) {
         if (!viewfinderController.isCreated() && viewfinderController.getMovementAllowed()) {
             viewfinderController.createViewfinder(mouseEvent);
@@ -111,6 +144,11 @@ public class UserController {
         refreshScreen();
     }
 
+    /**
+     * Handles all drag events that occur on window pane. Mainly used to recalculate the dimensions of the viewfinder
+     * when user clicks on any anchors, or the viewfinder itsself to drag, scale
+     * @param mouseEvent
+     */
     private void handleMouseDragged(MouseEvent mouseEvent) {
         // handles all widget drawing
         if (viewfinderController.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
@@ -137,6 +175,10 @@ public class UserController {
         refreshScreen();
     }
 
+    /**
+     * Handles all release events of the mouse.
+     * @param mouseEvent
+     */
     private void handleMouseReleased(MouseEvent mouseEvent) {
         // fixes on creation drag bug which caused bottom-right anchor to be selected all the time
         // this is due to bottom-right being auto selected (true) on creation for dragging capabilities
@@ -149,6 +191,10 @@ public class UserController {
         refreshScreen();
     }
 
+    /**
+     * The main event loop for the entire program. This refreshes the screen's elements anytime the mouse is moved,
+     * pressed, or dragged. See additional comments within function for more info
+     */
     public void refreshScreen() {
         if (!viewfinderController.isCreated())
             return;

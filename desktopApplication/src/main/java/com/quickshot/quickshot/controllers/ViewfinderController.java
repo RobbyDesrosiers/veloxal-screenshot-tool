@@ -1,3 +1,8 @@
+/**
+ * ViewfinderController.java
+ * @Description: Encapsulates all separate, individual viewfinder elements
+ */
+
 package com.quickshot.quickshot.controllers;
 
 import com.quickshot.quickshot.ui.ViewfinderBoundingBox;
@@ -10,18 +15,26 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ViewfinderController {
+    // The main rectangle of the viewfinder
     private final ViewfinderBoundingBox boundingBox;
+    // The 8 anchors located at all 4 corners and middle of each side
     private final ViewfinderAnchorList anchors;
+    // The dimensions located in top left corner of the viewfinder
     private final ViewfinderDimensions dimensions;
+    // The dimmed area located around the boundingBox
     private final ViewfinderNegativeSpaceList negativeSpace;
+    // The controller for the toolbars/widget bars located on the bottom right/left sides
     private final WidgetBarController widgetController;
+    // All display elements of the viewfinder. Used for easy screen rendering of elements
     private final ObservableList<DisplayElement> viewFinderElements = FXCollections.observableArrayList();
+    // The program tray icon and functionality
     private final ProgramTray programTray;
     private boolean isCreated;
     private boolean isMovementAllowed;
     private boolean isMousePassthroughOn;
 
     public ViewfinderController(ProgramTray programTray) {
+        // inits all viewfinder elements
         boundingBox = new ViewfinderBoundingBox();
         anchors = new ViewfinderAnchorList();
         dimensions = new ViewfinderDimensions();
@@ -36,10 +49,14 @@ public class ViewfinderController {
         viewFinderElements.addAll(negativeSpace);
         viewFinderElements.add(widgetController.getDrawingToolBar());
         viewFinderElements.add(widgetController.getCommandToolBar());
-        setCreated(false);
+        setCreated(false);  // elements are created but not rendered onto screen
         allowMovement(true);
     }
 
+    /**
+     * Creates and initializes elements of the viewfinder for screen render
+     * @param mouseEvent
+     */
     public void createViewfinder(MouseEvent mouseEvent) {
         getBoundingBox().resetViewfinderBoundingBox(mouseEvent);
         getAnchors().setBoundingBox(boundingBox);
@@ -54,6 +71,9 @@ public class ViewfinderController {
         getBoundingBox().requestFocus();
     }
 
+    /**
+     * Updates all associative elements of viewfinder positions
+     */
     public void update() {
         getBoundingBox().update();
         getAnchors().update();
@@ -62,15 +82,19 @@ public class ViewfinderController {
         getWidgetController().update();
     }
 
+    /**
+     * Sets the visibility of all viewfinder elements
+     * @param b: Boolean. True for visible, False for invisible
+     */
     public void setVisible(boolean b) {
-        getBoundingBox().setVisible(b);
-        getAnchors().setVisible(b);
-        getDimensions().setVisible(b);
+        setVisibilityForScreenshot(b);
         getNegativeSpace().setVisible(b);
-        getWidgetController().getDrawingToolBar().setVisible(b);
-        getWidgetController().getCommandToolBar().setVisible(b);
     }
 
+    /**
+     * Same functionality as setVisible except does not set NegativeSpace
+     * @param b
+     */
     public void setVisibilityForScreenshot(boolean b) {
         getAnchors().setVisible(b);
         getBoundingBox().setVisible(b);
@@ -79,51 +103,28 @@ public class ViewfinderController {
         getWidgetController().getCommandToolBar().setVisible(b);
     }
 
-    public ViewfinderBoundingBox getBoundingBox() {
-        return boundingBox;
-    }
-
-    public ObservableList<DisplayElement> getDisplayElements() {
-        return viewFinderElements;
-    }
-
-    public ViewfinderAnchorList getAnchors() {
-        return anchors;
-    }
-
-    public boolean isSelected() {
-        return getBoundingBox().isSelected();
-    }
-
-    public boolean isCreated() {
-        return isCreated;
-    }
-
-    public void setCreated(boolean created) {
-        isCreated = created;
-    }
-
-    public WidgetBarController getWidgetController() {
-        return widgetController;
-    }
-
-    public ViewfinderNegativeSpaceList getNegativeSpace() {
-        return negativeSpace;
-    }
-
-    private ViewfinderDimensions getDimensions() {
-        return dimensions;
-    }
-
-
+    /**
+     * Quick way to access Bounding Box's setDragPoint function
+     * @param mouseEvent
+     */
     public void setDragPoint(MouseEvent mouseEvent) {
         getBoundingBox().setDragPoint(mouseEvent);
     }
 
+    /**
+     * Quick way to access Bounding Box's move function
+     * @param mouseEvent
+     */
     public void move(MouseEvent mouseEvent) {
         getBoundingBox().move(mouseEvent);
     }
 
+    /**
+     * Checks to see if user drags the viewfinder across it's opposite side. Without this function, any rectangles with
+     * a negative width, height would not be rendered. This function checks what anchor is selected when the viewfinder
+     * crosses it's opposite side then swiftly switches the selected anchor. This gives the appearance that the viewfinder
+     * crossed itself
+     */
     public void checkViewfinderInversion() {
         ViewfinderAnchorPosition selectedAnchor = getAnchors().getSelectedAnchorPosition();
         if (selectedAnchor == null)
@@ -180,6 +181,9 @@ public class ViewfinderController {
         }
     }
 
+    /**
+     * Sets the viewfinder to monitor's width and height
+     */
     public void enterFullScreen() {
         boundingBox.setWidth(Monitor.getMonitorWidth());
         boundingBox.setHeight(Monitor.getMonitorHeight());
@@ -187,15 +191,20 @@ public class ViewfinderController {
         boundingBox.setTranslateY(0);
     }
 
+    /**
+     *
+     * @return True if viewfinder is equal to the monitor's height and width
+     *         False if not
+     */
     public boolean isFullScreen() {
         return (boundingBox.getWidth() == Monitor.getMonitorWidth()
                 && boundingBox.getHeight() == Monitor.getMonitorHeight());
     }
 
-    public Stage getStage() {
-        return (Stage) getBoundingBox().getScene().getWindow();
-    }
-
+    /**
+     * Sets the isMovementAllowed variable. Used to check if user has ability to move the viewfinder
+     * @param b
+     */
     public void allowMovement(boolean b) {
         isMovementAllowed = b;
     }
@@ -204,6 +213,11 @@ public class ViewfinderController {
         return isMovementAllowed;
     }
 
+    /**
+     * Allows window pane to become completely transparent allowing mouse pass through to objects underneath it
+     * This will allow user to select elements on their screen with the window pane on top of other windows
+     * @param b
+     */
     public void allowMousePassthrough(boolean b) {
         isMousePassthroughOn = b;
 
@@ -215,6 +229,9 @@ public class ViewfinderController {
         }
     }
 
+    /**
+     * Hides the entire stage from user, essentially making the program disappear
+     */
     public void hideStage() {
         getWidgetController().getDrawingToolBar().setWidgetsDrawingStatus(false);
         getWidgetController().getDrawingToolBar().setWidgetsSelected(false);
@@ -223,11 +240,51 @@ public class ViewfinderController {
         getStage().hide();
     }
 
+    public Stage getStage() {
+        return (Stage) getBoundingBox().getScene().getWindow();
+    }
+
     public boolean isMousePassthroughAllowed() {
         return isMousePassthroughOn;
     }
 
     public ProgramTray getProgramTray() {
         return programTray;
+    }
+
+    public ViewfinderBoundingBox getBoundingBox() {
+        return boundingBox;
+    }
+
+    public ObservableList<DisplayElement> getDisplayElements() {
+        return viewFinderElements;
+    }
+
+    public ViewfinderAnchorList getAnchors() {
+        return anchors;
+    }
+
+    public boolean isSelected() {
+        return getBoundingBox().isSelected();
+    }
+
+    public boolean isCreated() {
+        return isCreated;
+    }
+
+    public void setCreated(boolean created) {
+        isCreated = created;
+    }
+
+    public WidgetBarController getWidgetController() {
+        return widgetController;
+    }
+
+    public ViewfinderNegativeSpaceList getNegativeSpace() {
+        return negativeSpace;
+    }
+
+    private ViewfinderDimensions getDimensions() {
+        return dimensions;
     }
 }

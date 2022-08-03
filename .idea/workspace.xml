@@ -5,71 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Swiftshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quickshot.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/controllers/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/controllers/ViewfinderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/controllers/WidgetBarController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/copy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/marker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/paint-brush.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/readtext.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/record.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/rectangle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/save.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/undo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/resources/upload.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/ScreenOverlay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/ViewfinderAnchor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/ViewfinderBoundingBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/ViewfinderDimensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/ViewfinderMouseCoordinates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/ViewfinderNegativeSpace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/Widget.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetArrow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetHighlighter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetLine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetPaintbrush.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetRectangle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/WidgetText.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetBar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetLineDrawer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/Coordinate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/DisplayElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/Monitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/ProgramTray.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/TransferableImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/ViewfinderNegativeSpaceList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/ViewfinderViewOrder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quickshot/quickshot/utilities/WidgetDrawData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/ViewfinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/ViewfinderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/WidgetBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/WidgetBarController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,20 +33,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/desktopApplication",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/desktopApplication&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.quickshot.quickshot.Main" />
       <module name="quickshot" />
+      <option name="PROGRAM_PARAMETERS" value="-Dprism.vsync=false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/desktopApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.quickshot.quickshot.*" />
@@ -134,6 +75,7 @@
       <updated>1659551076676</updated>
       <workItem from="1659551080770" duration="369000" />
       <workItem from="1659551469866" duration="48000" />
+      <workItem from="1659551749904" duration="3530000" />
     </task>
     <servers />
   </component>

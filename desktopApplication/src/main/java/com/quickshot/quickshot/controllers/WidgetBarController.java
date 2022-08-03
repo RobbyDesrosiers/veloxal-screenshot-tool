@@ -1,3 +1,8 @@
+/**
+ * WidgetBarController.java
+ * @Description: Used to encapsulate the two toolbars/widget bars that hold all drawing functionality and commands
+ */
+
 package com.quickshot.quickshot.controllers;
 
 
@@ -17,6 +22,7 @@ public class WidgetBarController {
     private final ScreenshotUtility screenshotUtility;
 
     public WidgetBarController(ViewfinderController viewfinderController) {
+        // inits all class objects
         drawData = new WidgetDrawData();
         drawingToolBar = new WidgetBarDrawingTools(viewfinderController.getBoundingBox(), drawData);
         commandToolBar = new WidgetBarCommandTools(viewfinderController.getBoundingBox(), drawData);
@@ -24,6 +30,9 @@ public class WidgetBarController {
         initMouseEvents();
     }
 
+    /**
+     * Initializes all mouse events the CommandToolbar and handles associated mouse clicks
+     */
     private void initMouseEvents() {
         getDrawingToolBar().getUndoButton().setOnMouseReleased(e -> handleUndoButton());
         getCommandToolBar().getSaveButton().setOnMouseClicked(e -> handleSaveButton());
@@ -39,14 +48,23 @@ public class WidgetBarController {
 //        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
     }
 
+    /**
+     * Handles the button press for the 'Read Text Button' and activates the appropriate function
+     */
     private void handleReadTextButton() {
         getScreenshotUtility().readTextFromImage();
     }
 
+    /**
+     * Handles the button press for the 'Upload Button' and activates the appropriate function
+     */
     private void handleUploadButton() throws IOException {
         getScreenshotUtility().uploadScreenshot();
     }
 
+    /**
+     * Handles the 'Undo Button' when clicked by user
+     */
     private void handleUndoButton() {
         Widget selectedWidget = getDrawingToolBar().getSelectedWidget();
         // moves the latest permanent drawn data into a deleted data list which will be removed from within
@@ -57,6 +75,9 @@ public class WidgetBarController {
             selectedWidget.setSelected(true);
     }
 
+    /**
+     * Handles the 'Save Button' when clicked by user
+     */
     private void handleSaveButton() {
         try {
             getScreenshotUtility().saveSingleScreenshotToFile();
@@ -65,6 +86,9 @@ public class WidgetBarController {
         }
     }
 
+    /**
+     * Handles the 'Copy To Clipboard Button' when clicked by user
+     */
     private void handleCopyButton() {
         getScreenshotUtility().saveSingleScreenshotToClipboard();
     }
@@ -73,6 +97,9 @@ public class WidgetBarController {
         getScreenshotUtility().recordScreen(3);
     }
 
+    /**
+     * Updates the new positions for the toolbars for screenRefresh functionality in UserController
+     */
     public void update() {
         getDrawingToolBar().update();
         getCommandToolBar().update();
