@@ -9,7 +9,7 @@
         <module name="quickshot" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17">
       <module name="quickshot" target="17" />
     </bytecodeTargetLevel>
   </component>

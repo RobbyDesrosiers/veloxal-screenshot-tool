@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/quickshot.iml" filepath="$PROJECT_DIR$/quickshot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/QuickShot.iml" filepath="$PROJECT_DIR$/.idea/QuickShot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desktopApplication/quickshot.iml" filepath="$PROJECT_DIR$/desktopApplication/quickshot.iml" />
     </modules>
   </component>
 </project>

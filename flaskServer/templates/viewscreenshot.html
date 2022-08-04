@@ -1,0 +1,8 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+{% block content %}
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="image-wrapper"><img class="user-image" src="{{ screenshot.path }}"  alt="User Screenshot"/></div>
+    </div>
+{% endblock %}
+
