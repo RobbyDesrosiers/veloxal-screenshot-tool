@@ -1,3 +1,9 @@
+/**
+ * WidgetBarCommandTools.java
+ * @Description: The widget bar located on the right side of the viewfinder that houses all of the screenshot
+ * commands like save, upload, copy. This is the graphical element of the bar along with the controls for
+ * functionality
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
@@ -10,7 +16,6 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
     private final Widget closeButton;
     private final Widget saveScreenshot;
     private final Widget copyScreenshot;
-    //    private final Widget recordGif;
     private final Widget uploadScreenshot;
     private final Widget readText;
 
@@ -19,10 +24,7 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         setPrefColumns(1);
         setVgap(3);
 
-        // create widgets
-//        recordGif = new Widget("record.png");
-//        recordGif.setClickableOnly();
-//        addWidget(recordGif);
+        // creates all widgets on the widget bar and adds them to it
         readText = new Widget("readtext.png");
         readText.setClickableOnly();
         addWidget(readText);
@@ -39,6 +41,9 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         addWidget(closeButton);
     }
 
+    /**
+     * Calculates the screen position of the widget bar
+     */
     public void calculateScreenPosition() {
         final int OFFSET = 10;
         final int HEIGHT_OF_DRAWING_TOOLS = 30;

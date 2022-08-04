@@ -1,3 +1,9 @@
+/**
+ * WidgetLineDrawer.java
+ * @Description: Extends the base Widget class functionality to allow easy additional drawing functionality for
+ * any widgets which draw objects onto the screen via the mouse
+ */
+
 package com.quickshot.quickshot.ui.abstracts;
 
 import com.quickshot.quickshot.ui.Widget;
@@ -46,6 +52,14 @@ public abstract class WidgetLineDrawer extends Widget {
         getDrawData().getTempData().push(node);
     }
 
+    /**
+     * Because of lag between mouse movements, sometimes we must connect two points of drawn objects and draw a new
+     * line between those two points. This algorithm does that
+     * @param x0: point 1 x coord
+     * @param y0: point 1 y coord
+     * @param x1: point 2 x coord
+     * @param y1: point 2 y coord
+     */
     public void correctLines(double x0, double y0, double x1, double y1) {
         double dx = Math.abs(x1 - x0);
         double dy = Math.abs(y1 - y0);

@@ -1,3 +1,7 @@
+/**
+ * Coordinate.java
+ * @Description: Holds (x,y) coordinates as doubles, primarily used to hold grid-coordinates on the screen
+ */
 package com.quickshot.quickshot.utilities;
 
 public class Coordinate {

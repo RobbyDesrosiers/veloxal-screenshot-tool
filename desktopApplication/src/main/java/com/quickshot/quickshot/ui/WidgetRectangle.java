@@ -1,3 +1,7 @@
+/**
+ * WidgetRectangle.java
+ * @Description: Widget that allows the user to draw a rectangle with an outline onto the screen
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;

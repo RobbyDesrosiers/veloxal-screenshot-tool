@@ -6,8 +6,35 @@
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ScreenOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ScreenOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderAnchor.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderAnchor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderBoundingBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderBoundingBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderDimensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderDimensions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderMouseCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderMouseCoordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderNegativeSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderNegativeSpace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetArrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetArrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetHighlighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetHighlighter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetPaintbrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetPaintbrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetText.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetLineDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetLineDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/DisplayElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/DisplayElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/Monitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramTray.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramTray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/TransferableImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/TransferableImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorList.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderNegativeSpaceList.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderNegativeSpaceList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderViewOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/WidgetDrawData.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/WidgetDrawData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +69,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/client/src/views",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/IntelliJProjects/QuickShot/client/src/views&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot\client\src\views" />
@@ -131,6 +158,7 @@
       <workItem from="1659551080770" duration="369000" />
       <workItem from="1659551469866" duration="48000" />
       <workItem from="1659551749904" duration="10813000" />
+      <workItem from="1659626323210" duration="12590000" />
     </task>
     <servers />
   </component>
@@ -147,17 +175,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/flaskServer/app.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QuickShot$Flask_Server.coverage" NAME="Flask Server Coverage Results" MODIFIED="1659562556366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

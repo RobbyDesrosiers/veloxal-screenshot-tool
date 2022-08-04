@@ -1,3 +1,9 @@
+/**
+ * Widget.java
+ * @Description: Widget is a base class that is preferred to be inherited from, although it can be used as is.
+ * This class functions as a base to what is needed for the Widgets that form the toolbars.
+ */
+
 package com.quickshot.quickshot.ui;
 
 import javafx.scene.Cursor;

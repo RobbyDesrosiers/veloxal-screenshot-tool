@@ -1,3 +1,7 @@
+/**
+ * ViewfinderMouseCoordinates.java
+ * Not used in project
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.utilities.Coordinate;

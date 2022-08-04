@@ -1,3 +1,7 @@
+/**
+ * WidgetPaintBrush.java
+ * @Description: Draws small circles onto the screen in order to visually represent a dynamic line drawn by the user
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;

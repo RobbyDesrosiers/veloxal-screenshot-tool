@@ -1,3 +1,9 @@
+/**
+ * WidgetBar.java
+ * @Description: Abstract class that is inherited by the toolbars/widget bars located in the bottom right corner of
+ * the viewfinder. This class provides functionality to easy create widgetbars, add widgets, and handle when widgets
+ * are selected.
+ */
 package com.quickshot.quickshot.ui.abstracts;
 
 import com.quickshot.quickshot.ui.Widget;
@@ -24,28 +30,45 @@ public abstract class WidgetBar extends TilePane {
         widgets = new ArrayList<>();
         this.boundingBox = boundingBox;
         this.drawData = drawData;
-//        setSpacing(2);
         setVisible(false);
         setPadding(new Insets(1,1,1,1));
         getStyleClass().add("widget-bar");
         initMouseEvents();
     }
 
+    /**
+     * Initializes all mouse events for the widgetbar and updates associated class variables
+     */
     private void initMouseEvents() {
         setOnMouseEntered(e -> setMouseOver(true));
         setOnMouseExited(e -> setMouseOver(false));
     }
 
+    /**
+     * Adds widget to the widgetbar and gives it the functionality of a toggle button. This is primarily used for the
+     * drawing tools as only 1 can be selected at a time. See handleWidgetClicked for functionality
+     * @param w: Widget added to the widgetbar
+     */
     public void addToggleWidget(Widget w) {
         getChildren().add(w);
         getWidgets().add(w);
         w.setOnMouseClicked(this::handleWidgetClicked);
     }
 
+    /**
+     * Similar to addToggleWidget() yet this allows the widget to be selected/clicked on while not deselecting other
+     * currently toggled widgets. Acts as a normal button
+     * @param w: Widget added to the widgetbar
+     */
     public void addWidget(Widget w) {
         getChildren().add(w);
     }
 
+    /**
+     * Deselects the widget if already selected, or deselects all other widgets that are toggleable if another widget
+     * is selected
+     * @param mouseEvent: Used to find the target obj
+     */
     private void handleWidgetClicked(MouseEvent mouseEvent) {
         Widget selectedWidget = (Widget) mouseEvent.getTarget();
 

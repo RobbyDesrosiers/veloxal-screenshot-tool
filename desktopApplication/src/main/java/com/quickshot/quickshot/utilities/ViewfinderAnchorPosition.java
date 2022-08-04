@@ -1,3 +1,8 @@
+/**
+ * ViewfinderAnchorPosition.java
+ * @Description: Enum class for easy reference to the location/type of anchor. Used in the ViewfinderAnchor.java Class
+ * when initializing the anchors
+ */
 package com.quickshot.quickshot.utilities;
 
 public enum ViewfinderAnchorPosition {
