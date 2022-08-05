@@ -25,19 +25,19 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         setVgap(3);
 
         // creates all widgets on the widget bar and adds them to it
-        readText = new Widget("search");
+        readText = new Widget("search", "Translate Text");
         readText.setClickableOnly();
         addWidget(readText);
-        uploadScreenshot = new Widget("upload");
+        uploadScreenshot = new Widget("upload", "Upload for URL");
         uploadScreenshot.setClickableOnly();
         addWidget(uploadScreenshot);
-        saveScreenshot = new Widget("save");
+        saveScreenshot = new Widget("save", "Save Screen Capture");
         saveScreenshot.setClickableOnly();
         addWidget(saveScreenshot);
-        copyScreenshot = new Widget("copy");
+        copyScreenshot = new Widget("copy", "Copy Screen Capture");
         copyScreenshot.setClickableOnly();
         addWidget(copyScreenshot);
-        closeButton = new Widget("close");
+        closeButton = new Widget("close", "Minimise Program");
         addWidget(closeButton);
     }
 

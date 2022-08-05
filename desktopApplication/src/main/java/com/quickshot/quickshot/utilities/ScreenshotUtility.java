@@ -20,17 +20,15 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class ScreenshotUtility implements ClipboardOwner {
     private final ViewfinderController viewfinderController;
     FileChooser fileChooser = new FileChooser();
     private String directory;
     private String filetype;
-    private final int FRAMES_TO_WAIT = 35;
+    private final int FRAMES_TO_WAIT = 10;
 
     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     private final Map<String, String> imageFileTypes = new HashMap<>(Map.of(
@@ -128,7 +126,7 @@ public class ScreenshotUtility implements ClipboardOwner {
                     ByteArrayOutputStream baos;
                     try {
                         // connection setup to flask server
-                        URL url = new URL("http://127.0.0.1:5000/api/v1/upload/");
+                        URL url = new URL(ProgramInfo.getServerIp("/api/v1/upload/"));
                         connection = (HttpURLConnection) url.openConnection();
                         connection.setDoOutput(true);
                         connection.setRequestProperty("Content-Type", "image/jpeg");
@@ -175,7 +173,7 @@ public class ScreenshotUtility implements ClipboardOwner {
      */
     public void saveSingleScreenshotToClipboard() {
         // to ensure none of the components end up in the screenshot
-        getViewfinder().setVisible(false);
+        getViewfinder().setVisibilityForScreenshot(false);
 
         AnimationTimer waitForFrameRender = new AnimationTimer() {
             private int frameCount = 0;
@@ -264,7 +262,8 @@ public class ScreenshotUtility implements ClipboardOwner {
                     ByteArrayOutputStream baos;
                     try {
                         // connection setup to flask server
-                        URL url = new URL("http://127.0.0.1:5000/api/v1/read/");
+                        URL url = new URL(ProgramInfo.getServerIp("/api/v1/read/"));
+
                         connection = (HttpURLConnection) url.openConnection();
                         connection.setDoOutput(true);
                         connection.setRequestProperty("Content-Type", "image/jpeg");

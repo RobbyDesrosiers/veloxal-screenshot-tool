@@ -18,7 +18,7 @@ public abstract class WidgetLineDrawer extends Widget {
     private ColorPicker colorPicker;
 
     public WidgetLineDrawer(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName);
+        super(fileName, "Hold RMB to draw");
         this.drawData = drawData;
         this.colorPicker = colorPicker;
         setFillColor(colorPicker.getValue());

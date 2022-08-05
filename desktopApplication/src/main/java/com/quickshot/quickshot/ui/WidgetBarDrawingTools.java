@@ -12,6 +12,7 @@ import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.geometry.Pos;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
@@ -26,6 +27,7 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         // creates all the widgets and adds them to the widget bar
         ColorPicker colorPicker = new ColorPicker(Color.RED);
         colorPicker.getStyleClass().add("button");
+        colorPicker.setTooltip(new Tooltip("Select Paint"));
         colorPicker.setPrefWidth(30);
         colorPicker.setPrefHeight(24);
 
@@ -35,7 +37,7 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         addToggleWidget(new WidgetArrow("arrow", drawData, colorPicker));
         addToggleWidget(new WidgetLine("line", drawData, colorPicker));
         addToggleWidget(new WidgetText("text", drawData, colorPicker));
-        undoButton = new Widget("back");
+        undoButton = new Widget("back", "Undo Line");
         undoButton.setClickableOnly();
         addWidget(undoButton);
         getChildren().add(colorPicker);

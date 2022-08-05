@@ -8,6 +8,7 @@ package com.quickshot.quickshot.ui;
 
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -23,8 +24,9 @@ public class Widget extends Button {
     private boolean isSelected;
     private boolean isMouseOver;
 
-    public Widget(String fileName) {
+    public Widget(String fileName, String toolTip) {
         setIcons(fileName);
+        setTooltip(new Tooltip(toolTip));
         getStyleClass().add("button");
         setSelected(false);
         setMouseOver(false);
