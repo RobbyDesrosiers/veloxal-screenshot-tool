@@ -93,9 +93,6 @@ public class WidgetBarController {
         getScreenshotUtility().saveSingleScreenshotToClipboard();
     }
 
-    private void handleGifRecordButton() {
-        getScreenshotUtility().recordScreen(3);
-    }
 
     /**
      * Updates the new positions for the toolbars for screenRefresh functionality in UserController

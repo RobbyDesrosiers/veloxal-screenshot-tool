@@ -8,9 +8,6 @@
 package com.quickshot.quickshot.utilities;
 
 import com.quickshot.quickshot.controllers.ViewfinderController;
-import com.squareup.gifencoder.FloydSteinbergDitherer;
-import com.squareup.gifencoder.GifEncoder;
-import com.squareup.gifencoder.ImageOptions;
 import javafx.animation.AnimationTimer;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;

@@ -15,7 +15,8 @@ import java.io.File;
 
 
 public class Widget extends Button {
-    private final ImageView icon;
+    private ImageView iconActive;
+    private ImageView iconUnactive;
     private int iconSize = 15;
     private Cursor cursorType;
     private boolean isDrawing;
@@ -23,14 +24,8 @@ public class Widget extends Button {
     private boolean isMouseOver;
 
     public Widget(String fileName) {
-        File f = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName);
-        Image img = new Image(f.getAbsolutePath());
-        icon = new ImageView(img);
-        icon.setPreserveRatio(true);
-        icon.setFitWidth(getIconSize());
-        icon.setFitHeight(getIconSize());
+        setIcons(fileName);
         getStyleClass().add("button");
-        setGraphic(icon);
         setSelected(false);
         setMouseOver(false);
         setCursorType(Cursor.DEFAULT);
@@ -43,6 +38,23 @@ public class Widget extends Button {
         setOnMouseExited(e -> setMouseOver(false));
     }
 
+    public void setIcons(String fileName) {
+        File fileActive = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_dark.png");
+        File fileUnactive = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_light.png");
+        Image imgActive = new Image(fileActive.getAbsolutePath());
+        Image imgUnactive = new Image(fileUnactive.getAbsolutePath());
+        iconActive = new ImageView(imgActive);
+        iconUnactive = new ImageView(imgUnactive);
+        iconActive.setPreserveRatio(true);
+        iconUnactive.setPreserveRatio(true);
+        iconActive.setFitWidth(getIconSize());
+        iconActive.setFitHeight(getIconSize());
+        iconUnactive.setFitWidth(getIconSize());
+        iconUnactive.setFitHeight(getIconSize());
+        setGraphic(iconUnactive);
+
+    }
+
     public boolean isSelected() {
         return isSelected;
     }
@@ -50,6 +62,10 @@ public class Widget extends Button {
     public void setSelected(boolean selected) {
         setFocused(selected);
         isSelected = selected;
+        if (selected)
+            setGraphic(iconActive);
+        else
+            setGraphic(iconUnactive);
     }
 
     public boolean isMouseOver() {
@@ -66,8 +82,10 @@ public class Widget extends Button {
 
     public void setIconSize(int iconSize) {
         this.iconSize = iconSize;
-        icon.setFitWidth(iconSize);
-        icon.setFitHeight(iconSize);
+        iconActive.setFitWidth(iconSize);
+        iconActive.setFitHeight(iconSize);
+        iconUnactive.setFitWidth(iconSize);
+        iconUnactive.setFitHeight(iconSize);
     }
 
     public boolean isDrawing() {

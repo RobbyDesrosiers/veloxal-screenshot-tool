@@ -29,9 +29,17 @@
 }
 
 .widget-bar {
-    -fx-background-color: rgb(200,200,200);
+    -fx-background-color: rgb(44,44,44);
 }
 
 .button {
-    /*-fx-background-color: rgb(55,55,55);*/
+    -fx-background-color: rgb(55,55,55);
+}
+
+.button:hover {
+    -fx-background-color: rgb(66, 66, 66);
+}
+
+.button:focused {
+    -fx-background-color: rgb(77,77,77);
 }

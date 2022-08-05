@@ -25,16 +25,17 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
 
         // creates all the widgets and adds them to the widget bar
         ColorPicker colorPicker = new ColorPicker(Color.RED);
+        colorPicker.getStyleClass().add("button");
         colorPicker.setPrefWidth(30);
         colorPicker.setPrefHeight(24);
 
-        addToggleWidget(new WidgetPaintbrush("paint-brush.png", drawData, colorPicker));
-        addToggleWidget(new WidgetHighlighter("marker.png", drawData, colorPicker));
-        addToggleWidget(new WidgetRectangle("rectangle.png", drawData, colorPicker));
-        addToggleWidget(new WidgetArrow("arrow.png", drawData, colorPicker));
-        addToggleWidget(new WidgetLine("line.png", drawData, colorPicker));
-        addToggleWidget(new WidgetText("text.png", drawData, colorPicker));
-        undoButton = new Widget("undo.png");
+        addToggleWidget(new WidgetPaintbrush("brush", drawData, colorPicker));
+        addToggleWidget(new WidgetHighlighter("highlighter", drawData, colorPicker));
+        addToggleWidget(new WidgetRectangle("rect", drawData, colorPicker));
+        addToggleWidget(new WidgetArrow("arrow", drawData, colorPicker));
+        addToggleWidget(new WidgetLine("line", drawData, colorPicker));
+        addToggleWidget(new WidgetText("text", drawData, colorPicker));
+        undoButton = new Widget("back");
         undoButton.setClickableOnly();
         addWidget(undoButton);
         getChildren().add(colorPicker);
