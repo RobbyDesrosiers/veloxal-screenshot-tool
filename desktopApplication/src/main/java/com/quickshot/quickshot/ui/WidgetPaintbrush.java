@@ -13,10 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 
 public class WidgetPaintbrush extends WidgetLineDrawer {
-    private int brushSize = 1;
 
-    public WidgetPaintbrush(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName, drawData, colorPicker);
+    public WidgetPaintbrush(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
+        super(fileName, drawData, colorPicker, widgetBarStrokeWidth);
     }
 
     @Override
@@ -38,20 +37,12 @@ public class WidgetPaintbrush extends WidgetLineDrawer {
 
     @Override
     public void addShape(double x, double y) {
-        Circle c = new Circle(getBrushSize());
+        Circle c = new Circle(getStrokeWidth());
         c.setViewOrder(1);
         c.setFill(getFillColor());
         c.setTranslateX(x);
         c.setTranslateY(y);
         c.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
         pushShape(c);
-    }
-
-    public int getBrushSize() {
-        return brushSize;
-    }
-
-    public void setBrushSize(int brushSize) {
-        this.brushSize = brushSize;
     }
 }

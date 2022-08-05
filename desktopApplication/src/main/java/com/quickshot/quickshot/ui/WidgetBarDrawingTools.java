@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 
 public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
     private final Widget undoButton;
+    private final WidgetBarStrokeWidth widgetBarStrokeWidth;
 
     public WidgetBarDrawingTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
@@ -31,12 +32,15 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         colorPicker.setPrefWidth(30);
         colorPicker.setPrefHeight(24);
 
-        addToggleWidget(new WidgetPaintbrush("brush", drawData, colorPicker));
-        addToggleWidget(new WidgetHighlighter("highlighter", drawData, colorPicker));
-        addToggleWidget(new WidgetRectangle("rect", drawData, colorPicker));
-        addToggleWidget(new WidgetArrow("arrow", drawData, colorPicker));
-        addToggleWidget(new WidgetLine("line", drawData, colorPicker));
-        addToggleWidget(new WidgetText("text", drawData, colorPicker));
+        // creates the stroke width changer
+        widgetBarStrokeWidth = new WidgetBarStrokeWidth();
+
+        addToggleWidget(new WidgetPaintbrush("brush", drawData, colorPicker, widgetBarStrokeWidth));
+        addToggleWidget(new WidgetHighlighter("highlighter", drawData, colorPicker, widgetBarStrokeWidth));
+        addToggleWidget(new WidgetRectangle("rect", drawData, colorPicker, widgetBarStrokeWidth));
+        addToggleWidget(new WidgetArrow("arrow", drawData, colorPicker, widgetBarStrokeWidth));
+        addToggleWidget(new WidgetLine("line", drawData, colorPicker, widgetBarStrokeWidth));
+        addToggleWidget(new WidgetText("text", drawData, colorPicker, widgetBarStrokeWidth));
         undoButton = new Widget("back", "Undo Line");
         undoButton.setClickableOnly();
         addWidget(undoButton);
@@ -60,7 +64,9 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         }
 
         setTranslateX(getBoundingBox().getBottomRight().getX() - getWidth() + X_PADDING);
+        widgetBarStrokeWidth.setTranslateX(getBoundingBox().getBottomRight().getX() - getWidth() + X_PADDING);
         setTranslateY(getBoundingBox().getBottomMiddle().getY() + Y_PADDING);
+        widgetBarStrokeWidth.setTranslateY(getBoundingBox().getBottomMiddle().getY() + Y_PADDING + getHeight() + 5);
         setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
     }
 
@@ -98,6 +104,17 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         return false;
     }
 
+    /**
+     * Checks if a drawing widget is selected and if so will set the stroke adjuster to visible
+     */
+    private void checkIfBrushStrokeIsNeeded() {
+        widgetBarStrokeWidth.setVisible(isWidgetSelected());
+    }
+
+    public WidgetBarStrokeWidth getWidgetBarStrokeWidth() {
+        return widgetBarStrokeWidth;
+    }
+
     public Widget getUndoButton() {
         return undoButton;
     }
@@ -105,5 +122,6 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
     @Override
     public void update() {
         calculateScreenPosition();
+        checkIfBrushStrokeIsNeeded();
     }
 }

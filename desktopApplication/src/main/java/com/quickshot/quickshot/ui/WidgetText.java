@@ -20,8 +20,8 @@ public class WidgetText extends WidgetLineDrawer {
     private final Coordinate topLeftAnchorRectPosition;
     private double currentTextAreaHeight;
 
-    public WidgetText(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName, drawData, colorPicker);
+    public WidgetText(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
+        super(fileName, drawData, colorPicker, widgetBarStrokeWidth);
         setIconSize(13);
         topLeftAnchorRectPosition = new Coordinate();
     }

@@ -17,8 +17,8 @@ public class WidgetRectangle extends WidgetLineDrawer {
     private Rectangle rect;
     private final Coordinate topLeftAnchorRectPosition;
 
-    public WidgetRectangle(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName, drawData, colorPicker);
+    public WidgetRectangle(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
+        super(fileName, drawData, colorPicker, widgetBarStrokeWidth);
         topLeftAnchorRectPosition = new Coordinate();
     }
 
@@ -39,7 +39,7 @@ public class WidgetRectangle extends WidgetLineDrawer {
         rect.setViewOrder(1);
         rect.setFill(Color.TRANSPARENT);
         rect.setStroke(getFillColor());
-        rect.setStrokeWidth(2);
+        rect.setStrokeWidth(getStrokeWidth());
         rect.setTranslateX(x);
         rect.setWidth(0);
         rect.setHeight(0);

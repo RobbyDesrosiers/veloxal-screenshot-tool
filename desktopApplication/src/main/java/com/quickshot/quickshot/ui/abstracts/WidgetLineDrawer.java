@@ -7,6 +7,7 @@
 package com.quickshot.quickshot.ui.abstracts;
 
 import com.quickshot.quickshot.ui.Widget;
+import com.quickshot.quickshot.ui.WidgetBarStrokeWidth;
 import com.quickshot.quickshot.utilities.WidgetDrawData;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
@@ -16,11 +17,13 @@ public abstract class WidgetLineDrawer extends Widget {
     private Color fillColor;
     private WidgetDrawData drawData;
     private ColorPicker colorPicker;
+    private WidgetBarStrokeWidth widgetBarStrokeWidth;
 
-    public WidgetLineDrawer(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
+    public WidgetLineDrawer(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
         super(fileName, "Hold RMB to draw");
         this.drawData = drawData;
         this.colorPicker = colorPicker;
+        this.widgetBarStrokeWidth = widgetBarStrokeWidth;
         setFillColor(colorPicker.getValue());
     }
 
@@ -83,6 +86,10 @@ public abstract class WidgetLineDrawer extends Widget {
                 y0 = y0 + sy;
             }
         }
+    }
+
+    public int getStrokeWidth() {
+        return widgetBarStrokeWidth.getStrokeWidth();
     }
 
     public void addShape(double x, double y) {

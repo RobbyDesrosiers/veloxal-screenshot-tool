@@ -17,11 +17,10 @@ import java.util.Objects;
 
 
 public class WidgetHighlighter extends WidgetLineDrawer {
-    private int brushSize = 1;
     private Double mouseTranslateY = null;
 
-    public WidgetHighlighter(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName, drawData, colorPicker);
+    public WidgetHighlighter(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
+        super(fileName, drawData, colorPicker, widgetBarStrokeWidth);
     }
 
     @Override
@@ -51,7 +50,7 @@ public class WidgetHighlighter extends WidgetLineDrawer {
     @Override
     public void addShape(double x, double y) {
         int brushHeight = 15;
-        Rectangle c = new Rectangle(getBrushSize(), brushHeight);
+        Rectangle c = new Rectangle(getStrokeWidth(), brushHeight);
         c.toBack();
         c.setFill(getFillColor());
         c.setTranslateX(x);
@@ -61,13 +60,5 @@ public class WidgetHighlighter extends WidgetLineDrawer {
         c.setTranslateY(Objects.requireNonNullElse(mouseTranslateY, y));
 
         pushShape(c);
-    }
-
-    public int getBrushSize() {
-        return brushSize;
-    }
-
-    public void setBrushSize(int brushSize) {
-        this.brushSize = brushSize;
     }
 }

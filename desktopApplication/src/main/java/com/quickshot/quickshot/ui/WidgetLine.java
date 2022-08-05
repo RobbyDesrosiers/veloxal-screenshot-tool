@@ -16,8 +16,8 @@ import javafx.scene.shape.Polygon;
 public class WidgetLine extends WidgetLineDrawer {
     private Line arrowBodyLine;
 
-    public WidgetLine(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName, drawData, colorPicker);
+    public WidgetLine(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
+        super(fileName, drawData, colorPicker, widgetBarStrokeWidth);
     }
 
     @Override
@@ -40,6 +40,7 @@ public class WidgetLine extends WidgetLineDrawer {
         arrowBodyLine = new Line(x,y,x,y);
         arrowBodyLine.setViewOrder(ViewfinderViewOrder.WIDGET_DRAWING);
         arrowBodyLine.setStroke(getFillColor());
+        arrowBodyLine.setStrokeWidth(getStrokeWidth());
         pushShape(arrowBodyLine);
     }
 

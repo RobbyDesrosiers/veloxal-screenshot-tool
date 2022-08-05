@@ -118,6 +118,7 @@ public class WidgetBarController {
     }
 
     public boolean isMouseOver() {
-        return getDrawingToolBar().isMouseOver() || getCommandToolBar().isMouseOver();
+        return getDrawingToolBar().isMouseOver() || getCommandToolBar().isMouseOver() ||
+                getDrawingToolBar().getWidgetBarStrokeWidth().isMouseOver();
     }
 }

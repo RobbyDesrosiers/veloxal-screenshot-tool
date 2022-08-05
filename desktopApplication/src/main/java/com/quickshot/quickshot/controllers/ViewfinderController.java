@@ -48,6 +48,7 @@ public class ViewfinderController {
         viewFinderElements.add(dimensions);
         viewFinderElements.addAll(negativeSpace);
         viewFinderElements.add(widgetController.getDrawingToolBar());
+        viewFinderElements.add(widgetController.getDrawingToolBar().getWidgetBarStrokeWidth());
         viewFinderElements.add(widgetController.getCommandToolBar());
         setCreated(false);  // elements are created but not rendered onto screen
         allowMovement(true);
@@ -100,6 +101,7 @@ public class ViewfinderController {
         getBoundingBox().setVisible(b);
         getDimensions().setVisible(b);
         getWidgetController().getDrawingToolBar().setVisible(b);
+        getWidgetController().getDrawingToolBar().getWidgetBarStrokeWidth().setVisible(b);
         getWidgetController().getCommandToolBar().setVisible(b);
     }
 

@@ -17,8 +17,8 @@ public class WidgetArrow extends WidgetLineDrawer {
     private Line arrowBodyLine;
     private Polygon arrowHead;
 
-    public WidgetArrow(String fileName, WidgetDrawData drawData, ColorPicker colorPicker) {
-        super(fileName, drawData, colorPicker);
+    public WidgetArrow(String fileName, WidgetDrawData drawData, ColorPicker colorPicker, WidgetBarStrokeWidth widgetBarStrokeWidth) {
+        super(fileName, drawData, colorPicker, widgetBarStrokeWidth);
     }
 
     @Override
