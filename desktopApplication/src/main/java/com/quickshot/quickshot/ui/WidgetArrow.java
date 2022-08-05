@@ -1,3 +1,8 @@
+/**
+ * WidgetArrow.java
+ * @Description: Draws an arrow onto the screen
+ */
+
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;
@@ -20,6 +25,8 @@ public class WidgetArrow extends WidgetLineDrawer {
     public void draw(MouseEvent mouseEvent) {
         setFillColor(getColorPicker().getValue());
 
+        // checks if this is a newly drawn arrow, if not it will modify the arrow's position when user drags around
+        // the screen
         if (getDrawData().getTempData().size() == 0 || getDrawData().isNewLine()) {
             addShape(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             getDrawData().setNewLine(false);
@@ -52,6 +59,11 @@ public class WidgetArrow extends WidgetLineDrawer {
         }
     }
 
+    /**
+     * Creates a newly drawn arrow shape
+     * @param x: location of the x coordinate of the mouse
+     * @param y: location of the y coordinate of the mouse
+     */
     @Override
     public void addShape(double x, double y) {
         arrowBodyLine = new Line(x,y,x,y);

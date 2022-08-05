@@ -1,3 +1,7 @@
+/**
+ * ViewfinderAnchor.java
+ * @Description: The graphical element for anchors, located on 4 corners and 4 sides of the rectangle
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.utilities.ViewfinderAnchorPosition;
@@ -31,6 +35,9 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
         initHoverProperties();
     }
 
+    /**
+     * Initializes all hover mouse events for the anchor. This code runs first before anything in UserController.java
+     */
     public void initHoverProperties() {
         this.addEventFilter(MouseEvent.MOUSE_ENTERED, e -> setMouseOver(true));
         this.addEventFilter(MouseEvent.MOUSE_EXITED, e -> setMouseOver(false));
@@ -42,6 +49,10 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
         isMouseOver = b;
     }
 
+    /**
+     * The setup function of each anchor to correctly define the AnchorPosition and type of cursor which is used on hover
+     * @param index: Index from ViewFinderAnchorList's generator
+     */
     public void setAnchorTraits(int index) {
         switch (index) {
             case 0: {
@@ -89,6 +100,10 @@ public class ViewfinderAnchor extends Rectangle implements DisplayElement {
         }
     }
 
+    /**
+     * Sets the screen position of the anchor
+     * @param coordinate: The new screen position
+     */
     public void setCoordinates(Coordinate coordinate) {
         this.setTranslateX(coordinate.getX() + -0.5 * WIDTH);
         this.setTranslateY(coordinate.getY() + -0.5 * HEIGHT);

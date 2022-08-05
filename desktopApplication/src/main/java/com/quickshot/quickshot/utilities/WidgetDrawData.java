@@ -1,3 +1,11 @@
+/**
+ * WidgetDrawData.java
+ * @Description: Holds all drawn objects in the LinkedList. Objects drawn onto screen are stored as a LinkedList<Node>
+ * which is offloaded into the WidgetDrawData extended LinkedList once the user un-presses their mouse
+ * The drawn objects are stored as LinkedList<Nodes> in order to easily allow the 'Undo Draw Button' to remove
+ * drawn-sections at a time instead of removing random/arbitrary sections.
+ */
+
 package com.quickshot.quickshot.utilities;
 
 import javafx.scene.Node;
@@ -20,6 +28,10 @@ public class WidgetDrawData extends LinkedList<LinkedList<Node>> {
         deletedData = new LinkedList<>();
     }
 
+    /**
+     * When mouse is picked up (unpressed mouse button) this function will fire
+     * @param b
+     */
     public void setNewLine(boolean b) {
         newLine = b;
     }

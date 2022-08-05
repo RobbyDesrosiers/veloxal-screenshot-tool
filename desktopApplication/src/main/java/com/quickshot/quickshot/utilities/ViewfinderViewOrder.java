@@ -1,3 +1,8 @@
+/**
+ * ViewfinderViewOrder.java
+ * @Description: The Z axis view order for display elements
+ */
+
 package com.quickshot.quickshot.utilities;
 
 public class ViewfinderViewOrder {

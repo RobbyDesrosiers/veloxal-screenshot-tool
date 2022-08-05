@@ -1,3 +1,8 @@
+/**
+ * WidgetLine.java
+ * @Description: Adds a line to the screen
+ */
+
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;

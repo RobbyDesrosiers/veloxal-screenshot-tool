@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class ProgramTray {
     SystemTray tray = SystemTray.getSystemTray();
     String PROGRAM_TITLE = "QuickShot";
-    double VERSION = 0.2;
+    double VERSION = 1.0;
     Image trayImg = Toolkit.getDefaultToolkit().createImage("src/main/java/com/quickshot/quickshot/resources/logo.png");
     TrayIcon trayIcon = new TrayIcon(trayImg, PROGRAM_TITLE + " " + VERSION);
 

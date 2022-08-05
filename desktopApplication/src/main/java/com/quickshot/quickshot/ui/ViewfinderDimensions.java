@@ -1,3 +1,8 @@
+/**
+ * ViewfinderDimensions.java
+ * @Description: The graphical element that shows the width and height of the viewfinder to the user. This is located
+ * graphically on the top left corner of the viewfinder
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.utilities.ViewfinderViewOrder;
@@ -23,18 +28,18 @@ public class ViewfinderDimensions extends HBox implements DisplayElement {
         setViewOrder(ViewfinderViewOrder.DIMENSIONS);
     }
 
-    public ViewfinderDimensions(ViewfinderBoundingBox boundingBox) {
-        this();
-        setBoundingBox(boundingBox);
-        updateDimensions();
-    }
-
+    /**
+     * Updates and sets the visual text to the current boundingbox dimensions
+     */
     private void updateDimensions() {
         text.setText(
                 "(" + (int)boundingBox.getWidth() + ", " + (int)boundingBox.getHeight() + ")"
         );
     }
 
+    /**
+     * Updates the location (x,y coordinates) of the graphical element
+     */
     private void updateLocation() {
         double Y_PADDING;
         double X_PADDING;

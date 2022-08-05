@@ -1,3 +1,8 @@
+/**
+ * WidgetHighlighter.java
+ * @Description: draws a thick vertical line in order to easy black out sensitive text
+ * Will need to eventually add/fix the transparency issue to allow it to function as an actual highlighter
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;

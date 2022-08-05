@@ -1,3 +1,8 @@
+/**
+ * WidgetText.java
+ * @Description: allows the user to add a text box onto the screen to type text
+ */
+
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetLineDrawer;

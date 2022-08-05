@@ -1,3 +1,9 @@
+/**
+ * TransferableImage.java
+ * @Description: Copied from
+ * https://stackoverflow.com/questions/29511334/why-cant-i-cast-a-buffered-image-into-a-transferrable-object-to-send-it-to-the
+ * Used in the ScreenShotUtility.java class to transfer images to the OS' clipboard
+ */
 package com.quickshot.quickshot.utilities;
 
 import java.awt.datatransfer.DataFlavor;
@@ -6,7 +12,6 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-// found -> https://stackoverflow.com/questions/29511334/why-cant-i-cast-a-buffered-image-into-a-transferrable-object-to-send-it-to-the
 class TransferableImage implements Transferable {
     final BufferedImage image;
 

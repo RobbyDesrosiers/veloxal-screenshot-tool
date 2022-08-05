@@ -1,3 +1,8 @@
+/**
+ * WidgetBarDrawingTools.java
+ * @Description: This is the graphical element and controller of the widget bar located on the bottom of the
+ * viewfinder. This holds all the drawing tools which are toggleable and allow the user to draw onto the screen
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.ui.abstracts.WidgetBar;
@@ -18,7 +23,7 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         setPrefWidth(265);
         setAlignment(Pos.CENTER_RIGHT);
 
-        // create widgets
+        // creates all the widgets and adds them to the widget bar
         ColorPicker colorPicker = new ColorPicker(Color.RED);
         colorPicker.setPrefWidth(30);
         colorPicker.setPrefHeight(24);
@@ -35,6 +40,9 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         getChildren().add(colorPicker);
     }
 
+    /**
+     * Calculates the screen position of the widget bar
+     */
     public void calculateScreenPosition() {
         int OFFSET = 10;
         double Y_PADDING;
@@ -53,18 +61,31 @@ public class WidgetBarDrawingTools extends WidgetBar implements DisplayElement {
         setViewOrder(ViewfinderViewOrder.WIDGET_BAR);
     }
 
+    /**
+     * Sets all of the widgets' drawing status to the boolean value (typically false when used) in order to
+     * ensure all widgets' drawing status variable is false when user is not drawing
+     * @param b boolean
+     */
     public void setWidgetsDrawingStatus(boolean b) {
         for (Widget widget : getWidgets()) {
             widget.setDrawing(b);
         }
     }
 
+    /**
+     * Sets the selected status of all widgets to the boolean value
+     * @param b
+     */
     public void setWidgetsSelected(boolean b) {
         for (Widget widget : getWidgets()) {
             widget.setSelected(b);
         }
     }
 
+    /**
+     * returns the boolean value when checking if any of the widgets' drawing status is set
+     * @return
+     */
     public boolean isWidgetDrawing() {
         for (Widget widget : getWidgets()) {
             if (widget.isDrawing()) {

@@ -1,3 +1,8 @@
+/**
+ * Monitor.java
+ * @Description: Used to hold monitor width/height for easy access
+ */
+
 package com.quickshot.quickshot.utilities;
 
 import java.awt.*;

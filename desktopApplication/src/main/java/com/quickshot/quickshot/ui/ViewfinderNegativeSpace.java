@@ -1,3 +1,8 @@
+/**
+ * ViewfinderNegativeSpace.java
+ * @Description: Used as a semi-transparent black rectangle which dims portions of the screen outside of the viewfinder
+ * purely for graphic/visual effect
+ */
 package com.quickshot.quickshot.ui;
 
 import com.quickshot.quickshot.utilities.DisplayElement;

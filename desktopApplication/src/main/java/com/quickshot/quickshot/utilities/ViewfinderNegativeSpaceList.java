@@ -1,3 +1,10 @@
+/**
+ * ViewfinderNegativeSpaceList.java
+ * @Description: Creates a dimmed area around the viewfinder to easily identify the inner/outer potions of the viewfinder
+ * Primarily uses ViewfinderNegativeSpace class to create 4 rectangles that position themselves on the sides extending
+ * past the screen's width in order to create the dimmed area/visual effect
+ */
+
 package com.quickshot.quickshot.utilities;
 
 import com.quickshot.quickshot.ui.ViewfinderBoundingBox;
@@ -33,6 +40,9 @@ public class ViewfinderNegativeSpaceList extends ArrayList<ViewfinderNegativeSpa
         setBoundingBox(boundingBox);
     }
 
+    /**
+     * Calculates the positions of each of the 4 rectangles in the list
+     */
     private void calculateRectanglePositions() {
         rectLeft.setTranslateX(0);
         rectLeft.setTranslateY(0);
@@ -70,18 +80,33 @@ public class ViewfinderNegativeSpaceList extends ArrayList<ViewfinderNegativeSpa
         this.boundingBox = boundingBox;
     }
 
+    /**
+     * Sets each rectangle (NegativeSpace) to handle the mouseHandler passed in
+     * @see com.quickshot.quickshot.controllers.UserController for where its used
+     * @param mouseHandler: The function that is being handled by UserController
+     */
     public void setOnMouseDragged(EventHandler<? super MouseEvent> mouseHandler) {
         for (ViewfinderNegativeSpace rect : this) {
             rect.setOnMouseDragged(mouseHandler);
         }
     }
 
+    /**
+     * Sets each rectangle (NegativeSpace) to handle the mouseHandler passed in
+     * @see com.quickshot.quickshot.controllers.UserController for where its used
+     * @param mouseHandler: The function that is being handled by UserController
+     */
     public void setOnMousePressed(EventHandler<? super MouseEvent> mouseHandler) {
         for (ViewfinderNegativeSpace rect : this) {
             rect.setOnMousePressed(mouseHandler);
         }
     }
 
+    /**
+     * Sets each rectangle (NegativeSpace) to handle the mouseHandler passed in
+     * @see com.quickshot.quickshot.controllers.UserController for where its used
+     * @param mouseHandler: The function that is being handled by UserController
+     */
     public void setOnMouseReleased(EventHandler<? super MouseEvent> mouseHandler) {
         for (ViewfinderNegativeSpace rect : this) {
             rect.setOnMouseReleased(mouseHandler);

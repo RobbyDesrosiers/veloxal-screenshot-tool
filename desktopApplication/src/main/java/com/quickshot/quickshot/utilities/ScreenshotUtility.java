@@ -1,9 +1,16 @@
+/**
+ * ScreenshotUtility.java
+ * @Description: contains all code to create, process, save, download and/or upload screenshots
+ * Also contains code to get directory from user on save. This class abstracts a lot of the work to provide clearer
+ * functions and functionalities to upper level code in WidgetBarController.java class
+ */
+
 package com.quickshot.quickshot.utilities;
 
 import com.quickshot.quickshot.controllers.ViewfinderController;
-//import com.squareup.gifencoder.FloydSteinbergDitherer;
-//import com.squareup.gifencoder.GifEncoder;
-//import com.squareup.gifencoder.ImageOptions;
+import com.squareup.gifencoder.FloydSteinbergDitherer;
+import com.squareup.gifencoder.GifEncoder;
+import com.squareup.gifencoder.ImageOptions;
 import javafx.animation.AnimationTimer;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -34,14 +41,18 @@ public class ScreenshotUtility implements ClipboardOwner {
         "png (*.png)", "*.png",
         "jpeg (*.jpeg)", "*.jpeg"
     ));
-    private final Map<String, String> gifFileTypes = new HashMap<>(Map.of(
-        "gif (*.gif)", "*.gif"
-    ));
 
     public ScreenshotUtility(ViewfinderController viewfinderController) {
         this.viewfinderController = viewfinderController;
     }
 
+    /**
+     * Abstracts the code to break down the inputStream gathered from the Flask server and extracts the string
+     * the server outputs
+     * @param inputStream: the input stream of the requested connection
+     * @return String: the text of the input stream
+     * @throws IOException
+     */
     public String getResponseData(InputStream inputStream) throws IOException {
         // https://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
@@ -54,10 +65,20 @@ public class ScreenshotUtility implements ClipboardOwner {
         return sb.toString();
     }
 
+    /**
+     * returns the extension of the associated file
+     * @param filetype: the filetype passed in from fileChooser
+     * @return String
+     */
     private String parseExtension(String filetype) {
         return filetype.split(" ")[0];
     }
 
+    /**
+     * Opens an instance of the File Chooser class and provides functionality to recieve the directory and file type
+     * the user chooses
+     * @param fileTypes: The hashmap with different file types of images
+     */
     private void getDirectoryFromUser(Map<String, String> fileTypes) {
         fileChooser.getExtensionFilters().clear();
         for (Map.Entry<String,String> fileType : fileTypes.entrySet())
@@ -71,27 +92,10 @@ public class ScreenshotUtility implements ClipboardOwner {
         }
     }
 
-    private int[][] convertImageToArray(File file) throws IOException {
-        BufferedImage bufferedImage = ImageIO.read(file);
-        int[][] rgbArray = new int[bufferedImage.getHeight()][bufferedImage.getWidth()];
-        for (int i = 0; i < bufferedImage.getHeight(); i++) {
-            for (int j = 0; j < bufferedImage.getWidth(); j++) {
-                rgbArray[i][j] = bufferedImage.getRGB(j, i);
-            }
-        }
-        return rgbArray;
-    }
-
-    private int[][] convertBufferedImageToArray(BufferedImage frame) throws IOException {
-        int[][] rgbArray = new int[frame.getHeight()][frame.getWidth()];
-        for (int i = 0; i < frame.getHeight(); i++) {
-            for (int j = 0; j < frame.getWidth(); j++) {
-                rgbArray[i][j] = frame.getRGB(j, i);
-            }
-        }
-        return rgbArray;
-    }
-
+    /**
+     * Converts the screen selection of viewfinder to a buffered image used for additional processing
+     * @return
+     */
     private BufferedImage getScreenshotBufferedImage() {
         BufferedImage screenCapture;
         Rectangle rectangle = new Rectangle(
@@ -107,91 +111,12 @@ public class ScreenshotUtility implements ClipboardOwner {
         return screenCapture;
     }
 
-    public void recordScreen(int fps) {
-
-        // disables movement because for some reason it lags the thread? //todo why
-        viewfinderController.allowMovement(false);
-        viewfinderController.setVisibilityForScreenshot(false);
-        getDirectoryFromUser(gifFileTypes);
-
-        if (directory == null) {
-            viewfinderController.allowMovement(true);
-            viewfinderController.setVisible(true);
-            return; //todo throw error screen
-        }
-
-        viewfinderController.allowMousePassthrough(true);
-        viewfinderController.setVisible(false);
-        Thread recordingThread = new Thread(() -> {
-            AnimationTimer waitForFrameRender = new AnimationTimer() {
-                final ArrayList<int[][]> capturedScreenArrays = new ArrayList<>();
-                final int recordingFPS = 1000 / fps;
-                final int maxRecordingLength = 5000; // todo change max value with future testing
-                final String fileExtension = "jpg";
-                int frameCount = 0;
-                int imgSavedCount;
-                int[][] frame;
-                File saveFile;
-
-                @Override
-                public void handle(long timestamp) {
-                    frameCount++;
-                    if (frameCount >= FRAMES_TO_WAIT) {
-                        if (frameCount % recordingFPS == fps) {
-                            try {
-                                frame = convertBufferedImageToArray(getScreenshotBufferedImage());
-                                capturedScreenArrays.add(frame);
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                            imgSavedCount++;
-                        }
-
-                        // todo add keyboard stop here
-
-                        if (frameCount >= maxRecordingLength) {
-                            stop();
-                            try {
-                                convertFrameArraysToGif(fps, capturedScreenArrays, "src/main/java/com/quickshot/quickshot/testImages/video.gif");
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            viewfinderController.allowMovement(true);
-                            viewfinderController.setVisible(true);
-                            viewfinderController.allowMousePassthrough(false);
-
-                        }
-                    }
-                }
-            };
-            waitForFrameRender.start();
-        });
-        recordingThread.setDaemon(true);
-        recordingThread.start();
-    }
-
-    // found -> https://genuinecoder.com/how-to-create-gif-from-multiple-images-in-java/
-    public void convertFrameArraysToGif(int fps, ArrayList<int[][]> arrayOfFrames, String directory) throws IOException {
-//        try (FileOutputStream outputStream = new FileOutputStream("src/main/java/com/quickshot/quickshot/testImages/my_animated_image.gif")) {
-//            GifEncoder gifEncoder = new GifEncoder(outputStream, (int) getViewfinder().getBoundingBox().getWidth(), (int) getViewfinder().getBoundingBox().getWidth(), 0);
-//            ImageOptions options = new ImageOptions();
-//
-//            //Set 500ms between each frame
-//            options.setDelay(50, TimeUnit.MILLISECONDS);
-//            //Use Floyd Steinberg dithering as it yields the best quality
-//            options.setDitherer(FloydSteinbergDitherer.INSTANCE);
-//
-//            //Create GIF encoder with same dimension as of the source images
-//            for (int[][] frame : arrayOfFrames) {
-//                gifEncoder.addImage(frame, options);
-//            }
-//            gifEncoder.finishEncoding();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-    }
-
-    public void uploadScreenshot() throws IOException {
+    /**
+     * Used when user clicks the 'Upload Screenshot' widget on the toolbars. This function captures the selected area
+     * screen and sends it to the Flask server for processing/saving into the db and file system.
+     * This function also copies the link received from the server to the clipboard of the user for quick sharing
+     */
+    public void uploadScreenshot() {
         getViewfinder().setVisible(false);
 
         AnimationTimer waitForFrameRender = new AnimationTimer() {
@@ -248,6 +173,9 @@ public class ScreenshotUtility implements ClipboardOwner {
         waitForFrameRender.start();
     }
 
+    /**
+     * Saves the captured screen selection to the clipboard of the user to allow paste functionality into programs
+     */
     public void saveSingleScreenshotToClipboard() {
         // to ensure none of the components end up in the screenshot
         getViewfinder().setVisible(false);
@@ -269,6 +197,11 @@ public class ScreenshotUtility implements ClipboardOwner {
         waitForFrameRender.start();
     }
 
+    /**
+     * Saves the selected screen area to a file by allowing user to select the directory and file type to save
+     * @throws AWTException
+     * @throws IOException
+     */
     public void saveSingleScreenshotToFile() throws AWTException, IOException {
         // to ensure none of the components end up in the screenshot
         getViewfinder().setVisibilityForScreenshot(false);
@@ -316,11 +249,9 @@ public class ScreenshotUtility implements ClipboardOwner {
         return this;
     }
 
-    @Override
-    public void lostOwnership(Clipboard clipboard, Transferable contents) {
-
-    }
-
+    /**
+     * Needs to be reworked TODO FIX
+     */
     public void readTextFromImage() {
         getViewfinder().setVisible(false);
 
@@ -360,10 +291,9 @@ public class ScreenshotUtility implements ClipboardOwner {
                             clipboard.setContents(new StringSelection(screenshotURL), new StringSelection(screenshotURL));
                             viewfinderController.getProgramTray().displayMessage("Text copied to clipboard", TrayIcon.MessageType.INFO);
                         } else {
-                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.WARNING);
+                            viewfinderController.getProgramTray().displayMessage("Upload Failed: " + connection.getResponseMessage(), TrayIcon.MessageType.INFO);
                         }
                     } catch (IOException e) {
-                        viewfinderController.getProgramTray().displayMessage("Connection failed to server" + e.getMessage(), TrayIcon.MessageType.WARNING);
                         throw new RuntimeException(e);
                     }
                     try {
@@ -378,4 +308,8 @@ public class ScreenshotUtility implements ClipboardOwner {
         waitForFrameRender.start();
     }
 
+    @Override
+    public void lostOwnership(Clipboard clipboard, Transferable contents) {
+
+    }
 }
