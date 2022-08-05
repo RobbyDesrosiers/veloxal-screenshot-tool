@@ -43,10 +43,8 @@ public class Widget extends Button {
      * @param fileName: The file name without extension ('brush_dark.png', use: 'brush')
      */
     public void setIcons(String fileName) {
-        File fileA = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_dark.png");
-        File fileB = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_light.png");
-        Image imgA = new Image(fileA.getAbsolutePath());
-        Image imgB = new Image(fileB.getAbsolutePath());
+        Image imgA = new Image(String.valueOf(ClassLoader.getSystemResource(fileName + "_dark.png")));
+        Image imgB = new Image(String.valueOf(ClassLoader.getSystemResource(fileName + "_light.png")));
         iconA = new ImageView(imgA);
         iconB = new ImageView(imgB);
         iconA.setPreserveRatio(true);

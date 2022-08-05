@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="quickshot:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/quickshot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/quickshot_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ScreenOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ScreenOverlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,11 +54,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/desktopApplication/out" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\src\main\resources" />
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot\client\src\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -59,7 +75,7 @@
     <configuration name="Desktop Program" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.quickshot.quickshot.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.quickshot.quickshot.Launcher" />
       <module name="quickshot" />
       <option name="PROGRAM_PARAMETERS" value="-Dprism.vsync=false" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/desktopApplication" />
@@ -121,7 +137,8 @@
       <workItem from="1659551080770" duration="369000" />
       <workItem from="1659551469866" duration="48000" />
       <workItem from="1659551749904" duration="10813000" />
-      <workItem from="1659573279507" duration="3988000" />
+      <workItem from="1659573279507" duration="5412000" />
+      <workItem from="1659672225824" duration="1129000" />
     </task>
     <servers />
   </component>

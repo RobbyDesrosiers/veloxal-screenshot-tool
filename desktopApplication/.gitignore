@@ -20,7 +20,7 @@
 *.rar
 notes.txt
 # generated image files #
-/src/main/java/com/quickshot/quickshot/testImages
+/out
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*

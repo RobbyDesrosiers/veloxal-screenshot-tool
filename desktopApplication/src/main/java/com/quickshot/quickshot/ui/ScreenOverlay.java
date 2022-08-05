@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.File;
+import java.net.URL;
+import java.util.Objects;
 
 public class ScreenOverlay extends Pane {
     final private Scene scene;
@@ -25,8 +27,7 @@ public class ScreenOverlay extends Pane {
         scene = new Scene(this);
 
         // stylesheet for the entire program
-        File f = new File("src/main/java/com/quickshot/quickshot/resources/style.css");
-        getScene().getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+        getScene().getStylesheets().add(ClassLoader.getSystemResource("style.css").toExternalForm());
         // fixes bug where on viewfinder creation toolbar-widget is auto-selected
         requestFocus();
     }
