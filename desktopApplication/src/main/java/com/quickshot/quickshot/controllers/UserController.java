@@ -133,7 +133,10 @@ public class UserController {
         }
 
         // if not selected the viewfinder will be deleted and a new one will spawn where the mouse clicks
-        if (!viewfinderController.isSelected() && !viewfinderController.getAnchors().isSelected() && viewfinderController.getMovementAllowed()) {
+        if (    !viewfinderController.isSelected() &&
+                !viewfinderController.getAnchors().isSelected() &&
+                viewfinderController.getMovementAllowed() &&
+                !viewfinderController.getWidgetController().getDrawingToolBar().isWidgetSelected()) {
             viewfinderController.createViewfinder(mouseEvent);
             screenOverlay.setTransparent();
         } else if (viewfinderController.getMovementAllowed()){

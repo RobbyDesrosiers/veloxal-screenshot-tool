@@ -5,32 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/QuickShot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QuickShot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/WidgetBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/WidgetBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/copy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/marker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/paint-brush.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/readtext.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/record.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/rectangle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/save.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/undo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/resources/upload.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +121,7 @@
       <workItem from="1659551080770" duration="369000" />
       <workItem from="1659551469866" duration="48000" />
       <workItem from="1659551749904" duration="10813000" />
-      <workItem from="1659573279507" duration="3603000" />
+      <workItem from="1659573279507" duration="3988000" />
     </task>
     <servers />
   </component>

@@ -15,8 +15,8 @@ import java.io.File;
 
 
 public class Widget extends Button {
-    private ImageView iconActive;
-    private ImageView iconUnactive;
+    private ImageView iconA;
+    private ImageView iconB;
     private int iconSize = 15;
     private Cursor cursorType;
     private boolean isDrawing;
@@ -38,20 +38,24 @@ public class Widget extends Button {
         setOnMouseExited(e -> setMouseOver(false));
     }
 
+    /**
+     * Sets both the icons for the widget
+     * @param fileName: The file name without extension ('brush_dark.png', use: 'brush')
+     */
     public void setIcons(String fileName) {
-        File fileActive = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_dark.png");
-        File fileUnactive = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_light.png");
-        Image imgActive = new Image(fileActive.getAbsolutePath());
-        Image imgUnactive = new Image(fileUnactive.getAbsolutePath());
-        iconActive = new ImageView(imgActive);
-        iconUnactive = new ImageView(imgUnactive);
-        iconActive.setPreserveRatio(true);
-        iconUnactive.setPreserveRatio(true);
-        iconActive.setFitWidth(getIconSize());
-        iconActive.setFitHeight(getIconSize());
-        iconUnactive.setFitWidth(getIconSize());
-        iconUnactive.setFitHeight(getIconSize());
-        setGraphic(iconUnactive);
+        File fileA = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_dark.png");
+        File fileB = new File("src/main/java/com/quickshot/quickshot/resources/" + fileName + "_light.png");
+        Image imgA = new Image(fileA.getAbsolutePath());
+        Image imgB = new Image(fileB.getAbsolutePath());
+        iconA = new ImageView(imgA);
+        iconB = new ImageView(imgB);
+        iconA.setPreserveRatio(true);
+        iconB.setPreserveRatio(true);
+        iconA.setFitWidth(getIconSize());
+        iconA.setFitHeight(getIconSize());
+        iconB.setFitWidth(getIconSize());
+        iconB.setFitHeight(getIconSize());
+        setGraphic(iconB);
 
     }
 
@@ -63,9 +67,9 @@ public class Widget extends Button {
         setFocused(selected);
         isSelected = selected;
         if (selected)
-            setGraphic(iconActive);
+            setGraphic(iconA);
         else
-            setGraphic(iconUnactive);
+            setGraphic(iconB);
     }
 
     public boolean isMouseOver() {
@@ -82,10 +86,10 @@ public class Widget extends Button {
 
     public void setIconSize(int iconSize) {
         this.iconSize = iconSize;
-        iconActive.setFitWidth(iconSize);
-        iconActive.setFitHeight(iconSize);
-        iconUnactive.setFitWidth(iconSize);
-        iconUnactive.setFitHeight(iconSize);
+        iconA.setFitWidth(iconSize);
+        iconA.setFitHeight(iconSize);
+        iconB.setFitWidth(iconSize);
+        iconB.setFitHeight(iconSize);
     }
 
     public boolean isDrawing() {
