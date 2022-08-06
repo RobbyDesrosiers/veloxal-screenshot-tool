@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\out\artifacts\quickshot.jar</jar>
-  <outfile>C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\out\dist\1.0\version1.exe</outfile>
+  <outfile>C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\out\dist\1.0\screenshot.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -11,23 +11,20 @@
   <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>false</restartOnCrash>
+  <restartOnCrash>true</restartOnCrash>
   <manifest></manifest>
   <icon>C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\src\main\resources\unitylensphotos_103942.ico</icon>
+  <singleInstance>
+    <mutexName>RobbyProgram.exe</mutexName>
+    <windowTitle>RobbyProgram.exe</windowTitle>
+  </singleInstance>
   <jre>
-    <path></path>
+    <path>JRE</path>
     <bundledJre64Bit>false</bundledJre64Bit>
     <bundledJreAsFallback>false</bundledJreAsFallback>
-    <minVersion>1.7.0</minVersion>
+    <minVersion></minVersion>
     <maxVersion></maxVersion>
-    <jdkPreference>jreOnly</jdkPreference>
+    <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
   </jre>
-  <messages>
-    <startupErr>An error occurred while starting the application.</startupErr>
-    <bundledJreErr>This application requires a Java Runtime Environment.</bundledJreErr>
-    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
-    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
-    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
-  </messages>
 </launch4jConfig>

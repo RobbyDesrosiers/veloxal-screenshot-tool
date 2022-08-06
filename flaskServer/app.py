@@ -5,12 +5,9 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from PIL import Image
-from flask import Flask, request, render_template, send_from_directory, jsonify
+from flask import Flask, request, send_from_directory, jsonify
 from werkzeug.utils import secure_filename
-import cv2
-import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
 
 ALLOWED_EXTENSIONS = {'bmp', 'png', 'jpg', 'jpeg', 'gif'}
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -43,7 +40,7 @@ def favicon():
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return jsonify('home')
 
 
 @app.route('/v/<string:url>')
@@ -81,30 +78,6 @@ def file_upload():
     else:
         return jsonify('404')
 
-# https://towardsdatascience.com/read-text-from-image-with-one-line-of-python-code-c22ede074cac
-@app.route('/api/v1/read/', methods=['GET', 'POST'])
-def read_text():
-    if request.method == 'POST':
-        image = Image.open(io.BytesIO(request.data))
-        image_format = image.format.lower()
-
-        random_url = secure_filename(secrets.token_urlsafe(16))
-
-        if not (allowed_file(image_format)):
-            return render_template('404.html')
-
-        path = 'flaskServer/' + app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
-        image.save(path)
-
-        read_image = cv2.imread(path)
-        text = pytesseract.image_to_string(read_image)
-
-        os.remove(path)
-
-        return text
-    else:
-        return render_template('404.html')
-
 
 # sanity check route
 @app.route('/ping', methods=['GET'])
@@ -120,4 +93,4 @@ def allowed_file(filename: str):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000)
