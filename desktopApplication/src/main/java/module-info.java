@@ -1,4 +1,4 @@
-module com.quickshot.quickshot {
+module com.desrosiers.veloxal {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;

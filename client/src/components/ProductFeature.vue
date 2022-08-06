@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex align-items-center prod-feature">
-    <div class="img-container">
+    <div class="icon-container">
+      <background-blob />
       <img :src="require(`@/assets/${img}`)" alt="img" class="img-fluid">
     </div>
     <div class="d-flex flex-column ms-3">
@@ -11,8 +12,13 @@
 </template>
 
 <script>
+import BackgroundBlob from '@/components/BackgroundBlob';
+
 export default {
   name: 'ProductFeature',
+  components: {
+    BackgroundBlob,
+  },
   props: {
     img: String,
     title: String,
@@ -27,10 +33,17 @@ export default {
 </script>
 
 <style scoped>
-.img-container {
+.icon-container {
   min-width: 80px;
-  max-width: 80px;
-  height: auto;
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-fluid {
+  position: relative;
+  width: 50px;
+  height: 50px;
 }
 p, h5 {
   margin: 0;
