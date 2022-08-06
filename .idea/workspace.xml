@@ -11,12 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetLineDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetLineDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramTray.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramTray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/icon_vector_file.ai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/icon_vector_file.ai" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/desktopApplication/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/desktopApplication/out/artifacts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -80,7 +76,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.quickshot.quickshot.Launcher" />
       <module name="quickshot" />
-      <option name="PROGRAM_PARAMETERS" value="-Dprism.vsync=false" />
+      <option name="PROGRAM_PARAMETERS" value="-Dprism.vsync=false -Djavafx.animation.fullspeed=true" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/desktopApplication" />
       <extension name="coverage">
         <pattern>
@@ -141,7 +137,7 @@
       <workItem from="1659551469866" duration="48000" />
       <workItem from="1659551749904" duration="10813000" />
       <workItem from="1659573279507" duration="5412000" />
-      <workItem from="1659672225824" duration="3703000" />
+      <workItem from="1659672225824" duration="7303000" />
     </task>
     <servers />
   </component>
