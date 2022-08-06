@@ -2,16 +2,15 @@ module com.quickshot.quickshot {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
-//    requires com.squareup.gifencoder;
 
-    opens com.quickshot.quickshot to javafx.fxml;
-    exports com.quickshot.quickshot;
-    exports com.quickshot.quickshot.controllers;
-    opens com.quickshot.quickshot.controllers to javafx.fxml;
-    exports com.quickshot.quickshot.utilities;
-    opens com.quickshot.quickshot.utilities to javafx.fxml;
-    exports com.quickshot.quickshot.ui;
-    opens com.quickshot.quickshot.ui to javafx.fxml;
-    exports com.quickshot.quickshot.ui.abstracts;
-    opens com.quickshot.quickshot.ui.abstracts to javafx.fxml;
+    opens com.desrosiersrobby.veloxal to javafx.fxml;
+    exports com.desrosiersrobby.veloxal;
+    exports com.desrosiersrobby.veloxal.controllers;
+    opens com.desrosiersrobby.veloxal.controllers to javafx.fxml;
+    exports com.desrosiersrobby.veloxal.utilities;
+    opens com.desrosiersrobby.veloxal.utilities to javafx.fxml;
+    exports com.desrosiersrobby.veloxal.ui;
+    opens com.desrosiersrobby.veloxal.ui to javafx.fxml;
+    exports com.desrosiersrobby.veloxal.ui.abstracts;
+    opens com.desrosiersrobby.veloxal.ui.abstracts to javafx.fxml;
 }

@@ -10,19 +10,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/QuickShot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/quickshot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/quickshot_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/Swiftshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/Output/mysetup.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/innoSetup.iss" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/innoSetup.iss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/launch4J_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/launch4J_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/Swiftshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/templates/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/templates/viewscreenshot.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/quickshot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/veloxal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/ViewfinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/ViewfinderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/controllers/WidgetBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/WidgetBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ScreenOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/ScreenOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderAnchor.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/ViewfinderAnchor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderBoundingBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/ViewfinderBoundingBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderDimensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/ViewfinderDimensions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderMouseCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/ViewfinderMouseCoordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/ViewfinderNegativeSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/ViewfinderNegativeSpace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/Widget.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/Widget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetArrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetArrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarCommandTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarCommandTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarDrawingTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarDrawingTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetBarStrokeWidth.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarStrokeWidth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetHighlighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetHighlighter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetPaintbrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetPaintbrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/WidgetText.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/abstracts/WidgetBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/ui/abstracts/WidgetLineDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/abstracts/WidgetLineDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/BoundingBoxSnap.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/BoundingBoxSnap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/DisplayElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/DisplayElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/Monitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/Monitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ProgramTray.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramTray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ScreenshotUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/TransferableImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/TransferableImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorList.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ViewfinderAnchorList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderAnchorPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ViewfinderAnchorPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderNegativeSpaceList.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ViewfinderNegativeSpaceList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/ViewfinderViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ViewfinderViewOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/quickshot/quickshot/utilities/WidgetDrawData.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/WidgetDrawData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/arrow_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/images/arrow_dark.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/arrow_light.png" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/images/arrow_light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,16 +110,17 @@
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot\client\src\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\desro\Documents\GitHub\Veloxal\desktopApplication\src\main\resources\images" />
       <recent name="C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\src\main\resources" />
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.Flask Server">
+  <component name="RunManager" selected="Application.Desktop Program">
     <configuration name="Desktop Program" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.quickshot.quickshot.Launcher" />
-      <module name="quickshot" />
+      <option name="MAIN_CLASS_NAME" value="com.desrosiersrobby.veloxal.Launcher" />
+      <module name="veloxal" />
       <option name="PROGRAM_PARAMETERS" value="-Dprism.vsync=false -Djavafx.animation.fullspeed=true" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/desktopApplication" />
       <extension name="coverage">
@@ -149,6 +183,7 @@
       <workItem from="1659551749904" duration="10813000" />
       <workItem from="1659573279507" duration="5412000" />
       <workItem from="1659672225824" duration="10998000" />
+      <workItem from="1659808272558" duration="297000" />
     </task>
     <servers />
   </component>
@@ -165,6 +200,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarDrawingTools.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/QuickShot$Flask_Server.coverage" NAME="Flask Server Coverage Results" MODIFIED="1659805513408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

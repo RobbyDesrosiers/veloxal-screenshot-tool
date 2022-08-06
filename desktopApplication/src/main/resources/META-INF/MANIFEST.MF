@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.quickshot.quickshot.Launcher
+Main-Class: com.desrosiersrobby.veloxal.Launcher
 

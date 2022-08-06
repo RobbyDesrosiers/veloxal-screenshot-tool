@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" filepath="$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" />
-      <module fileurl="file://$PROJECT_DIR$/desktopApplication/quickshot.iml" filepath="$PROJECT_DIR$/desktopApplication/quickshot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desktopApplication/veloxal.iml" filepath="$PROJECT_DIR$/desktopApplication/veloxal.iml" />
     </modules>
   </component>
 </project>

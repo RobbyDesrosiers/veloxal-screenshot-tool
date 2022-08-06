@@ -2,7 +2,7 @@
   <artifact type="jar" name="quickshot:jar">
     <output-path>$PROJECT_DIR$/desktopApplication/out/artifacts</output-path>
     <root id="archive" name="quickshot.jar">
-      <element id="module-output" name="quickshot" />
+      <element id="module-output" name="veloxal" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18.0.1/javafx-controls-18.0.1-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18.0.1/javafx-graphics-18.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18.0.1/javafx-controls-18.0.1.jar" path-in-jar="/" />
