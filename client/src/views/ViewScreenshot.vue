@@ -1,18 +1,15 @@
 <template>
-  <Navbar page-opened=""/>
   <div class="image-holder">
     <img class="user-image" :src="this.screenshot" alt="screenshot">
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar';
 import axios from 'axios';
 
 export default {
   name: 'ViewScreenshot',
   components: {
-    Navbar,
   },
   data() {
     return {
@@ -30,14 +27,13 @@ export default {
             { type: res.headers['content-type'] },
           );
           this.screenshot = URL.createObjectURL(blob);
-          console.log(blob);
         })
         .catch((error) => {
           console.log(error);
         });
     },
   },
-  created() {
+  beforeMount() {
     this.getScreenshot();
   },
 };

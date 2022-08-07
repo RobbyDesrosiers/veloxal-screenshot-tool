@@ -4,7 +4,7 @@
       <background-blob />
       <img :src="require(`@/assets/${img}`)" alt="img" class="img-fluid">
     </div>
-    <div class="d-flex flex-column ms-3">
+    <div class="d-flex flex-column text">
       <h5 class="mb-1">{{this.title }}</h5>
       <p>{{ this.desc }}</p>
     </div>
@@ -51,5 +51,36 @@ p, h5 {
 .prod-feature {
   max-width: 450px;
   min-width: 450px;
+  gap: 15px;
+}
+@media only screen and (max-width: 450px) {
+  .prod-feature {
+    max-width: 400px;
+    min-width: 400px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .prod-feature {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    min-width: 350px;
+    gap: 8px;
+  }
+  .text {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .prod-feature {
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+    min-width: 280px;
+    gap: 8px;
+  }
+  .text {
+    text-align: center;
+  }
 }
 </style>

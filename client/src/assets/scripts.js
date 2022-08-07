@@ -4,7 +4,7 @@ import axios from 'axios';
 export const downloads = {
   downloadInstaller() {
     axios({
-      url: 'http://localhost:5000/get-windows-installer',
+      url: 'api/get-windows-installer',
       method: 'GET',
       responseType: 'blob',
     }).then((response) => {
@@ -18,7 +18,7 @@ export const downloads = {
   },
   downloadJar() {
     axios({
-      url: 'http://localhost:5000/get-windows-jar',
+      url: 'api/get-windows-jar',
       method: 'GET',
       responseType: 'blob',
     }).then((response) => {
