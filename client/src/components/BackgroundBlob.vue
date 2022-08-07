@@ -5,6 +5,11 @@
 <script>
 export default {
   name: 'BackgroundBlob',
+  data() {
+    return {
+      r: 30,
+    };
+  },
 };
 </script>
 

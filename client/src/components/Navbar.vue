@@ -15,15 +15,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link"
-             v-bind:class="{ active: homeActive }"
-             href="/">Home</a>
-          <a class="nav-link"
-             v-bind:class="{ active: downloadActive }"
-             href="/download">Download</a>
+          <router-link class="nav-link"
+             to="/">Home</router-link>
+          <router-link class="nav-link"
+             to="/download">Download</router-link>
           <a class="nav-link" href="https://github.com/RobbyDesrosiers/veloxal-screenshot-tool">Github</a>
-          <a v-if="!signedIn" class="nav-link login-link" href="/">Sign In</a>
-          <a v-else class="nav-link login-link" href="/">Sign Up</a>
+          <a v-if="!signedIn" class="nav-link login-link disabled" href="/">Sign In</a>
+          <a v-else class="nav-link login-link disabled" href="/">Sign Up</a>
         </div>
       </div>
     </div>
@@ -34,26 +32,13 @@
 export default {
   name: 'Navbar',
   props: {
-    pageOpened: String,
   },
   data() {
     return {
-      homeActive: false,
-      downloadActive: false,
       signedIn: true,
     };
   },
   methods: {
-    selectCurrentPage(page) {
-      if (page === 'Home') {
-        this.homeActive = true;
-      } else if (page === 'Download') {
-        this.downloadActive = true;
-      }
-    },
-  },
-  created() {
-    this.selectCurrentPage(this.pageOpened);
   },
 };
 </script>

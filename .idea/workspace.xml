@@ -10,14 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/veloxal_word_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/veloxal_word_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BackgroundBlob.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BackgroundBlob.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ProductFeature.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ProductFeature.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/ProductShowcase.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ProductShowcase.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/Download.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Download.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskServer/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskServer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +61,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../QuickShotWebsite/app.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flaskServer/app.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -69,6 +73,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\desro\Documents\GitHub\Veloxal\client\public" />
       <recent name="C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\src\main\resources" />
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot\client\src\views" />
     </key>
@@ -80,7 +85,7 @@
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Front End">
+  <component name="RunManager" selected="Flask server.Flask Server">
     <configuration name="Desktop Program" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -101,13 +106,13 @@
     <configuration name="Flask Server" type="Python.FlaskServer">
       <option name="flaskDebug" value="true" />
       <module name="VeloxalScreenshotTool" />
-      <option name="target" value="C:\Users\desro\Documents\GitHub\QuickShot\flaskServer\app.py" />
+      <option name="target" value="C:\Users\desro\Documents\GitHub\Veloxal\flaskServer\app.py" />
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="C:\Users\desro\Documents\GitHub\QuickShot\flaskServer\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="$USER_HOME$/AppData/Local/Programs/Python/Python37/python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -148,7 +153,7 @@
       <workItem from="1659551749904" duration="10813000" />
       <workItem from="1659573279507" duration="5412000" />
       <workItem from="1659672225824" duration="10998000" />
-      <workItem from="1659808272558" duration="5060000" />
+      <workItem from="1659808272558" duration="13251000" />
     </task>
     <servers />
   </component>
@@ -167,6 +172,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Veloxal$Flask_Server.coverage" NAME="Flask Server Coverage Results" MODIFIED="1659836864215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QuickShot$Flask_Server.coverage" NAME="Flask Server Coverage Results" MODIFIED="1659805513408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QuickShot$app.coverage" NAME="app Coverage Results" MODIFIED="1659805486291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flaskServer" />
   </component>

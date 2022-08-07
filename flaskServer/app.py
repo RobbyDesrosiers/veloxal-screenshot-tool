@@ -14,6 +14,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/screenshots'
+app.config['FILE_FOLDER'] = 'static/files'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -37,12 +38,6 @@ def favicon():
     return send_from_directory(os.path.join(basedir, 'static'), 'favicon.ico')
 
 
-@app.route('/')
-@app.route('/home')
-def home():
-    return jsonify('home')
-
-
 @app.route('/v/<string:url>')
 def get_screenshot_file(url):
     screenshot = Screenshot.query.filter_by(url=url).first()
@@ -52,6 +47,14 @@ def get_screenshot_file(url):
         return send_from_directory(app.config['UPLOAD_FOLDER'], f"{url}.png", as_attachment=True)
     else:
         return jsonify('404')
+
+@app.route('/get-installer')
+def get_installer_file():
+    return send_from_directory(app.config['FILE_FOLDER'], "veloxal-setup.exe", as_attachment=True)
+
+@app.route('/get-jar')
+def get_jar_file():
+    return send_from_directory(app.config['FILE_FOLDER'], "veloxal_1.0.jar", as_attachment=True)
 
 
 @app.route('/api/v1/upload/', methods=['GET', 'POST'])

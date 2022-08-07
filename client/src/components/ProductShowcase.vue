@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center gap-4 flex-wrap">
+    <div class="d-flex justify-content-center gap-4 flex-wrap mb-4">
       <ProductFeature img="fast_selection.png"
                       title="Fast screenshot of selected area"
                       desc="Select any area
