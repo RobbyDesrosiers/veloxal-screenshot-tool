@@ -48,13 +48,22 @@ def get_screenshot_file(url):
     else:
         return jsonify('404')
 
-@app.route('/get-installer')
-def get_installer_file():
-    return send_from_directory(app.config['FILE_FOLDER'], "veloxal-setup.exe", as_attachment=True)
 
-@app.route('/get-jar')
+@app.route('/get-windows-installer', methods=['GET', 'POST'])
+def get_installer_file():
+    print("F")
+    if request.method == 'GET':
+        return send_from_directory(app.config['FILE_FOLDER'], "veloxal-setup.exe", as_attachment=True)
+    else:
+        return jsonify(404)
+
+
+@app.route('/get-windows-jar', methods=['GET', 'POST'])
 def get_jar_file():
-    return send_from_directory(app.config['FILE_FOLDER'], "veloxal_1.0.jar", as_attachment=True)
+    if request.method == 'GET':
+        return send_from_directory(app.config['FILE_FOLDER'], "veloxal_1.0.jar", as_attachment=True)
+    else:
+        return jsonify(404)
 
 
 @app.route('/api/v1/upload/', methods=['GET', 'POST'])

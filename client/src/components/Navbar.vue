@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .navbar {
-  border-bottom: 2px solid rgb(64,178,255);
+  border-bottom: 2px solid var(--primary-blue);
 }
 .login-link {
   justify-self: end;

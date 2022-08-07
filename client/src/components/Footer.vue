@@ -20,7 +20,7 @@ export default {
   .footer {
     height: 60px;
     width: 100%;
-    background-color: rgb(35,35,35);
+    background-color: var(--primary-blk);
   }
   .img-fluid {
     height: 30px;

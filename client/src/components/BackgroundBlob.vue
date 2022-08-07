@@ -7,7 +7,6 @@ export default {
   name: 'BackgroundBlob',
   data() {
     return {
-      r: 30,
     };
   },
 };
@@ -21,7 +20,7 @@ export default {
 
 .shape {
   position: absolute;
-  background: rgb(64,178,255);
+  background: var(--primary-blue);
   animation: morph 8s ease-in-out infinite;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   height: 82px;

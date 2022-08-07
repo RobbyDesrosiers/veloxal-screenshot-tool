@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue';
 import Download from '@/views/Download';
 import ViewScreenshot from '@/views/ViewScreenshot';
 import Ping from '@/views/ping';
+import '@/assets/styles.css';
 
 const routes = [
   {

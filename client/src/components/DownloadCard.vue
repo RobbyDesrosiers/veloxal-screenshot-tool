@@ -1,7 +1,11 @@
 <template>
   <div class="card-container d-flex flex-column align-items-center gap-3">
     <h5 class="mt-3">{{ title }}</h5>
-    <button type="button" class="btn btn-dark rounded-pill" :class="active">
+    <button
+      type="button"
+      class="btn btn-dark rounded-pill"
+      :class="active"
+      @click="this.$emit('btn-click')">
       Download
     </button>
     <p class="container desc mb-0">{{ desc }}</p>

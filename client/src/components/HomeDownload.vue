@@ -2,15 +2,31 @@
   <div class="cont mb-5">
     <img :src="require(`@/assets/veloxal_stacked_logo.png`)" alt="logo" class="logo">
     <div class="d-flex gap-3">
-      <button type="button" class="btn btn-dark rounded-pill">Windows Installer</button>
-      <button type="button" class="btn btn-dark rounded-pill disabled">Mac Installer</button>
+      <button
+        type="button"
+        @click="downloadInstaller"
+        class="btn btn-dark rounded-pill">
+        Windows Installer
+      </button>
+      <button
+        type="button"
+        class="btn btn-dark rounded-pill disabled">
+        Mac Installer
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import { downloads } from '@/assets/scripts.js';
+
 export default {
   name: 'HomeDownload',
+  methods: {
+    downloadInstaller() {
+      downloads.downloadInstaller();
+    },
+  },
 };
 </script>
 

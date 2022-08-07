@@ -8,12 +8,14 @@
           desc="Download this installer with everything bundled including the JDK 17.0.2.
           This is the recommended option"
           size="212mb"
+          @btn-click="downloadInstaller"
         />
         <DownloadCard
           title="Windows Executable Jar File"
           desc="Download the executable jar file without bundled JRE/JDK. This will operate if JDK
           17.0.2 is installed."
           size="32mb"
+          @btn-click="downloadJar"
         />
       </div>
     </div>
@@ -42,11 +44,20 @@
 <script>
 
 import DownloadCard from '@/components/DownloadCard';
+import { downloads } from '@/assets/scripts.js';
 
 export default {
   name: 'Download',
   components: {
     DownloadCard,
+  },
+  methods: {
+    downloadInstaller() {
+      downloads.downloadInstaller();
+    },
+    downloadJar() {
+      downloads.downloadJar();
+    },
   },
 };
 </script>

@@ -10,17 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VeloxalScreenshotTool.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/veloxal_word_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/veloxal_word_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/BackgroundBlob.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BackgroundBlob.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/DownloadCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DownloadCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Footer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/HomeDownload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/HomeDownload.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ProductShowcase.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ProductShowcase.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/Download.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Download.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskServer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +30,7 @@
       <list>
         <option value="Class" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -85,7 +83,7 @@
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.Flask Server">
+  <component name="RunManager" selected="npm.Front End">
     <configuration name="Desktop Program" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -153,7 +151,7 @@
       <workItem from="1659551749904" duration="10813000" />
       <workItem from="1659573279507" duration="5412000" />
       <workItem from="1659672225824" duration="10998000" />
-      <workItem from="1659808272558" duration="13251000" />
+      <workItem from="1659808272558" duration="15185000" />
     </task>
     <servers />
   </component>
