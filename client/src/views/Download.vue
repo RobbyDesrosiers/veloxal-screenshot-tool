@@ -1,8 +1,10 @@
 <template>
   <main class="mb-5">
     <div class="container d-flex flex-column mt-5 justify-content-center gap-4">
-      <div v-if="downloadProgress" class="alert alert-success text-center" role="alert">
-        {{ this.downloadProgress }}
+      <div v-if="downloadProgressMessage"
+           v-bind:class="downloadAlert()"
+           class="alert text-center" role="alert">
+        {{ this.downloadProgressMessage }}
       </div>
       <h3 class="text-center">Windows Downloads</h3>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
@@ -56,7 +58,8 @@ export default {
   },
   data() {
     return {
-      downloadProgress: '',
+      downloadProgressMessage: '',
+      downloadComplete: false,
     };
   },
   methods: {
@@ -67,7 +70,11 @@ export default {
         responseType: 'blob',
         onDownloadProgress: (progressEvent) => {
           const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          this.downloadProgress = `Downloading File: ${percentage}%`;
+          this.downloadProgressMessage = `Downloading File: ${percentage}%`;
+          if (percentage === 100) {
+            this.downloadComplete = true;
+            this.downloadProgressMessage = 'File Downloaded Successfully';
+          }
         },
       }).then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -85,7 +92,11 @@ export default {
         responseType: 'blob',
         onDownloadProgress: (progressEvent) => {
           const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          this.downloadProgress = `Downloading File: ${percentage}%`;
+          this.downloadProgressMessage = `Downloading File: ${percentage}%`;
+          if (percentage === 100) {
+            this.downloadComplete = true;
+            this.downloadProgressMessage = 'File Downloaded Successfully';
+          }
         },
       }).then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -95,6 +106,12 @@ export default {
         document.body.appendChild(link);
         link.click();
       });
+    },
+    downloadAlert() {
+      return {
+        'alert-success': this.downloadComplete === true,
+        'alert-info': this.downloadComplete === false,
+      };
     },
   },
 };
