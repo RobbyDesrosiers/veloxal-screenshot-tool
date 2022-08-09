@@ -19,7 +19,7 @@ export default {
   methods: {
     // https://stackoverflow.com/questions/42785229/axios-serving-png-image-is-giving-broken-image
     getScreenshot() {
-      const path = `http://localhost:5000/v/${this.$route.params.id}`;
+      const path = `http:/api.veloxal.io/v/${this.$route.params.id}`;
       axios.get(path, { responseType: 'arraybuffer' })
         .then((res) => {
           const blob = new Blob(

@@ -15,7 +15,7 @@
       <ProductFeature img="editing_tools.png"
                       title="Powerful editing tools"
                       desc="You can edit screenshots instantly when taking them with
-                      our powerful editting tools." />
+                      our powerful editing tools." />
       </div>
 </template>
 

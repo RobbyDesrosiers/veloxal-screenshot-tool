@@ -5,7 +5,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from PIL import Image
-from flask import Flask, request, send_from_directory, jsonify
+from flask import Flask, request, send_from_directory, jsonify, Response, stream_with_context, make_response
 from werkzeug.utils import secure_filename
 
 
@@ -51,7 +51,6 @@ def get_screenshot_file(url):
 
 @app.route('/get-windows-installer', methods=['GET', 'POST'])
 def get_installer_file():
-    print("F")
     if request.method == 'GET':
         return send_from_directory(app.config['FILE_FOLDER'], "veloxal-setup.exe", as_attachment=True)
     else:

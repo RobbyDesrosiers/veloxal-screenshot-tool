@@ -1,0 +1,13 @@
+server {
+    listen      80;
+    server_name http://veloxal.com;
+    charset utf-8;
+    root    root/dist;
+    index   index.html index.htm;
+    location / {
+        root root/dist;
+        try_files $uri /index.html;
+    }
+    error_log  /var/log/nginx/vue-app-error.log;
+    access_log /var/log/nginx/vue-app-access.log;
+}

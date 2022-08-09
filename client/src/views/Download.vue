@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="mb-5">
     <div class="container d-flex flex-column mt-5 justify-content-center gap-4">
       <h3 class="text-center">Windows Downloads</h3>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
@@ -19,7 +19,7 @@
         />
       </div>
     </div>
-    <div class="container d-flex flex-column mt-5 justify-content-center gap-4">
+    <div class="container d-flex flex-column mt-5 justify-content-center gap-4 ">
       <h3 class="text-center">Mac Downloads</h3>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
         <DownloadCard
