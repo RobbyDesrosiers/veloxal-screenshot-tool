@@ -2,16 +2,16 @@
   <div class="cont mb-5">
     <img :src="require(`@/assets/veloxal_stacked_logo.png`)" alt="logo" class="logo">
     <div class="d-flex gap-3">
-      <button
+      <router-link
         type="button"
-        @click="downloadInstaller"
+        to="/download"
         class="btn btn-dark rounded-pill">
-        Windows Installer
-      </button>
+        Windows Download
+      </router-link>
       <button
         type="button"
         class="btn btn-dark rounded-pill disabled">
-        Mac Installer
+        Mac Download
       </button>
     </div>
   </div>

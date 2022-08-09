@@ -1,6 +1,9 @@
 <template>
   <main class="mb-5">
     <div class="container d-flex flex-column mt-5 justify-content-center gap-4">
+      <div v-if="downloadProgress" class="alert alert-success text-center" role="alert">
+        {{ this.downloadProgress }}
+      </div>
       <h3 class="text-center">Windows Downloads</h3>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
         <DownloadCard
@@ -44,19 +47,54 @@
 <script>
 
 import DownloadCard from '@/components/DownloadCard';
-import { downloads } from '@/assets/scripts.js';
+import axios from 'axios';
 
 export default {
   name: 'Download',
   components: {
     DownloadCard,
   },
+  data() {
+    return {
+      downloadProgress: '',
+    };
+  },
   methods: {
     downloadInstaller() {
-      downloads.downloadInstaller();
+      axios({
+        url: 'http://localhost:5000/get-windows-installer',
+        method: 'GET',
+        responseType: 'blob',
+        onDownloadProgress: (progressEvent) => {
+          const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          this.downloadProgress = `Downloading File: ${percentage}%`;
+        },
+      }).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'veloxal-setup.exe');
+        document.body.appendChild(link);
+        link.click();
+      });
     },
     downloadJar() {
-      downloads.downloadJar();
+      axios({
+        url: 'http://localhost:5000/get-windows-jar',
+        method: 'GET',
+        responseType: 'blob',
+        onDownloadProgress: (progressEvent) => {
+          const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          this.downloadProgress = `Downloading File: ${percentage}%`;
+        },
+      }).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'veloxal.jar');
+        document.body.appendChild(link);
+        link.click();
+      });
     },
   },
 };
