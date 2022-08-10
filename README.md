@@ -25,7 +25,7 @@
 <div align="center">
   <img src="client/public/veloxal_logo_stacked_white.png" alt="Logo" width="500" height="auto">
 
-<h3 align="center">Veloxal Screen Sapture Tool</h3>
+<h3 align="center">Veloxal Screen Capture Tool</h3>
 
   <p align="center">
     Quickly click, drag to select and save, copy, or upload a portion of your screen!
@@ -73,8 +73,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<div align="center">
 <img src="designFiles/images/product_screenshot.png" alt="Logo" width="500" height="auto">
+</div>
 
 **Veloxal Desktop Application**
 
@@ -88,9 +89,7 @@ Veloxal.io is a Vue/Bootstrap website which acts as a place to distribute the ex
 
 Flask API to facilitate operations on the PostgresSQL database along with RESTful calls
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
