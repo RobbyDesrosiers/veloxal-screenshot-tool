@@ -74,7 +74,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-<img src="designFiles/images/product_screenshot.png" alt="Logo" width="500" height="auto">
+<img src="designFiles/images/product_screenshot.png" alt="Logo">
 </div>
 
 **Veloxal Desktop Application**
