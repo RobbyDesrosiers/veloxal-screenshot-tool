@@ -11,10 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Download.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Download.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/innoSetup.iss" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/innoSetup.iss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/launch4J_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/launch4J_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/unitylensphotos_103942.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/desktopApplication" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/veloxal-screenshot-tool-main" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -85,11 +82,11 @@
       <recent name="C:\Users\Administrator\Desktop\IntelliJProjects\QuickShot\client\src\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\desro\Documents\GitHub\Veloxal\designFiles\images" />
       <recent name="C:\Users\desro\Documents\GitHub\Veloxal\designFiles\desktop" />
       <recent name="C:\Users\desro\Documents\GitHub\Veloxal\designFiles\client" />
       <recent name="C:\Users\desro\Documents\GitHub\Veloxal\designFiles" />
       <recent name="C:\Users\desro\Documents\GitHub\Veloxal\desktopApplication\src\main\resources\images" />
-      <recent name="C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\src\main\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Desktop Program">
@@ -186,6 +183,8 @@
       <workItem from="1659672225824" duration="10998000" />
       <workItem from="1659808272558" duration="26455000" />
       <workItem from="1660008524682" duration="4927000" />
+      <workItem from="1660108982126" duration="56000" />
+      <workItem from="1660109448670" duration="1157000" />
     </task>
     <servers />
   </component>
