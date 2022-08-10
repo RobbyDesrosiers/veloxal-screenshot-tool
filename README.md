@@ -23,8 +23,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <a href="http://veloxal.io/">
   <img src="client/public/veloxal_logo_stacked_white.png" alt="Logo" width="500" height="auto">
-
+  </a>
 <h3 align="center">Veloxal Screen Capture Tool</h3>
 
   <p align="center">
