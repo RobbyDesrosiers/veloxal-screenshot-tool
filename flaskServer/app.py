@@ -12,9 +12,18 @@ from werkzeug.utils import secure_filename
 ALLOWED_EXTENSIONS = {'bmp', 'png', 'jpg', 'jpeg', 'gif'}
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+# LOCAL
+# app = Flask(__name__)
+# app.config['UPLOAD_FOLDER'] = 'static/screenshots'
+# app.config['FILE_FOLDER'] = 'static/files'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# db = SQLAlchemy(app)
+
+# PROD
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'static/screenshots'
-app.config['FILE_FOLDER'] = 'static/files'
+app.config['UPLOAD_FOLDER'] = '/root/veloxalflask/static/screenshots'
+app.config['FILE_FOLDER'] = '/root/veloxalflask/static/files'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -76,7 +85,7 @@ def file_upload():
 
         random_url = secure_filename(secrets.token_urlsafe(8))
 
-        path = 'flaskServer/' + app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
+        path = app.config['UPLOAD_FOLDER'] + f"/{random_url}.{image_format}"
         image.save(path)
 
         new_screenshot = Screenshot(url=random_url,
@@ -85,7 +94,7 @@ def file_upload():
 
         db.session.add(new_screenshot)
         db.session.commit()
-        return f"http://127.0.0.1:8080/v/{random_url}"
+        return f"http://www.veloxal.io/v/{random_url}"
     else:
         return jsonify('404')
 

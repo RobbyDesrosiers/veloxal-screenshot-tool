@@ -10,12 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarStrokeWidth.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarStrokeWidth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramTray.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramTray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktopApplication/veloxal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/veloxal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/ViewScreenshot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/ViewScreenshot.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskServer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
