@@ -12,14 +12,14 @@
           title="Windows Installer w/ JRE"
           desc="Download this installer with everything bundled including the JDK 17.0.2.
           This is the recommended option"
-          size="212mb"
+          size="189mb"
           @btn-click="downloadInstaller"
         />
         <DownloadCard
           title="Windows Executable Jar File"
           desc="Download the executable jar file without bundled JRE/JDK. This will operate if JDK
           17.0.2 is installed."
-          size="32mb"
+          size="38mb"
           @btn-click="downloadJar"
         />
       </div>
@@ -32,14 +32,14 @@
           desc="Download this installer with everything bundled including the JDK 17.0.2.
           This is the recommended option"
           active="disabled"
-          size="212mb"
+          size="0mb"
         />
         <DownloadCard
           title="Mac Executable Jar File"
           desc="Download the executable jar file without bundled JRE/JDK. This will operate if JDK
           17.0.2 is installed."
           active="disabled"
-          size="32mb"
+          size="0mb"
         />
       </div>
     </div>
@@ -65,7 +65,7 @@ export default {
   methods: {
     downloadInstaller() {
       axios({
-        url: 'http://localhost:5000/get-windows-installer',
+        url: 'http://api.veloxal.io/get-windows-installer',
         method: 'GET',
         responseType: 'blob',
         onDownloadProgress: (progressEvent) => {
@@ -87,7 +87,7 @@ export default {
     },
     downloadJar() {
       axios({
-        url: 'http://localhost:5000/get-windows-jar',
+        url: 'http://api.veloxal.io/get-windows-jar',
         method: 'GET',
         responseType: 'blob',
         onDownloadProgress: (progressEvent) => {

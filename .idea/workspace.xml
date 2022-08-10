@@ -11,8 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/ViewScreenshot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/ViewScreenshot.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/Download.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Download.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/innoSetup.iss" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/innoSetup.iss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/launch4J_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/resources/MISC-FILES/launch4J_config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/resources/unitylensphotos_103942.ico" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
