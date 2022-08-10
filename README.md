@@ -25,7 +25,7 @@
 <div align="center">
   <img src="client/public/veloxal_logo_stacked_white.png" alt="Logo" width="500" height="auto">
 
-<h3 align="center">Veloxal Screen Sapture Tool</h3>
+<h3 align="center">Veloxal Screen Capture Tool</h3>
 
   <p align="center">
     Quickly click, drag to select and save, copy, or upload a portion of your screen!
