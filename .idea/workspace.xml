@@ -10,12 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/HomeDownload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/HomeDownload.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Download.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Download.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/static/files/veloxal-setup.exe" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/static/files/veloxal-setup.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskServer/static/files/veloxal_1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer/static/files/veloxal_1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarStrokeWidth.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/ui/WidgetBarStrokeWidth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramTray.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ProgramTray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/veloxal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/veloxal.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +67,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flaskServer/static/files" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/desktopApplication" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -93,7 +93,7 @@
       <recent name="C:\Users\desro\Documents\GitHub\QuickShot\desktopApplication\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.Flask Server">
+  <component name="RunManager" selected="Application.Desktop Program">
     <configuration name="Desktop Program" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -167,8 +167,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.app" />
         <item itemvalue="Application.Desktop Program" />
+        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>

@@ -5,7 +5,7 @@ import java.awt.TrayIcon.MessageType;
 
 public class ProgramTray {
     SystemTray tray = SystemTray.getSystemTray();
-    Image trayImg = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("veloxal_logo.png"));
+    Image trayImg = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("veloxal_logo_1x1.png"));
     TrayIcon trayIcon = new TrayIcon(trayImg, ProgramInfo.TITLE);
 
     MenuItem exitMenuButton;

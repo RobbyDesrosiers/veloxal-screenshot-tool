@@ -33,11 +33,13 @@ public class WidgetBarStrokeWidth extends TilePane implements DisplayElement {
 
     private void setUpUI() {
         btnPlus = new Button("+");
+        btnPlus.setStyle("-fx-text-fill: white");
         btnPlus.setTooltip(new Tooltip("Increase Stroke"));
         btnPlus.setPrefWidth(30);
         btnPlus.setOnMousePressed(this::handlePlus);
 
         btnMinus = new Button("-");
+        btnMinus.setStyle("-fx-text-fill: white");
         btnMinus.setTooltip(new Tooltip("Decrease Stroke"));
         btnMinus.setPrefWidth(30);
         btnMinus.setOnMousePressed(this::handleMinus);
