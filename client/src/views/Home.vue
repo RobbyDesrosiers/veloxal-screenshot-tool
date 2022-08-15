@@ -3,6 +3,7 @@
     <HomeDownload />
     <ScreenShotHeader />
     <ProductShowcase />
+    <ProductImages />
   </main>
 </template>
 
@@ -10,10 +11,12 @@
 import ProductShowcase from '@/components/ProductShowcase';
 import ScreenShotHeader from '@/components/ScreenShotHeader';
 import HomeDownload from '@/components/HomeDownload';
+import ProductImages from '@/components/ProductImages';
 
 export default {
   name: 'Home',
   components: {
+    ProductImages,
     HomeDownload,
     ScreenShotHeader,
     ProductShowcase,
