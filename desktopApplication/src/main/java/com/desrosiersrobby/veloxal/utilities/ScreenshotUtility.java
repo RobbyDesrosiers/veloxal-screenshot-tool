@@ -174,23 +174,21 @@ public class ScreenshotUtility implements ClipboardOwner {
      */
     public void saveSingleScreenshotToClipboard() {
         // to ensure none of the components end up in the screenshot
-        getViewfinder().setVisibilityForScreenshot(false);
+        getViewfinder().setVisible(false);
 
-        AnimationTimer waitForFrameRender = new AnimationTimer() {
-            private int frameCount = 0;
-            @Override
-            public void handle(long timestamp) {
-                frameCount++;
-                if (frameCount >= FRAMES_TO_WAIT) {
-                    stop();
-
-                    clipboard.setContents(new TransferableImage(getScreenshotBufferedImage()), getScreenshotUtility());
-                    viewfinderController.hideStage();
-                    viewfinderController.getProgramTray().displayMessage("Successfully copied screenshot to clipboard", TrayIcon.MessageType.INFO);
-                }
+        // thread handles copying to clipboard/notification of success
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(THREAD_WAIT_TIME_MS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        };
-        waitForFrameRender.start();
+            clipboard.setContents(new TransferableImage(getScreenshotBufferedImage()), getScreenshotUtility());
+            viewfinderController.getProgramTray().displayMessage("Successfully copied screenshot to clipboard", TrayIcon.MessageType.INFO);
+        });
+        thread.start();
+        
+        viewfinderController.hideStage();
     }
 
     /**
@@ -215,18 +213,18 @@ public class ScreenshotUtility implements ClipboardOwner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             File saveFile = new File(directory);
             try {
                 ImageIO.write(getScreenshotBufferedImage(), filetype, saveFile);
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            } finally {
+                viewfinderController.getProgramTray().displayMessage("Successfully saved screenshot to\n" + directory, TrayIcon.MessageType.INFO);
             }
         });
         thread.start();
-
         viewfinderController.hideStage();
-        viewfinderController.getProgramTray().displayMessage("Successfully saved screenshot to\n" + directory, TrayIcon.MessageType.INFO);
-
     }
 
     public ViewfinderController getViewfinder() {
