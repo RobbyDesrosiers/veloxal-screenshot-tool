@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ScreenshotUtility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +185,7 @@
       <workItem from="1660008524682" duration="4927000" />
       <workItem from="1660108982126" duration="56000" />
       <workItem from="1660109448670" duration="3060000" />
-      <workItem from="1660596361923" duration="6952000" />
+      <workItem from="1660596361923" duration="9259000" />
     </task>
     <servers />
   </component>
