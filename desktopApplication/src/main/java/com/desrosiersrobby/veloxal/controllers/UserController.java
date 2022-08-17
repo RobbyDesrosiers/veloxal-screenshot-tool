@@ -34,7 +34,7 @@ public class UserController {
         this.screenOverlay = screenOverlay;
         this.screenOverlay.getScene().setCursor(Cursor.CROSSHAIR);
         this.programTray = programTray;
-        viewfinderController = new ViewfinderController(programTray);
+        viewfinderController = new ViewfinderController(this, programTray);
         initMouseEvents();
         initKeyboardEvents();
     }
@@ -229,13 +229,14 @@ public class UserController {
         }
 
         // removes deleted data from screen
-        if (viewfinderController.getWidgetController().getDrawData().getDeletedData().size() > 0) {
+        LinkedList<LinkedList<Node>> deletedDataArray = viewfinderController.getWidgetController().getDrawData().getDeletedData();
+        if (deletedDataArray.size() > 0) {
             for (LinkedList<Node> deletedData : viewfinderController.getWidgetController().getDrawData().getDeletedData()) {
                 for (Node node : deletedData) {
                     screenOverlay.removeFromScreen(node);
                 }
             }
-            viewfinderController.getWidgetController().getDrawData().getDeletedData().pop();
+            deletedDataArray.pop();
         }
 
         viewfinderController.checkViewfinderInversion();

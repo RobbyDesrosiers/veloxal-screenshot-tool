@@ -11,9 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cbe53b82-3ebe-44f3-8e49-5ce813f08d46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/designFiles/client/icons.ai" beforeDir="false" afterPath="$PROJECT_DIR$/designFiles/client/icons.ai" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/designFiles/global/veloxal_logo.ai" beforeDir="false" afterPath="$PROJECT_DIR$/designFiles/global/veloxal_logo.ai" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/ViewfinderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/controllers/ViewfinderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/src/main/java/com/desrosiersrobby/veloxal/utilities/ScreenshotUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/innoSetup.iss" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/innoSetup.iss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/launch4J_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktopApplication/target/classes/MISC-FILES/launch4J_config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +189,7 @@
       <workItem from="1660008524682" duration="4927000" />
       <workItem from="1660108982126" duration="56000" />
       <workItem from="1660109448670" duration="3060000" />
-      <workItem from="1660596361923" duration="938000" />
+      <workItem from="1660596361923" duration="6565000" />
     </task>
     <servers />
   </component>

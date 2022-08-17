@@ -33,7 +33,7 @@ public class ViewfinderController {
     private boolean isMovementAllowed;
     private boolean isMousePassthroughOn;
 
-    public ViewfinderController(ProgramTray programTray) {
+    public ViewfinderController(UserController userController, ProgramTray programTray) {
         // inits all viewfinder elements
         boundingBox = new ViewfinderBoundingBox();
         anchors = new ViewfinderAnchorList();

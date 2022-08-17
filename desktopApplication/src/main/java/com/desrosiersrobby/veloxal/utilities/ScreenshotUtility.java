@@ -29,6 +29,7 @@ public class ScreenshotUtility implements ClipboardOwner {
     private String directory;
     private String filetype;
     private final int FRAMES_TO_WAIT = 10;
+    private final int THREAD_WAIT_TIME_MS = 100;
 
     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     private final Map<String, String> imageFileTypes = new HashMap<>(Map.of(
@@ -198,42 +199,34 @@ public class ScreenshotUtility implements ClipboardOwner {
      * @throws IOException
      */
     public void saveSingleScreenshotToFile() throws AWTException, IOException {
-        // to ensure none of the components end up in the screenshot
-        getViewfinder().setVisibilityForScreenshot(false);
         getDirectoryFromUser(imageFileTypes);
+        getViewfinder().setVisible(false);
 
-        // JavaFX cannot remove the viewfinder quick enough before capturing image.
-        // after 25 frames the capture will take place, allowing JavaFX enough time to remove the viewfinder from ScreenOverlay
-        // directory chose has an effect on how many passing frames needed before viewfinder removes itself..
-        // 10 for src folder, ~25 for desktop. TODO more tests
-        // https://stackoverflow.com/questions/39373170/javafx-capture-screen-using-robot
-        // https://stackoverflow.com/questions/41287372/how-to-take-snapshot-of-selected-area-of-screen-in-javafx
-        AnimationTimer waitForFrameRender = new AnimationTimer() {
-            private int frameCount = 0 ;
-            @Override
-            public void handle(long timestamp) {
-                frameCount++ ;
-                if (frameCount >= FRAMES_TO_WAIT + 100) { // +100 because save file window doesnt close quick enough
-                    stop();
+        // if no directory is chosen by user
+        if (directory == null) {
+            getViewfinder().setVisibilityForScreenshot(true);
+            viewfinderController.getProgramTray().displayMessage("No directory chosen. Please choose a valid directory", TrayIcon.MessageType.WARNING);
+            return;
+        }
 
-                    // if no directory is chosen by user
-                    if (directory == null) {
-                        getViewfinder().setVisibilityForScreenshot(true);
-                        return; //todo add error window
-                    }
-
-                    File saveFile = new File(directory);
-                    try {
-                        ImageIO.write(getScreenshotBufferedImage(), filetype, saveFile);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    viewfinderController.hideStage();
-                    viewfinderController.getProgramTray().displayMessage("Successfully saved screenshot to\n" + directory, TrayIcon.MessageType.INFO);
-                }
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(THREAD_WAIT_TIME_MS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        };
-        waitForFrameRender.start();
+            File saveFile = new File(directory);
+            try {
+                ImageIO.write(getScreenshotBufferedImage(), filetype, saveFile);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        thread.start();
+
+        viewfinderController.hideStage();
+        viewfinderController.getProgramTray().displayMessage("Successfully saved screenshot to\n" + directory, TrayIcon.MessageType.INFO);
+
     }
 
     public ViewfinderController getViewfinder() {
