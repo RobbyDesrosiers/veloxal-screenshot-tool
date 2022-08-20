@@ -17,7 +17,6 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
     private final Widget saveScreenshot;
     private final Widget copyScreenshot;
     private final Widget uploadScreenshot;
-    private final Widget readText;
 
     public WidgetBarCommandTools(ViewfinderBoundingBox boundingBox, WidgetDrawData drawData) {
         super(boundingBox, drawData);
@@ -25,9 +24,6 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
         setVgap(3);
 
         // creates all widgets on the widget bar and adds them to it
-        readText = new Widget("search", "Translate Text");
-        readText.setClickableOnly();
-        addWidget(readText);
         uploadScreenshot = new Widget("upload", "Upload for URL");
         uploadScreenshot.setClickableOnly();
         addWidget(uploadScreenshot);
@@ -86,10 +82,6 @@ public class WidgetBarCommandTools extends WidgetBar implements DisplayElement {
 
     public Widget getUploadScreenshot() {
         return uploadScreenshot;
-    }
-
-    public Widget getReadText() {
-        return readText;
     }
 
     @Override

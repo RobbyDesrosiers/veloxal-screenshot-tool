@@ -44,15 +44,6 @@ public class WidgetBarController {
                 throw new RuntimeException(ex);
             }
         });
-        getCommandToolBar().getReadText().setOnMouseClicked(e -> handleReadTextButton());
-//        getCommandToolBar().getRecordGif().setOnMouseClicked(e -> handleGifRecordButton());
-    }
-
-    /**
-     * Handles the button press for the 'Read Text Button' and activates the appropriate function
-     */
-    private void handleReadTextButton() {
-        getScreenshotUtility().readTextFromImage();
     }
 
     /**
